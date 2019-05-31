@@ -1,7 +1,7 @@
 package com.example.a2019_05_30_listado.data;
 
+import com.example.a2019_05_30_listado.helpers.BytesManager;
 import com.example.a2019_05_30_listado.helpers.Console;
-import com.example.a2019_05_30_listado.helpers.Converter;
 
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -31,7 +31,7 @@ public class NotesManager {
 	// Note.lastId
 	private static void writeIdToFile() throws IOException {
 		FileOutputStream fosId = new FileOutputStream( FILE_NAME_FOR_ID, false );
-		fosId.write( Converter.longToBytes( Note.getLastId() ) );
+		fosId.write( BytesManager.toByteArray( Note.getLastId() ) );
 		fosId.close();
 	}
 	private static void readIdFromFile() throws IOException {
@@ -40,7 +40,7 @@ public class NotesManager {
 			FileInputStream fisId = new FileInputStream( FILE_NAME_FOR_ID );
 			fisId.read( bytes );
 			fisId.close();
-			Note.setLastId( Converter.bytesToLong( bytes ) );
+			Note.setLastId( BytesManager.toLong( bytes ) );
 		} catch( FileNotFoundException e ) {
 			Console.show( "The 'id file' must be created", true );
 			// Using default = 0 = starting value

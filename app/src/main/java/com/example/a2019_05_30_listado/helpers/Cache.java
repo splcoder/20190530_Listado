@@ -13,7 +13,7 @@ public class Cache {
 	 * Access for direct Cache's values/functions (not mapCache)
 	 * @return Cache
 	 */
-	public static Cache getCache(){
+	public static synchronized Cache getCache(){
 		if( _cache == null ){
 			_cache = new Cache();
 		}
