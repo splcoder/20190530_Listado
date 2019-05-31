@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".NotificationsActivity">
+
+	<Button
+		android:id="@+id/btnToast"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="64dp"
+		android:layout_marginEnd="8dp"
+		android:background="#60F44336"
+		android:ems="10"
+		android:text="Show Toast"
+		android:textAllCaps="false"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<Button
+		android:id="@+id/btnToasty"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="64dp"
+		android:background="#4F9C27B0"
+		android:ems="10"
+		android:text="Show Toasty"
+		android:textAllCaps="false"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="@+id/btnToast"
+		app:layout_constraintStart_toStartOf="@+id/btnToast"
+		app:layout_constraintTop_toBottomOf="@+id/btnToast" />
+
+	<Button
+		android:id="@+id/btnSnackbar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="64dp"
+		android:background="#52009688"
+		android:ems="10"
+		android:text="Show Snackbar"
+		android:textAllCaps="false"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="@+id/btnToasty"
+		app:layout_constraintStart_toStartOf="@+id/btnToasty"
+		app:layout_constraintTop_toBottomOf="@+id/btnToasty" />
+
+	<Button
+		android:id="@+id/btnGoBack"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="64dp"
+		android:ems="10"
+		android:text="Go back"
+		android:textAllCaps="false"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="@+id/btnSnackbar"
+		app:layout_constraintStart_toStartOf="@+id/btnSnackbar"
+		app:layout_constraintTop_toBottomOf="@+id/btnSnackbar" />
+</android.support.constraint.ConstraintLayout>
