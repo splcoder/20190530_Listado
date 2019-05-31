@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	tools:context=".CalculatorActivity"
-	android:orientation="horizontal">
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:id="@+id/linearLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<TextView
+			android:id="@+id/txtOperation"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="right"
+			android:paddingRight="1sp"
+			android:text="0"
+			android:textSize="48sp" />
+
+		<TextView
+			android:id="@+id/txtValue"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="right"
+			android:paddingRight="1sp"
+			android:text="0"
+			android:textSize="48sp" />
+	</LinearLayout>
 
 	<TableLayout
 		android:id="@+id/tblCalc"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		tools:layout_editor_absoluteX="8dp"
-		tools:layout_editor_absoluteY="8dp">
-
-		<TableRow
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:gravity="right">
-
-			<TextView
-				android:id="@+id/txtArg1"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:gravity="right"
-				android:lines="2"
-				android:maxLines="2"
-				android:paddingRight="1sp"
-				android:text="0"
-				android:textSize="48sp" />
-		</TableRow>
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="32dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
 
 		<TableRow
 			android:layout_width="match_parent"
@@ -41,33 +55,36 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="#4FFFEB3B"
-				android:padding="2sp"
-				android:text="MR" />
+				android:background="@drawable/gradient_button_orange"
+				android:text="MR"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btnMS"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="#4FFFEB3B"
-				android:text="MS" />
+				android:background="@drawable/gradient_button_orange"
+				android:text="MS"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btnC"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="#60F44336"
-				android:text="C" />
+				android:background="@drawable/gradient_button_red"
+				android:text="C"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btnDivision"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="#602196F3"
-				android:text="/" />
+				android:background="@drawable/gradient_button_blue"
+				android:text="/"
+				android:textColor="@color/white" />
 		</TableRow>
 
 		<TableRow
@@ -80,30 +97,36 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="@drawable/my_button"
-				android:text="7" />
+				android:background="@drawable/gradient_button_black"
+				android:text="7"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btn8"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:text="8" />
+				android:background="@drawable/gradient_button_black"
+				android:text="8"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btn9"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:text="9" />
+				android:background="@drawable/gradient_button_black"
+				android:text="9"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btnMultiplication"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="#602196F3"
-				android:text="*" />
+				android:background="@drawable/gradient_button_blue"
+				android:text="*"
+				android:textColor="@color/white" />
 		</TableRow>
 
 		<TableRow
@@ -116,29 +139,36 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:text="4" />
+				android:background="@drawable/gradient_button_black"
+				android:text="4"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btn5"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:text="5" />
+				android:background="@drawable/gradient_button_black"
+				android:text="5"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btn6"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:text="6" />
+				android:background="@drawable/gradient_button_black"
+				android:text="6"
+				android:textColor="@color/white" />
 
 			<Button
-				android:id="@+id/btnSubtract"
+				android:id="@+id/btnSubstract"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="#602196F3"
-				android:text="-" />
+				android:background="@drawable/gradient_button_blue"
+				android:text="-"
+				android:textColor="@color/white" />
 		</TableRow>
 
 		<TableRow
@@ -151,29 +181,36 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:text="1" />
+				android:background="@drawable/gradient_button_black"
+				android:text="1"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btn2"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:text="2" />
+				android:background="@drawable/gradient_button_black"
+				android:text="2"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btn3"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:text="3" />
+				android:background="@drawable/gradient_button_black"
+				android:text="3"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btnSum"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="#602196F3"
-				android:text="+" />
+				android:background="@drawable/gradient_button_blue"
+				android:text="+"
+				android:textColor="@color/white" />
 		</TableRow>
 
 		<TableRow
@@ -186,32 +223,36 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="#5E673AB7"
-				android:text="&#177;" />
+				android:background="@drawable/gradient_button_purple"
+				android:text="&#177;"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btn0"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:text="0" />
+				android:background="@drawable/gradient_button_black"
+				android:text="0"
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btnComa"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="#5E673AB7"
-				android:text="." />
+				android:background="@drawable/gradient_button_purple"
+				android:text="."
+				android:textColor="@color/white" />
 
 			<Button
 				android:id="@+id/btnEqual"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
-				android:background="#6AF30505"
-				android:text="=" />
+				android:background="@drawable/gradient_button_red"
+				android:text="="
+				android:textColor="@color/white" />
 		</TableRow>
 	</TableLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

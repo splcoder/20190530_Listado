@@ -1,6 +1,7 @@
 package com.example.a2019_05_30_listado.adapters;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,11 @@ public class NotesAdapter extends ArrayAdapter<Note> {
 		switch( note.getPriority() ){
 			case NORMAL:	imageView.setImageResource( R.drawable.ic_note_green );		break;
 			case IMPORTANT:	imageView.setImageResource( R.drawable.ic_note_yellow );	break;
-			case URGENT:	imageView.setImageResource( R.drawable.ic_note_red );		break;
+			case URGENT: {
+				imageView.setImageResource( R.drawable.ic_note_red );
+				txtText.setTextColor( ContextCompat.getColor( context, R.color.red ) );
+				break;
+			}
 		}
 		// Return the completed view to render on screen
 		return convertView;
