@@ -27,9 +27,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator);
 
-		// Back button on action bar
-		getSupportActionBar().setDisplayHomeAsUpEnabled( true );
-
 		txtValue	= findViewById( R.id.txtValue );	txtOperation	= findViewById( R.id.txtOperation );
 		btnMR		= findViewById( R.id.btnMR );		btnMS			= findViewById( R.id.btnMS );			btnC				= findViewById( R.id.btnC );
 		btnSum		= findViewById( R.id.btnSum );		btnSubstract	= findViewById( R.id.btnSubstract );	btnMultiplication	= findViewById( R.id.btnMultiplication );	btnDivision	= findViewById( R.id.btnDivision );
@@ -42,19 +39,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		btn0.setOnClickListener( this ); btn1.setOnClickListener( this ); btn2.setOnClickListener( this ); btn3.setOnClickListener( this ); btn4.setOnClickListener( this );
 		btn5.setOnClickListener( this ); btn6.setOnClickListener( this ); btn7.setOnClickListener( this ); btn8.setOnClickListener( this ); btn9.setOnClickListener( this );
 		btnPM.setOnClickListener( this );		btnComa.setOnClickListener( this );			btnEqual.setOnClickListener( this );
-	}
-
-	@Override
-	public boolean onOptionsItemSelected( MenuItem item ) {
-		switch( item.getItemId() ){
-			// Back button on action bar
-			case android.R.id.home: {
-				this.finish();
-				return true;
-			}
-			default:;
-		}
-		return super.onOptionsItemSelected( item );
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
