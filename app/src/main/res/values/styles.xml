@@ -31,4 +31,9 @@
 		<item name="android:shadowRadius">2</item>
 	</style>
 
+	<style name="AppTheme.PopupTheme">
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowCloseOnTouchOutside">true</item>
+	</style>
+
 </resources>

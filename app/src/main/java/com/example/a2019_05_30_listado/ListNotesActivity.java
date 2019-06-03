@@ -1,6 +1,8 @@
 package com.example.a2019_05_30_listado;
 
 import android.app.ActionBar;
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,11 +11,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.a2019_05_30_listado.activities.NewNoteActivity;
 import com.example.a2019_05_30_listado.adapters.NotesAdapter;
 import com.example.a2019_05_30_listado.data.Note;
 import com.example.a2019_05_30_listado.data.Priority;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 
@@ -21,6 +27,7 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 
 	ListView listView;
 	ArrayList<Note> arrayListNotes;
+	FloatingActionButton btnFloatingAdd;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,16 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 		NotesAdapter notesAdapter = new NotesAdapter( this, arrayListNotes );
 		listView.setAdapter( notesAdapter );
 		listView.setOnItemClickListener( this );	// <<< See below: onItemClick
+
+		// Floating button "add"
+		btnFloatingAdd = findViewById( R.id.btnFloatingAdd );
+		btnFloatingAdd.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent( ListNotesActivity.this, NewNoteActivity.class );
+				startActivity( intent );
+			}
+		});
 	}
 
 	@Override

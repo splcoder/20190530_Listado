@@ -5,7 +5,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".CalculatorActivity"
+	tools:context=".activities.CalculatorActivity"
 	android:orientation="vertical">
 
 	<LinearLayout
@@ -23,7 +23,6 @@
 			android:layout_height="wrap_content"
 			android:gravity="right"
 			android:paddingRight="1sp"
-			android:text="0"
 			android:textSize="48sp" />
 
 		<TextView
@@ -75,6 +74,51 @@
 				android:layout_weight="1"
 				android:background="@drawable/gradient_button_red"
 				android:text="C"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnBack"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_red"
+				android:text="&#9003;"
+				android:textColor="@color/white" />
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:paddingBottom="2sp">
+
+			<Button
+				android:id="@+id/btnOP"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="("
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnCP"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text=")"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnFnc"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Fnc"
+				android:textAllCaps="false"
 				android:textColor="@color/white" />
 
 			<Button

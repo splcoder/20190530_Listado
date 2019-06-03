@@ -1,16 +1,23 @@
-package com.example.a2019_05_30_listado;
+package com.example.a2019_05_30_listado.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.a2019_05_30_listado.R;
+import com.example.a2019_05_30_listado.activities.PopupFncActivity;
+import com.example.a2019_05_30_listado.data.MathFunction;
+import com.example.a2019_05_30_listado.helpers.Cache;
+
+// TODO use MS and MR for saving/retrieving constants (as a list)
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	TextView txtValue, txtOperation;
-	Button btnMR, btnMS, btnC;
+	Button btnMR, btnMS, btnC, btnBack;
+	Button btnFnc;
 	Button btnSum, btnSubstract, btnMultiplication, btnDivision;
 	Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
 	Button btnPM, btnComa, btnEqual;
@@ -21,6 +28,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	private double rMemory	= 0;
 	private char cOperation = '?';	// <<< No operation
 	private boolean bOperationExecuted = false;
+	//
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +36,15 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		setContentView(R.layout.activity_calculator);
 
 		txtValue	= findViewById( R.id.txtValue );	txtOperation	= findViewById( R.id.txtOperation );
-		btnMR		= findViewById( R.id.btnMR );		btnMS			= findViewById( R.id.btnMS );			btnC				= findViewById( R.id.btnC );
+		btnMR		= findViewById( R.id.btnMR );		btnMS			= findViewById( R.id.btnMS );			btnC				= findViewById( R.id.btnC );				btnBack		= findViewById( R.id.btnBack );
+		btnFnc		= findViewById( R.id.btnFnc );
 		btnSum		= findViewById( R.id.btnSum );		btnSubstract	= findViewById( R.id.btnSubstract );	btnMultiplication	= findViewById( R.id.btnMultiplication );	btnDivision	= findViewById( R.id.btnDivision );
 		btn0 = findViewById( R.id.btn0 ); btn1 = findViewById( R.id.btn1 ); btn2 = findViewById( R.id.btn2 ); btn3 = findViewById( R.id.btn3 ); btn4 = findViewById( R.id.btn4 );
 		btn5 = findViewById( R.id.btn5 ); btn6 = findViewById( R.id.btn6 ); btn7 = findViewById( R.id.btn7 ); btn8 = findViewById( R.id.btn8 ); btn9 = findViewById( R.id.btn9 );
 		btnPM = findViewById( R.id.btnPM );		btnComa = findViewById( R.id.btnComa );		btnEqual = findViewById( R.id.btnEqual );
 
-		btnMR.setOnClickListener( this );				btnMS.setOnClickListener( this );						btnC.setOnClickListener( this );
+		btnMR.setOnClickListener( this );				btnMS.setOnClickListener( this );						btnC.setOnClickListener( this );								btnBack.setOnClickListener( this );
+		btnFnc.setOnClickListener( this );
 		btnSum.setOnClickListener( this );				btnSubstract.setOnClickListener( this );				btnMultiplication.setOnClickListener( this );					btnDivision.setOnClickListener( this );
 		btn0.setOnClickListener( this ); btn1.setOnClickListener( this ); btn2.setOnClickListener( this ); btn3.setOnClickListener( this ); btn4.setOnClickListener( this );
 		btn5.setOnClickListener( this ); btn6.setOnClickListener( this ); btn7.setOnClickListener( this ); btn8.setOnClickListener( this ); btn9.setOnClickListener( this );
@@ -104,6 +114,32 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			default:;
 		}
 	}
+	public void exeFunction( MathFunction mf ){
+		// TODO check if ok
+		if( MathFunction.isOneArgumentFunction( mf ) ){
+			// --- As btnEqual ---
+			if( bOperationExecuted ){
+				rValue = MathFunction.exeFunction( mf, rValue );
+				//bOperationExecuted = true;
+			}
+			else{
+				double rAux = Double.parseDouble( txtValue.getText().toString() );
+				bOperationExecuted = false;
+				//exeOperation( cOperation, rAux );
+				rValue = MathFunction.exeFunction( mf, rAux );	// <<<
+				bOperationExecuted = true;						// <<<
+			}
+			if( bOperationExecuted ) {
+				txtValue.setText( "" + rValue );
+				txtOperation.setText( "" );
+			}
+			cOperation = '?';
+		}
+		else{
+			// TODO
+			//Toasty.info( getApplicationContext(), "Funchiona", Toast.LENGTH_SHORT, true ).show();
+		}
+	}
 
 	@Override
 	public void onClick(View v) {
@@ -111,6 +147,24 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			case R.id.btnMR:	txtValue.setText( String.valueOf( rMemory ) );					break;
 			case R.id.btnMS:	rMemory = Double.parseDouble( txtValue.getText().toString() );	break;
 			case R.id.btnC:		resetOperationsTo(0 );									break;
+			case R.id.btnBack: {
+				if( bOperationExecuted ){
+					resetOperationsTo(0 );
+				}
+				else{
+					String sValue = txtValue.getText().toString();
+					sValue = sValue.substring( 0, sValue.length() - 1 );
+					if( sValue.isEmpty() )	sValue = "0";
+					txtValue.setText( sValue );
+				}
+				break;
+			}
+			case R.id.btnFnc: {
+				Intent intent = new Intent( getApplicationContext(), PopupFncActivity.class );
+				Cache.set( "calculatorActivity", this );
+				startActivity( intent );
+				break;
+			}
 			case R.id.btnDivision:			clickedOperation( '/' );							break;
 			case R.id.btnMultiplication:	clickedOperation( '*' );							break;
 			case R.id.btnSubstract:			clickedOperation( '-' );							break;
