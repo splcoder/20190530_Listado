@@ -15,6 +15,7 @@ import com.example.a2019_05_30_listado.activities.NewNoteActivity;
 import com.example.a2019_05_30_listado.adapters.NotesAdapter;
 import com.example.a2019_05_30_listado.data.Note;
 import com.example.a2019_05_30_listado.data.Priority;
+import com.example.a2019_05_30_listado.helpers.Cache;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ import es.dmoral.toasty.Toasty;
 public class ListNotesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
 	ListView listView;
+	NotesAdapter notesAdapter;
 	ArrayList<Note> arrayListNotes;
 	FloatingActionButton btnFloatingAdd;
 
@@ -52,7 +54,7 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 		//Collections.sort( arrayListnNotes );
 
 		//ArrayAdapter<String> adaptador = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, arrayListBots );
-		NotesAdapter notesAdapter = new NotesAdapter( this, arrayListNotes );
+		notesAdapter = new NotesAdapter( this, arrayListNotes );
 		listView.setAdapter( notesAdapter );
 		listView.setOnItemClickListener( this );	// <<< See below: onItemClick
 
@@ -61,8 +63,21 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 		btnFloatingAdd.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent( ListNotesActivity.this, NewNoteActivity.class );
+				//Intent intent = new Intent( ListNotesActivity.this, NewNoteActivity.class );
+				Intent intent = new Intent( getApplicationContext(), NewNoteActivity.class );
+				Cache.set( "listNotesActivity", this );
 				startActivity( intent );
+			}
+		});
+
+		// Delete an item
+		listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+				arrayListNotes.remove( position );
+				notesAdapter.notifyDataSetChanged();
+				// TODO add a confirm dialog
+				return false;
 			}
 		});
 	}
@@ -84,5 +99,20 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Note note = arrayListNotes.get( position );
 		Toasty.info( getApplicationContext(), "Has seleccionado: " + note.getText(), Toast.LENGTH_SHORT, true ).show();
+	}
+
+	/**
+	 * For using in NewNoteActivity
+	 * @param note
+	 */
+	public void addNote( Note note ){
+		arrayListNotes.add( note );
+		//notesAdapter.notifyDataSetChanged();
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		notesAdapter.notifyDataSetChanged();
 	}
 }

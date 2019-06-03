@@ -11,8 +11,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.a2019_05_30_listado.ListNotesActivity;
 import com.example.a2019_05_30_listado.R;
+import com.example.a2019_05_30_listado.data.Note;
 import com.example.a2019_05_30_listado.data.Priority;
+import com.example.a2019_05_30_listado.helpers.Cache;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -44,6 +47,18 @@ public class NewNoteActivity extends AppCompatActivity {
 		btnCreate = findViewById( R.id.btnCreate );
 		btnCancel = findViewById( R.id.btnCancel );
 
+		txtDate.setText( sdf.format( calendar.getTime() ) );
+		txtDate.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				readDate( Calendar.getInstance() );
+			}
+		});
+
+		// Fill the spinner
+		ArrayAdapter<Priority> spinnerAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_item, Priority.values() );
+		spinnerNoteType.setAdapter( spinnerAdapter );
+
 		btnCancel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -51,16 +66,28 @@ public class NewNoteActivity extends AppCompatActivity {
 				finish();
 			}
 		});
-
-		txtDate.setText( sdf.format( calendar.getTime() ) );
-		// Fill the spinner
-		ArrayAdapter<Priority> spinnerAdapter = new ArrayAdapter<>( this, android.R.layout.simple_spinner_item, Priority.values() );
-		spinnerNoteType.setAdapter( spinnerAdapter );
+		btnCreate.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO where is the error ???
+				Note note = new Note( txtText.getText().toString(), (Priority)spinnerNoteType.getSelectedItem() );
+				// ... modify the date with "calendar"...
+				//((ListNotesActivity)Cache.get( "listNotesActivity" )).addNote( note );
+				/*if( (ListNotesActivity)Cache.get( "listNotesActivity" ) instanceof ListNotesActivity )
+					Toasty.info( getApplicationContext(), "OK Activity", Toast.LENGTH_SHORT, true ).show();
+				else	Toasty.error( getApplicationContext(), "UPSSS Activity", Toast.LENGTH_SHORT, true ).show();
+				*/
+				((ListNotesActivity)Cache.get( "listNotesActivity" )).addNote( note );
+				Toasty.info( getApplicationContext(), "Added", Toast.LENGTH_SHORT, true ).show();
+				// Close this window
+				finish();
+			}
+		});
 	}
 
 	private void readDate( Calendar date ){
 		int year = date.get( Calendar.YEAR );
-		int month = date.get( Calendar.MONTH ) + 1;
+		int month = date.get( Calendar.MONTH );
 		int day = date.get( Calendar.DAY_OF_MONTH );
 
 		DatePickerDialog datePickerDialog = new DatePickerDialog( NewNoteActivity.this, datePickerListener, year, month, day );
