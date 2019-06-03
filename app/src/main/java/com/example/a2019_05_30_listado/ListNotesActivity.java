@@ -31,6 +31,8 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 	ArrayList<Note> arrayListNotes;
 	FloatingActionButton btnFloatingAdd;
 
+	ListNotesActivity that = this;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,7 +67,8 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 			public void onClick(View v) {
 				//Intent intent = new Intent( ListNotesActivity.this, NewNoteActivity.class );
 				Intent intent = new Intent( getApplicationContext(), NewNoteActivity.class );
-				Cache.set( "listNotesActivity", this );
+				//Cache.set( "listNotesActivity", this );	// <<< Gives ERROR !!!
+				Cache.set( "listNotesActivity", that );
 				startActivity( intent );
 			}
 		});

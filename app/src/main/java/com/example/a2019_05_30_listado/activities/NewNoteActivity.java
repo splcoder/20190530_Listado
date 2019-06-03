@@ -69,14 +69,8 @@ public class NewNoteActivity extends AppCompatActivity {
 		btnCreate.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO where is the error ???
 				Note note = new Note( txtText.getText().toString(), (Priority)spinnerNoteType.getSelectedItem() );
 				// ... modify the date with "calendar"...
-				//((ListNotesActivity)Cache.get( "listNotesActivity" )).addNote( note );
-				/*if( (ListNotesActivity)Cache.get( "listNotesActivity" ) instanceof ListNotesActivity )
-					Toasty.info( getApplicationContext(), "OK Activity", Toast.LENGTH_SHORT, true ).show();
-				else	Toasty.error( getApplicationContext(), "UPSSS Activity", Toast.LENGTH_SHORT, true ).show();
-				*/
 				((ListNotesActivity)Cache.get( "listNotesActivity" )).addNote( note );
 				Toasty.info( getApplicationContext(), "Added", Toast.LENGTH_SHORT, true ).show();
 				// Close this window
