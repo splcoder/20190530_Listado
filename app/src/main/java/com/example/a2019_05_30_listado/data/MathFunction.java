@@ -99,7 +99,7 @@ public enum MathFunction {
 	public static double exeFunction( MathFunction mf, double arg1, double arg2 ){
 		switch( mf ){
 			case MOD:		return arg1 % arg2;
-			case INV:		return 1/arg1;
+			case INV:		return 1./arg1;
 			case RAD:		return arg1*Math.PI/180;
 			case DEG:		return arg1*180/Math.PI;
 			case FACTORIAL:	return arg1 < 0 ? reflectionFactorial( arg1 ) : factorial( arg1 );

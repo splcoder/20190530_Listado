@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a2019_05_30_listado.activities.CalculatorActivity;
+import com.example.a2019_05_30_listado.activities.SplashActivity;
 import com.example.a2019_05_30_listado.helpers.Cache;
 
 import es.dmoral.toasty.Toasty;
@@ -54,7 +55,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 				break;
 			}
 			case R.id.btnListNotes: {
-				intent = new Intent( MenuActivity.this, ListNotesActivity.class );
+				//intent = new Intent( MenuActivity.this, ListNotesActivity.class );
+				intent = new Intent( MenuActivity.this, SplashActivity.class );
 				break;
 			}
 			case R.id.btnCalculator: {

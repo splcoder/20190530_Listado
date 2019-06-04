@@ -15,6 +15,7 @@ import com.example.a2019_05_30_listado.helpers.Cache;
 
 import es.dmoral.toasty.Toasty;
 
+// TODO more color buttons
 public class MainActivity extends AppCompatActivity {
 	private static String MY_PREFERENCES	= "my_prefs";
 	private static String PREF_EMAIL		= "pref_email";
