@@ -15,41 +15,219 @@
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" >
+			android:layout_height="match_parent"
+			android:paddingBottom="2sp">
 
 			<Button
-				android:id="@+id/button3"
+				android:id="@+id/btnInverseFnc"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Button" />
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="&#9650;"
+				android:textAllCaps="false"
+				android:textColor="@color/white" /><!-- 9650	8582 -->
 
 			<Button
-				android:id="@+id/button2"
+				android:id="@+id/btnMod"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Button" />
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Mod"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
 
 			<Button
-				android:id="@+id/button"
+				android:id="@+id/btnInverse"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Button" />
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="1/x"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
 		</TableRow>
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
+			android:layout_height="match_parent"
+			android:paddingBottom="2sp">
+
+			<Button
+				android:id="@+id/btnRad"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Rad"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnDeg"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Deg"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnFactorial"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Factorial"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+		</TableRow>
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
+			android:layout_height="match_parent"
+			android:paddingBottom="2sp">
+
+			<Button
+				android:id="@+id/btnPow2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="^2"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnPow3"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="^3"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnPow"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="a^b"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+		</TableRow>
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
+			android:layout_height="match_parent"
+			android:paddingBottom="2sp">
+
+			<Button
+				android:id="@+id/btnFloor"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Floor"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnRound"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Round"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnCeil"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Ceil"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+		</TableRow>
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
+			android:layout_height="match_parent"
+			android:paddingBottom="2sp">
+
+			<Button
+				android:id="@+id/btnSin"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Sin"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnCos"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Cos"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnTan"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Tan"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:paddingBottom="2sp">
+
+			<Button
+				android:id="@+id/btnSinh"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Sinh"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnCosh"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Cosh"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+
+			<Button
+				android:id="@+id/btnTanh"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@drawable/gradient_button_blue"
+				android:text="Tanh"
+				android:textAllCaps="false"
+				android:textColor="@color/white" />
+		</TableRow>
+
 	</TableLayout>
 </android.support.constraint.ConstraintLayout>

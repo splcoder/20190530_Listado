@@ -18,6 +18,8 @@ import java.util.ArrayList;
 // TODO use MS and MR for saving/retrieving constants (as a list) <<< with long click
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
+	CalculatorActivity that = this;
+
 	TextView txtValue, txtOperation;
 	Button btnMR, btnMS, btnC, btnBack;
 	Button btnFnc;
@@ -54,6 +56,19 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		btn0.setOnClickListener( this ); btn1.setOnClickListener( this ); btn2.setOnClickListener( this ); btn3.setOnClickListener( this ); btn4.setOnClickListener( this );
 		btn5.setOnClickListener( this ); btn6.setOnClickListener( this ); btn7.setOnClickListener( this ); btn8.setOnClickListener( this ); btn9.setOnClickListener( this );
 		btnPM.setOnClickListener( this );		btnComa.setOnClickListener( this );			btnEqual.setOnClickListener( this );
+
+		// Long Click
+		btnFnc.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				//Intent intent = new Intent( getApplicationContext(), PopupBasicFncsActivity.class );
+				Intent intent = new Intent( getApplicationContext(), PopupFncActivity.class );
+				Cache.set( "calculatorActivity", that );
+				startActivity( intent );
+				//return false;		// <<< onClick will be executed too
+				return true;		// <<< Only onLongClick will be executed
+			}
+		});
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
@@ -179,8 +194,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				break;
 			}
 			case R.id.btnFnc: {
-				Intent intent = new Intent( getApplicationContext(), PopupFncActivity.class );
-				Cache.set( "calculatorActivity", this );
+				//Intent intent = new Intent( getApplicationContext(), PopupFncActivity.class );
+				Intent intent = new Intent( getApplicationContext(), PopupBasicFncsActivity.class );
+				Cache.set( "calculatorActivity", that );
 				startActivity( intent );
 				break;
 			}

@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -117,6 +118,22 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 				this.finish();
 				return true;
 			}
+			// --- Menu --- >>> see onCreateOptionsMenu()
+			case R.id.idItemAbout: {
+				// Show window about
+				Toasty.info( getApplicationContext(),"Has pulsado About", Toast.LENGTH_SHORT,true ).show();
+				return true;
+			}
+			case R.id.idItemPrivacy: {
+				// Show window with the politics' privacy
+				Toasty.info( getApplicationContext(),"Has pulsado Privacy", Toast.LENGTH_SHORT,true ).show();
+				return true;
+			}
+			case R.id.idItemSyncUp: {
+				// Show window with the politics' privacy
+				Toasty.info( getApplicationContext(),"Has pulsado Sync up", Toast.LENGTH_SHORT,true ).show();
+				return true;
+			}
 			default:;
 		}
 		return super.onOptionsItemSelected( item );
@@ -190,4 +207,16 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 		super.onResume();
 		fillArray();
 	}*/
+
+	/**
+	 * Draw the menu
+	 * @param menu
+	 * @return boolean
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		//return super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate( R.menu.list_notes_menu, menu );
+		return true;
+	}
 }
