@@ -10,7 +10,10 @@ import android.widget.TextView;
 import com.example.a2019_05_30_listado.R;
 import com.example.a2019_05_30_listado.activities.PopupFncActivity;
 import com.example.a2019_05_30_listado.data.MathFunction;
+import com.example.a2019_05_30_listado.data.MemVar;
 import com.example.a2019_05_30_listado.helpers.Cache;
+
+import java.util.ArrayList;
 
 // TODO use MS and MR for saving/retrieving constants (as a list)
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
@@ -25,9 +28,11 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	private final char cComa = '.';
 	private final String sComa = ".";
 	private double rValue	= 0;
-	private double rMemory	= 0;
+	private double rMemory	= 0;	// <<< Fast Mem (accessed by a click)
+	private ArrayList<MemVar> aMemory = new ArrayList<>();	// <<< accessed by a "long click"
 	private char cOperation = '?';	// <<< No operation
 	private boolean bOperationExecuted = false;
+	private MathFunction mathFunction = MathFunction.SIN;
 	//
 
 	@Override
@@ -111,6 +116,11 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				bOperationExecuted = true;
 				break;
 			}
+			case 'f': {
+				rValue = MathFunction.exeFunction( mathFunction, rValue, arg2 );
+				bOperationExecuted = true;
+				break;
+			}
 			default:;
 		}
 	}
@@ -136,8 +146,17 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			cOperation = '?';
 		}
 		else{
-			// TODO
-			//Toasty.info( getApplicationContext(), "Funchiona", Toast.LENGTH_SHORT, true ).show();
+			// --- As clickedOperation() ---
+			bOperationExecuted = false;
+			if( cOperation == '?' ) {
+				if( rValue == 0 ) {
+					rValue = Double.parseDouble( txtValue.getText().toString() );
+				}
+				txtValue.setText( "0" );
+			}
+			cOperation = 'f';
+			mathFunction = mf;
+			txtOperation.setText( "" + rValue + " " + MathFunction.toString( mf ) );
 		}
 	}
 

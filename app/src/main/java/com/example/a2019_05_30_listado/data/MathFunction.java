@@ -6,7 +6,8 @@ import java.util.List;
 
 // TODO floor, ceil, round, ...
 public enum MathFunction {
-	MOD, INV /* 1/x */, RAD /* to rad */, FACTORIAL
+	MOD, INV /* 1/x */, RAD /* to rad */, DEG /* to degrees*/, FACTORIAL
+	, FLOOR, ROUND, CEIL, ABS
 	, POW2, POW3, POW, ROOT2, ROOT3, ROOT
 	, EXP, LN, EXP10, LOG10, LOG
 	, SIN, COS, TAN, ARCSIN, ARCCOS, ARCTAN
@@ -16,7 +17,8 @@ public enum MathFunction {
 	// = MathFunction.values()
 	public static final List<MathFunction> listFunctions = new ArrayList<MathFunction>(
 		Arrays.asList(
-			MOD, INV /* 1/x */, RAD /* to rad */, FACTORIAL
+			MOD, INV /* 1/x */, RAD /* to rad */, DEG /* to degrees*/, FACTORIAL
+			, FLOOR, ROUND, CEIL, ABS
 			, POW2, POW3, POW, ROOT2, ROOT3, ROOT
 			, EXP, LN, EXP10, LOG10, LOG
 			, SIN, COS, TAN, ARCSIN, ARCCOS, ARCTAN
@@ -41,7 +43,12 @@ public enum MathFunction {
 			case MOD:		return "mod";
 			case INV:		return "inv";
 			case RAD:		return "rad";
+			case DEG:		return "deg";
 			case FACTORIAL:	return "factorial";
+			case FLOOR:		return "floor";
+			case ROUND:		return "round";
+			case CEIL:		return "ceil";
+			case ABS:		return "abs";
 			case POW2:		return "pow2";
 			case POW3:		return "pow3";
 			case POW:		return "pow";
@@ -74,7 +81,12 @@ public enum MathFunction {
 			case MOD:		return arg1 % arg2;
 			case INV:		return 1/arg1;
 			case RAD:		return arg1*Math.PI/180;
-			case FACTORIAL:	return 1;	// TODO
+			case DEG:		return arg1*180/Math.PI;
+			case FACTORIAL:	return Math.pow( arg1, arg1 )*Math.exp( -arg1 )*Math.sqrt( arg1*2*Math.PI + 1 );
+			case FLOOR:		return Math.floor( arg1 );
+			case ROUND:		return Math.round( arg1 );
+			case CEIL:		return Math.ceil( arg1 );
+			case ABS:		return Math.abs( arg1 );
 			case POW2:		return arg1 * arg1;
 			case POW3:		return arg1 * arg1 * arg1;
 			case POW:		return Math.pow( arg1, arg2 );
