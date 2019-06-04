@@ -15,7 +15,7 @@ import com.example.a2019_05_30_listado.helpers.Cache;
 
 import java.util.ArrayList;
 
-// TODO use MS and MR for saving/retrieving constants (as a list)
+// TODO use MS and MR for saving/retrieving constants (as a list) <<< with long click
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	TextView txtValue, txtOperation;

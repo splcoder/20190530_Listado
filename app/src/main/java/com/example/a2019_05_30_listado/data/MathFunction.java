@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// TODO floor, ceil, round, ...
 public enum MathFunction {
 	MOD, INV /* 1/x */, RAD /* to rad */, DEG /* to degrees*/, FACTORIAL
 	, FLOOR, ROUND, CEIL, ABS
