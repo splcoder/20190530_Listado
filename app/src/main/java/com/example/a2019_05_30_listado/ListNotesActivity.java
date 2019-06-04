@@ -1,6 +1,8 @@
 package com.example.a2019_05_30_listado;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.a2019_05_30_listado.activities.ModifyNoteActivity;
 import com.example.a2019_05_30_listado.activities.NewNoteActivity;
 import com.example.a2019_05_30_listado.adapters.NotesAdapter;
 import com.example.a2019_05_30_listado.data.Note;
@@ -77,10 +80,11 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 		listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-				arrayListNotes.remove( position );
-				notesAdapter.notifyDataSetChanged();
-				// TODO add a confirm dialog
-				return false;
+				//arrayListNotes.remove( position );
+				//notesAdapter.notifyDataSetChanged();
+				confirmDeleteNote( position );
+				//return false;	// <<< se ejecuta OnItemLongClick y onItemClick
+				return true;	// <<< sólo se ejecuta OnItemLongClick
 			}
 		});
 	}
@@ -101,7 +105,9 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Note note = arrayListNotes.get( position );
-		Toasty.info( getApplicationContext(), "Has seleccionado: " + note.getText(), Toast.LENGTH_SHORT, true ).show();
+		Cache.set( "modifyNote", note );
+		Intent intent = new Intent( ListNotesActivity.this, ModifyNoteActivity.class );
+		startActivity( intent );
 	}
 
 	/**
@@ -117,5 +123,32 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 	protected void onStart() {
 		super.onStart();
 		notesAdapter.notifyDataSetChanged();
+	}
+
+	public void confirmDeleteNote( final int position ){
+		//AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder( getApplicationContext() );	// <<< gives error
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder( ListNotesActivity.this );
+		alertDialogBuilder.setTitle( "Alert !" );
+		//alertDialogBuilder.setIcon( R.drawable.ic_delete );
+		alertDialogBuilder
+				.setMessage( "Are you sure ?" )
+				.setCancelable( false )
+				.setPositiveButton( "Yes", new DialogInterface.OnClickListener() {
+					public void onClick( DialogInterface dialog, int id ) {
+						arrayListNotes.remove( position );
+						notesAdapter.notifyDataSetChanged();
+						//dialog.cancel();
+					}
+				})
+				.setNegativeButton( "No", new DialogInterface.OnClickListener() {
+					public void onClick( DialogInterface dialog, int id ) {
+						// cancel
+						//dialog.cancel();
+					}
+				});
+		// Create alert dialog
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		// Show it
+		alertDialog.show();
 	}
 }

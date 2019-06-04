@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * It could be great take all from
+ * 		http://www.netlib.org/cephes/
+ */
 public enum MathFunction {
 	MOD, INV /* 1/x */, RAD /* to rad */, DEG /* to degrees*/, FACTORIAL
 	, FLOOR, ROUND, CEIL, ABS
@@ -81,7 +85,7 @@ public enum MathFunction {
 			case INV:		return 1/arg1;
 			case RAD:		return arg1*Math.PI/180;
 			case DEG:		return arg1*180/Math.PI;
-			case FACTORIAL:	return Math.pow( arg1, arg1 )*Math.exp( -arg1 )*Math.sqrt( arg1*2*Math.PI + 1 );
+			case FACTORIAL:	return arg1 < 0 ? (Math.PI/(Math.sin( Math.PI*arg1 )*Math.pow( arg1-1, arg1-1 )*Math.exp( -(arg1-1) )*Math.sqrt( (arg1-1)*2*Math.PI + 1 ))) : (Math.pow( arg1, arg1 )*Math.exp( -arg1 )*Math.sqrt( arg1*2*Math.PI + 1 ));
 			case FLOOR:		return Math.floor( arg1 );
 			case ROUND:		return Math.round( arg1 );
 			case CEIL:		return Math.ceil( arg1 );

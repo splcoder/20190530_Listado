@@ -21,6 +21,7 @@ public class Note implements Comparable<Note>, Serializable {
 	private long id;
 	private long creationDate;
 	private long modificationDate;
+	private long forWhenDate;
 	private String text;
 	private Priority priority;
 	/*public final int getElapsedYearsTillOpeningDate() {

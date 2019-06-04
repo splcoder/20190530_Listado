@@ -28,7 +28,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	private final char cComa = '.';
 	private final String sComa = ".";
 	private double rValue	= 0;
-	private double rMemory	= 0;	// <<< Fast Mem (accessed by a click)
+	private double rMemory	= 0;							// <<< Fast Mem (accessed by a click)
 	private ArrayList<MemVar> aMemory = new ArrayList<>();	// <<< accessed by a "long click"
 	private char cOperation = '?';	// <<< No operation
 	private boolean bOperationExecuted = false;

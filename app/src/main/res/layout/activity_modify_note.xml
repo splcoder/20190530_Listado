@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".activities.ModifyNoteActivity">
+
+	<TextView
+		android:id="@+id/textView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="48dp"
+		android:layout_marginEnd="8dp"
+		android:text="Modify note"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<android.support.constraint.Guideline
+		android:id="@+id/guideline"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		app:layout_constraintGuide_begin="203dp" />
+
+	<EditText
+		android:id="@+id/txtDate"
+		android:layout_width="152dp"
+		android:layout_height="52dp"
+		android:layout_marginStart="36dp"
+		android:layout_marginTop="128dp"
+		android:editable="false"
+		android:ems="10"
+		android:focusable="false"
+		android:inputType="date"
+		android:textSize="24sp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<Spinner
+		android:id="@+id/spinnerNoteType"
+		android:layout_width="147dp"
+		android:layout_height="51dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="128dp"
+		android:layout_marginEnd="36dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.882"
+		app:layout_constraintStart_toEndOf="@+id/txtDate"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<Button
+		android:id="@+id/btnModify"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="64dp"
+		android:layout_marginTop="160dp"
+		android:text="Modify"
+		android:textAllCaps="false"
+		android:textSize="24sp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/txtDate" />
+
+	<Button
+		android:id="@+id/btnCancel"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="160dp"
+		android:layout_marginEnd="64dp"
+		android:text="Cancel"
+		android:textAllCaps="false"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintStart_toEndOf="@+id/btnCreate"
+		app:layout_constraintTop_toBottomOf="@+id/spinnerNoteType" />
+
+	<EditText
+		android:id="@+id/txtText"
+		android:layout_width="321dp"
+		android:layout_height="59dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="148dp"
+		android:layout_marginEnd="8dp"
+		android:ems="10"
+		android:text=""
+		app:layout_constraintEnd_toEndOf="@+id/spinnerNoteType"
+		app:layout_constraintHorizontal_bias="0.528"
+		app:layout_constraintStart_toStartOf="@+id/txtDate"
+		app:layout_constraintTop_toBottomOf="@+id/textView" />
+</android.support.constraint.ConstraintLayout>
