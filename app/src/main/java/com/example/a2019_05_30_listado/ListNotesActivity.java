@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,9 +18,12 @@ import com.example.a2019_05_30_listado.activities.ModifyNoteActivity;
 import com.example.a2019_05_30_listado.activities.NewNoteActivity;
 import com.example.a2019_05_30_listado.adapters.NotesAdapter;
 import com.example.a2019_05_30_listado.data.Note;
+import com.example.a2019_05_30_listado.data.NotesManager;
 import com.example.a2019_05_30_listado.data.Priority;
 import com.example.a2019_05_30_listado.helpers.Cache;
+import com.example.a2019_05_30_listado.helpers.Console;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,11 +34,26 @@ import es.dmoral.toasty.Toasty;
 public class ListNotesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
 	ListView listView;
-	NotesAdapter notesAdapter;
+	NotesAdapter notesAdapter = null;
 	ArrayList<Note> arrayListNotes;
 	FloatingActionButton btnFloatingAdd;
 
 	ListNotesActivity that = this;
+
+	NotesManager notesManager;
+
+	private void fillArray(){
+		try {
+			notesManager = new NotesManager( getApplicationContext() );
+			arrayListNotes = notesManager.getAllNotes();
+			if( notesAdapter != null ){
+				notesAdapter.clear();
+				notesAdapter.addAll( arrayListNotes );
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +65,7 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 
 		listView = findViewById( R.id.listNotes );
 
-		arrayListNotes = new ArrayList<>();
+		/*arrayListNotes = new ArrayList<>();
 		arrayListNotes.add( new Note( "Dar un paseo", Priority.NORMAL ) );
 		arrayListNotes.add( new Note( "Ir de tapas", Priority.IMPORTANT ) );
 		arrayListNotes.add( new Note( "Partida de mus", Priority.URGENT ) );
@@ -54,7 +73,8 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 		arrayListNotes.add( new Note( "Dar un baño", Priority.NORMAL ) );
 		arrayListNotes.add( new Note( "Comer un helado", Priority.URGENT ) );
 		arrayListNotes.add( new Note( "Comer patatas fritas", Priority.IMPORTANT ) );
-		arrayListNotes.add( new Note( "Comprar cafeina", Priority.URGENT ) );
+		arrayListNotes.add( new Note( "Comprar cafeina", Priority.URGENT ) );*/
+		fillArray();
 
 		//Collections.sort( arrayListnNotes );
 
@@ -116,7 +136,9 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 	 */
 	public void addNote( Note note ){
 		arrayListNotes.add( note );
-		//notesAdapter.notifyDataSetChanged();
+		notesAdapter.notifyDataSetChanged();
+
+		notesManager.add( note );
 	}
 
 	@Override
@@ -151,4 +173,21 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 		// Show it
 		alertDialog.show();
 	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		try {
+			// The data is saved in the "View -> Tool Windows -> Device File Explorer >>> data/data/your_app/files/"
+			notesManager.writeAll();
+			//Log.e( "onPause", "notesManager.writeAll();" );
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/*@Override
+	protected void onResume() {
+		super.onResume();
+		fillArray();
+	}*/
 }

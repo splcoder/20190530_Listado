@@ -42,8 +42,16 @@ public class NotesAdapter extends ArrayAdapter<Note> {
 		txtDate.setText( DateHelper.getDate( note.getCreationDate(),true ) );
 		txtText.setText( note.getText() );
 		switch( note.getPriority() ){
-			case NORMAL:	imageView.setImageResource( R.drawable.ic_note_green );		break;
-			case IMPORTANT:	imageView.setImageResource( R.drawable.ic_note_yellow );	break;
+			case NORMAL: {
+				imageView.setImageResource( R.drawable.ic_note_green );
+				txtText.setTextColor( ContextCompat.getColor( context, R.color.black ) );
+				break;
+			}
+			case IMPORTANT: {
+				imageView.setImageResource( R.drawable.ic_note_yellow );
+				txtText.setTextColor( ContextCompat.getColor( context, R.color.yellow ) );
+				break;
+			}
 			case URGENT: {
 				imageView.setImageResource( R.drawable.ic_note_red );
 				txtText.setTextColor( ContextCompat.getColor( context, R.color.red ) );

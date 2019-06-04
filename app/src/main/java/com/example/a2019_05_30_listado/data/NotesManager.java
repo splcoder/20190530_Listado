@@ -1,5 +1,7 @@
 package com.example.a2019_05_30_listado.data;
 
+import android.content.Context;
+
 import com.example.a2019_05_30_listado.helpers.BytesManager;
 import com.example.a2019_05_30_listado.helpers.Console;
 
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO improve this code
 public class NotesManager {
 	public static final String FILE_NAME_FOR_ID	= "notes_manager_id.txt";
 	public static final String FILE_NAME		= "notes_manager.txt";
@@ -27,17 +30,24 @@ public class NotesManager {
 	private FileOutputStream fos;
 	private ObjectOutputStream oos;
 
+	// Android
+	private static Context context = null;
+
 	//---------------------------------------------
 	// Note.lastId
 	private static void writeIdToFile() throws IOException {
-		FileOutputStream fosId = new FileOutputStream( FILE_NAME_FOR_ID, false );
+		//FileOutputStream fosId = new FileOutputStream( FILE_NAME_FOR_ID, false );
+		// Android
+		FileOutputStream fosId = context.openFileOutput( FILE_NAME_FOR_ID, Context.MODE_PRIVATE );
 		fosId.write( BytesManager.toByteArray( Note.getLastId() ) );
 		fosId.close();
 	}
 	private static void readIdFromFile() throws IOException {
 		byte[] bytes = new byte[ Long.BYTES ];
 		try {
-			FileInputStream fisId = new FileInputStream( FILE_NAME_FOR_ID );
+			//FileInputStream fisId = new FileInputStream( FILE_NAME_FOR_ID );
+			// Android
+			FileInputStream fisId = context.openFileInput( FILE_NAME_FOR_ID );
 			fisId.read( bytes );
 			fisId.close();
 			Note.setLastId( BytesManager.toLong( bytes ) );
@@ -68,7 +78,9 @@ public class NotesManager {
 
 	private void writeAllToFile() throws IOException {
 		// Write the notes
-		fos = new FileOutputStream( FILE_NAME, false );
+		//fos = new FileOutputStream( FILE_NAME, false );
+		// Android
+		fos = context.openFileOutput( FILE_NAME, Context.MODE_PRIVATE );
 		oos = new ObjectOutputStream( fos );
 		if( oos != null ) {
 			for( long key : mapNotes.keySet() ) {
@@ -76,6 +88,7 @@ public class NotesManager {
 			}
 			oos.close();
 		}
+		fos.close();
 		// Write the lastId
 		writeIdToFile();
 	}
@@ -83,12 +96,15 @@ public class NotesManager {
 	 * The constructor will read all the notes saved
 	 * @throws IOException
 	 */
-	public NotesManager() throws IOException {
+	public NotesManager( Context _context ) throws IOException {
+		// Set the context
+		context = _context;
 		// Read the lastId
 		readIdFromFile();
 		// Read all the notes
 		try {
-			fis = new FileInputStream( FILE_NAME );
+			//fis = new FileInputStream( FILE_NAME );
+			fis = context.openFileInput( FILE_NAME );
 			ois = new ObjectInputStream( fis );
 			//
 			Note note = null;

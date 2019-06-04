@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * It could be great take all from
  * 		http://www.netlib.org/cephes/
+ * 		http://www.luschny.de/math/factorial/approx/SimpleCases.html
  */
 public enum MathFunction {
 	MOD, INV /* 1/x */, RAD /* to rad */, DEG /* to degrees*/, FACTORIAL
@@ -79,13 +80,29 @@ public enum MathFunction {
 		return "";
 	}
 
+	private static final double[] FACTORIAL_LUSCHNY_CF4_CONSTANTS = { 1./24, 3./80, 18029./45360, 6272051./14869008 };
+	private static double factorial( double arg ){
+		//return Math.pow( arg, arg )*Math.exp( -arg )*Math.sqrt( arg*2*Math.PI + 1 );
+		// Another approximation:	luschnyCF4
+		double N = arg + 0.5;
+		double p = N*N/( N + FACTORIAL_LUSCHNY_CF4_CONSTANTS[0]/( N + FACTORIAL_LUSCHNY_CF4_CONSTANTS[1]/( N + FACTORIAL_LUSCHNY_CF4_CONSTANTS[2]/( N + FACTORIAL_LUSCHNY_CF4_CONSTANTS[3]/N ) ) ) );
+		double logF = Math.log( 2 * Math.PI )/2 + N*(Math.log( p ) - 1);
+		return Math.exp( logF );
+	}
+	private static double reflectionFactorial( double arg ){
+		// arg < 0
+		arg = -arg;
+		double byPi = Math.PI * arg;
+		return byPi/(Math.sin( byPi ) * factorial( arg ));
+	}
+
 	public static double exeFunction( MathFunction mf, double arg1, double arg2 ){
 		switch( mf ){
 			case MOD:		return arg1 % arg2;
 			case INV:		return 1/arg1;
 			case RAD:		return arg1*Math.PI/180;
 			case DEG:		return arg1*180/Math.PI;
-			case FACTORIAL:	return arg1 < 0 ? (Math.PI/(Math.sin( Math.PI*arg1 )*Math.pow( arg1-1, arg1-1 )*Math.exp( -(arg1-1) )*Math.sqrt( (arg1-1)*2*Math.PI + 1 ))) : (Math.pow( arg1, arg1 )*Math.exp( -arg1 )*Math.sqrt( arg1*2*Math.PI + 1 ));
+			case FACTORIAL:	return arg1 < 0 ? reflectionFactorial( arg1 ) : factorial( arg1 );
 			case FLOOR:		return Math.floor( arg1 );
 			case ROUND:		return Math.round( arg1 );
 			case CEIL:		return Math.ceil( arg1 );
