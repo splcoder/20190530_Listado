@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.a2019_05_30_listado.activities.InformationActivity;
 import com.example.a2019_05_30_listado.activities.ModifyNoteActivity;
 import com.example.a2019_05_30_listado.activities.NewNoteActivity;
 import com.example.a2019_05_30_listado.adapters.NotesAdapter;
@@ -121,17 +122,27 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 			// --- Menu --- >>> see onCreateOptionsMenu()
 			case R.id.idItemAbout: {
 				// Show window about
-				Toasty.info( getApplicationContext(),"Has pulsado About", Toast.LENGTH_SHORT,true ).show();
+				//Toasty.info( getApplicationContext(),"Has pulsado About", Toast.LENGTH_SHORT,true ).show();
+				Intent intent = new Intent( ListNotesActivity.this, InformationActivity.class );
+				intent.putExtra( "type", R.string.strTypeAbout );
+				intent.putExtra( "txt", R.string.strAbout );
+				startActivity( intent );
 				return true;
 			}
 			case R.id.idItemPrivacy: {
 				// Show window with the politics' privacy
-				Toasty.info( getApplicationContext(),"Has pulsado Privacy", Toast.LENGTH_SHORT,true ).show();
+				//Toasty.info( getApplicationContext(),"Has pulsado Privacy", Toast.LENGTH_SHORT,true ).show();
+				Intent intent = new Intent( ListNotesActivity.this, InformationActivity.class );
+				intent.putExtra( "type", R.string.strTypePrivacy );
+				intent.putExtra( "txt", R.string.strPrivacy );
+				startActivity( intent );
 				return true;
 			}
 			case R.id.idItemSyncUp: {
 				// Show window with the politics' privacy
 				Toasty.info( getApplicationContext(),"Has pulsado Sync up", Toast.LENGTH_SHORT,true ).show();
+				/*Intent intent = new Intent( ListNotesActivity.this, InformationActivity.class );
+				startActivity( intent );*/
 				return true;
 			}
 			default:;
