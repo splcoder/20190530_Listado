@@ -20,6 +20,8 @@ public enum MathFunction {
 	, LAMBERTW, LAMBERTW_1
 	;
 
+	// TODO add Math remainder functions (3)
+
 	// = MathFunction.values()
 	public static final List<MathFunction> listFunctions = new ArrayList<MathFunction>(
 		Arrays.asList(
@@ -141,6 +143,8 @@ public enum MathFunction {
 		double N = arg + 0.5;
 		double p = N*N/( N + FACTORIAL_LUSCHNY_CF4_CONSTANTS[0]/( N + FACTORIAL_LUSCHNY_CF4_CONSTANTS[1]/( N + FACTORIAL_LUSCHNY_CF4_CONSTANTS[2]/( N + FACTORIAL_LUSCHNY_CF4_CONSTANTS[3]/N ) ) ) );
 		double logF = Math.log( 2 * Math.PI )/2 + N*(Math.log( p ) - 1);
+		// If arg is an integer then take round
+		if( arg < 17 && Math.round( arg ) == arg )	return Math.round( Math.exp( logF ) );
 		return Math.exp( logF );
 	}
 	private static double reflectionFactorial( double arg ){
@@ -155,7 +159,8 @@ public enum MathFunction {
 		final double eps = 4.0e-16, em1 = 0.3678794411714423215955237701614608;
 		double p, e, t, w;
 		if( z < -em1 || Double.isInfinite( z ) || Double.isNaN( z ) ){
-			throw new IllegalArgumentException( "Bad argument in lambertW function: " + z );
+			// DO NOT THROW: it will return NAN if required
+			//throw new IllegalArgumentException( "Bad argument in lambertW function: " + z );
 		}
 		if( 0.0 == z )	return 0.0;
 		if( z < -em1 + 1e-4 ){	// series near -em1 in sqrt(q)
@@ -194,7 +199,8 @@ public enum MathFunction {
 		final double eps = 4.0e-16, em1 = 0.3678794411714423215955237701614608;
 		double p = 1.0, e, t, w, l1, l2;
 		if( z < -em1 || z >= 0.0 || Double.isInfinite( z ) || Double.isNaN( z ) ){
-			throw new IllegalArgumentException( "Bad argument in lambertW-1 function: " + z );
+			// DO NOT THROW: it will return NAN if required
+			//throw new IllegalArgumentException( "Bad argument in lambertW-1 function: " + z );
 		}
 		// initial approx for iteration...
 		if( z < -1e-6 ){	// series about -1/e
