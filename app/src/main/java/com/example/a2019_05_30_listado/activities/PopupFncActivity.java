@@ -18,13 +18,16 @@ import java.util.ArrayList;
 import es.dmoral.toasty.Toasty;
 
 /**
- * See in the manifest, in this activity:		android:theme="@style/AppTheme.PopupTheme"
+ * Set in the manifest, in this activity:		android:theme="@style/AppTheme.PopupTheme"
  *
  * And in styles.xml:
  * 		<style name="AppTheme.PopupTheme">
  * 			<item name="android:windowIsTranslucent">true</item>
  * 			<item name="android:windowCloseOnTouchOutside">true</item>
- *		</style>
+ *
+ * 			<item name="windowActionBar">false</item>
+ * 			<item name="windowNoTitle">true</item>
+ * 		</style>
  */
 public class PopupFncActivity extends Activity implements AdapterView.OnItemClickListener {	// AppCompatActivity
 
