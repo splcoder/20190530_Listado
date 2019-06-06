@@ -132,7 +132,7 @@ public enum MathFunction {
 			case TANH:		return Math.tanh( arg1 );
 			case ARCSINH:	return Math.log( arg1 + Math.sqrt( arg1*arg1 + 1.0 ) );
 			case ARCCOSH:	return Math.log( arg1 + Math.sqrt( arg1*arg1 - 1.0 ) );
-			case ARCTANH:	return 0.5*Math.log( (arg1 + 1.0) / (arg1 - 1.0) );
+			case ARCTANH:	return 0.5*Math.log( (1.0 + arg1) / (1.0 - arg1) );
 			case LAMBERTW:	return lambertW( arg1 );
 			case LAMBERTW_1:return lambertW1( arg1 );
 			case BY10POW:	return arg1 * Math.pow( 10, arg2 );

@@ -15,12 +15,16 @@ import com.example.a2019_05_30_listado.activities.PopupFncActivity;
 import com.example.a2019_05_30_listado.data.MathFunction;
 import com.example.a2019_05_30_listado.data.MemVar;
 import com.example.a2019_05_30_listado.helpers.Cache;
+import com.example.a2019_05_30_listado.helpers.ClipboardHelper;
 
 import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
 
 // TODO use MS and MR for saving/retrieving constants (as a list) <<< with long click
+// TODO paste from clickboard (with MR...)
+
+// TODO for () and user's functions >>> use ArrayList: operator-number-function
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	CalculatorActivity that = this;
@@ -78,9 +82,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		txtValue.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
 			public boolean onLongClick(View v) {
-				ClipboardManager clipboard = (ClipboardManager) getSystemService( CLIPBOARD_SERVICE );
-				ClipData clip = ClipData.newPlainText("label", txtValue.getText() );
-				clipboard.setPrimaryClip( clip );
+				ClipboardHelper.setText( txtValue.getText().toString(), getApplicationContext() );
 				Toasty.info( getApplicationContext(), "Copied to clipboard.", Toast.LENGTH_SHORT, true ).show();
 				//return false;		// <<< onClick will be executed too
 				return true;		// <<< Only onLongClick will be executed
