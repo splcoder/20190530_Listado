@@ -88,6 +88,17 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				return true;		// <<< Only onLongClick will be executed
 			}
 		});
+
+		btnMR.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				Intent intent = new Intent( getApplicationContext(), PopupMemActivity.class );
+				Cache.set( "calculatorActivity", that );
+				startActivity( intent );
+				//return false;		// <<< onClick will be executed too
+				return true;		// <<< Only onLongClick will be executed
+			}
+		});
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
