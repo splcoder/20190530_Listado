@@ -17,9 +17,12 @@
 		<activity
 			android:name=".activities.InformationActivity"
 			android:theme="@style/AppTheme.NoActionBar.Dialog" />
+		<!--activity
+			android:name=".activities.PopupBasicFncsActivity"
+			android:theme="@style/AppTheme.PopupTheme" /-->
 		<activity
 			android:name=".activities.PopupBasicFncsActivity"
-			android:theme="@style/AppTheme.PopupTheme" />
+			android:theme="@style/AppTheme.NoActionBar.Dialog" />
 		<activity
 			android:name=".activities.SplashActivity"
 			android:theme="@style/AppTheme.NoActionBar" />
