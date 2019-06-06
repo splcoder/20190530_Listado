@@ -8,32 +8,41 @@
 	tools:context=".activities.CalculatorActivity"
 	android:orientation="vertical">
 
-	<LinearLayout
-		android:id="@+id/linearLayout"
+	<ScrollView
+		android:id="@+id/scrollView3"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:orientation="vertical"
+		android:layout_height="380dp"
+		android:layout_marginBottom="8dp"
+		app:layout_constraintBottom_toTopOf="@+id/tblCalc"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
-		<TextView
-			android:id="@+id/txtOperation"
+		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:gravity="right"
-			android:paddingRight="1sp"
-			android:textSize="48sp" />
+			android:orientation="vertical">
 
-		<TextView
-			android:id="@+id/txtValue"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="right"
-			android:paddingRight="1sp"
-			android:text="0"
-			android:textSize="48sp" />
-	</LinearLayout>
+			<TextView
+				android:id="@+id/txtOperation"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:gravity="right"
+				android:paddingRight="1sp"
+				android:textSize="48sp" />
+
+			<TextView
+				android:id="@+id/txtValue"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="17dp"
+				android:gravity="right"
+				android:paddingRight="1sp"
+				android:text="0"
+				android:textSize="48sp" />
+		</LinearLayout>
+	</ScrollView>
 
 	<TableLayout
 		android:id="@+id/tblCalc"
