@@ -18,6 +18,7 @@ public enum MathFunction {
 	, SIN, COS, TAN, ARCSIN, ARCCOS, ARCTAN
 	, SINH, COSH, TANH, ARCSINH, ARCCOSH, ARCTANH
 	, LAMBERTW, LAMBERTW_1
+	, BY10POW, HYPOT, ATAN2
 	;
 
 	// TODO add Math remainder functions (3)
@@ -32,6 +33,7 @@ public enum MathFunction {
 			, SIN, COS, TAN, ARCSIN, ARCCOS, ARCTAN
 			, SINH, COSH, TANH, ARCSINH, ARCCOSH, ARCTANH
 			, LAMBERTW, LAMBERTW_1
+			, BY10POW, HYPOT, ATAN2
 		)
 	);
 
@@ -41,6 +43,9 @@ public enum MathFunction {
 			case POW:
 			case ROOT:
 			case LOG:
+			case BY10POW:
+			case HYPOT:
+			case ATAN2:
 				return false;
 			default:;
 		}
@@ -85,6 +90,9 @@ public enum MathFunction {
 			case ARCTANH:	return "arctanh";
 			case LAMBERTW:	return "lambertW";
 			case LAMBERTW_1:return "lambertW_1";
+			case BY10POW:	return "E";
+			case HYPOT:		return "hypot";
+			case ATAN2:		return "atan2";
 		}
 		return "";
 	}
@@ -127,6 +135,9 @@ public enum MathFunction {
 			case ARCTANH:	return 0.5*Math.log( (arg1 + 1.0) / (arg1 - 1.0) );
 			case LAMBERTW:	return lambertW( arg1 );
 			case LAMBERTW_1:return lambertW1( arg1 );
+			case BY10POW:	return arg1 * Math.pow( 10, arg2 );
+			case HYPOT:		return Math.hypot( arg1, arg2 );
+			case ATAN2:		return Math.atan2( arg2, arg1 );
 		}
 		return 0;
 	}
@@ -158,9 +169,9 @@ public enum MathFunction {
 		int i;
 		final double eps = 4.0e-16, em1 = 0.3678794411714423215955237701614608;
 		double p, e, t, w;
-		if( z < -em1 || Double.isInfinite( z ) || Double.isNaN( z ) ){
-			// DO NOT THROW: it will return NAN if required
-			//throw new IllegalArgumentException( "Bad argument in lambertW function: " + z );
+		if( Double.isInfinite( z ) && z > 0 )	return z;	// + INF
+		if( z < -em1 || Double.isNaN( z ) ){
+			return Double.NaN;
 		}
 		if( 0.0 == z )	return 0.0;
 		if( z < -em1 + 1e-4 ){	// series near -em1 in sqrt(q)
@@ -199,8 +210,7 @@ public enum MathFunction {
 		final double eps = 4.0e-16, em1 = 0.3678794411714423215955237701614608;
 		double p = 1.0, e, t, w, l1, l2;
 		if( z < -em1 || z >= 0.0 || Double.isInfinite( z ) || Double.isNaN( z ) ){
-			// DO NOT THROW: it will return NAN if required
-			//throw new IllegalArgumentException( "Bad argument in lambertW-1 function: " + z );
+			return Double.NaN;
 		}
 		// initial approx for iteration...
 		if( z < -1e-6 ){	// series about -1/e

@@ -26,7 +26,7 @@ public class PopupBasicFncsActivity extends AppCompatActivity implements View.On
 	Button btnAbs, btnMod, btnInverse;
 	Button btnRad, btnDeg, btnFactorial;
 	Button btnFloor, btnRound, btnCeil;
-	Button btnPow2, btnPow3, btnXpowX;
+	Button btnPow2, btnPow3, btnBy10Pow;
 	Button btnRoot2, btnRoot3, btnRoot;
 	Button btnExp, btnExp10, btnPow;
 	Button btnLn, btnLog10, btnLog;
@@ -34,6 +34,7 @@ public class PopupBasicFncsActivity extends AppCompatActivity implements View.On
 	Button btnArcSin, btnArcCos, btnArcTan;
 	Button btnSinh, btnCosh, btnTanh;
 	Button btnArcSinh, btnArcCosh, btnArcTanh;
+	Button btnHypot, btnAtan2, btnXpowX;
 	Button btnLambertW_1, btnLambertW, btnInvXpowX;
 
 	@Override
@@ -61,7 +62,7 @@ public class PopupBasicFncsActivity extends AppCompatActivity implements View.On
 		btnAbs = findViewById( R.id.btnAbs );					btnMod = findViewById( R.id.btnMod );				btnInverse = findViewById( R.id.btnInverse );
 		btnRad = findViewById( R.id.btnRad );					btnDeg = findViewById( R.id.btnDeg );				btnFactorial = findViewById( R.id.btnFactorial );
 		btnFloor = findViewById( R.id.btnFloor );				btnRound = findViewById( R.id.btnRound );			btnCeil = findViewById( R.id.btnCeil );
-		btnPow2 = findViewById( R.id.btnPow2 );					btnPow3 = findViewById( R.id.btnPow3 );				btnXpowX = findViewById( R.id.btnXpowX );
+		btnPow2 = findViewById( R.id.btnPow2 );					btnPow3 = findViewById( R.id.btnPow3 );				btnBy10Pow = findViewById( R.id.btnBy10Pow );
 		btnRoot2 = findViewById( R.id.btnRoot2 );				btnRoot3 = findViewById( R.id.btnRoot3 );			btnRoot = findViewById( R.id.btnRoot );
 		btnExp = findViewById( R.id.btnExp );					btnExp10 = findViewById( R.id.btnExp10 );			btnPow = findViewById( R.id.btnPow );
 		btnLn = findViewById( R.id.btnLn );						btnLog10 = findViewById( R.id.btnLog10 );			btnLog = findViewById( R.id.btnLog );
@@ -69,12 +70,13 @@ public class PopupBasicFncsActivity extends AppCompatActivity implements View.On
 		btnArcSin = findViewById( R.id.btnArcSin );				btnArcCos = findViewById( R.id.btnArcCos );			btnArcTan = findViewById( R.id.btnArcTan );
 		btnSinh = findViewById( R.id.btnSinh );					btnCosh = findViewById( R.id.btnCosh );				btnTanh = findViewById( R.id.btnTanh );
 		btnArcSinh = findViewById( R.id.btnArcSinh );			btnArcCosh = findViewById( R.id.btnArcCosh );		btnArcTanh = findViewById( R.id.btnArcTanh );
+		btnHypot = findViewById( R.id.btnHypot );				btnAtan2 = findViewById( R.id.btnAtan2 );			btnXpowX = findViewById( R.id.btnXpowX );
 		btnLambertW_1 = findViewById( R.id.btnLambertW_1 );		btnLambertW = findViewById( R.id.btnLambertW );		btnInvXpowX = findViewById( R.id.btnInvXpowX );
 
 		btnAbs.setOnClickListener( this );						btnMod.setOnClickListener( this );					btnInverse.setOnClickListener( this );
 		btnRad.setOnClickListener( this );						btnDeg.setOnClickListener( this );					btnFactorial.setOnClickListener( this );
 		btnFloor.setOnClickListener( this );					btnRound.setOnClickListener( this );				btnCeil.setOnClickListener( this );
-		btnPow2.setOnClickListener( this );						btnPow3.setOnClickListener( this );					btnXpowX.setOnClickListener( this );
+		btnPow2.setOnClickListener( this );						btnPow3.setOnClickListener( this );					btnBy10Pow.setOnClickListener( this );
 		btnRoot2.setOnClickListener( this );					btnRoot3.setOnClickListener( this );				btnRoot.setOnClickListener( this );
 		btnExp.setOnClickListener( this );						btnExp10.setOnClickListener( this );				btnPow.setOnClickListener( this );
 		btnLn.setOnClickListener( this );						btnLog10.setOnClickListener( this );				btnLog.setOnClickListener( this );
@@ -82,6 +84,7 @@ public class PopupBasicFncsActivity extends AppCompatActivity implements View.On
 		btnArcSin.setOnClickListener( this );					btnArcCos.setOnClickListener( this );				btnArcTan.setOnClickListener( this );
 		btnSinh.setOnClickListener( this );						btnCosh.setOnClickListener( this );					btnTanh.setOnClickListener( this );
 		btnArcSinh.setOnClickListener( this );					btnArcCosh.setOnClickListener( this );				btnArcTanh.setOnClickListener( this );
+		btnHypot.setOnClickListener( this );					btnAtan2.setOnClickListener( this );				btnXpowX.setOnClickListener( this );
 		btnLambertW_1.setOnClickListener( this );				btnLambertW.setOnClickListener( this );				btnInvXpowX.setOnClickListener( this );
 	}
 
@@ -106,7 +109,7 @@ public class PopupBasicFncsActivity extends AppCompatActivity implements View.On
 			case R.id.btnCeil:		calc.exeFunction( MathFunction.CEIL );				break;
 			case R.id.btnPow2:		calc.exeFunction( MathFunction.POW2 );				break;
 			case R.id.btnPow3:		calc.exeFunction( MathFunction.POW3 );				break;
-			case R.id.btnXpowX:		calc.exeFunction( MathFunction.XPOWX );				break;
+			case R.id.btnBy10Pow:	calc.exeFunction( MathFunction.BY10POW );			break;
 			case R.id.btnRoot2:		calc.exeFunction( MathFunction.ROOT2 );				break;
 			case R.id.btnRoot3:		calc.exeFunction( MathFunction.ROOT3 );				break;
 			case R.id.btnRoot:		calc.exeFunction( MathFunction.ROOT );				break;
@@ -128,6 +131,9 @@ public class PopupBasicFncsActivity extends AppCompatActivity implements View.On
 			case R.id.btnArcSinh:	calc.exeFunction( MathFunction.ARCSINH );			break;
 			case R.id.btnArcCosh:	calc.exeFunction( MathFunction.ARCCOSH );			break;
 			case R.id.btnArcTanh:	calc.exeFunction( MathFunction.ARCTANH );			break;
+			case R.id.btnHypot:		calc.exeFunction( MathFunction.HYPOT );				break;
+			case R.id.btnAtan2:		calc.exeFunction( MathFunction.ATAN2 );				break;
+			case R.id.btnXpowX:		calc.exeFunction( MathFunction.XPOWX );				break;
 			case R.id.btnLambertW_1:calc.exeFunction( MathFunction.LAMBERTW_1 );		break;
 			case R.id.btnLambertW:	calc.exeFunction( MathFunction.LAMBERTW );			break;
 			case R.id.btnInvXpowX:	calc.exeFunction( MathFunction.INV_XPOWX );			break;

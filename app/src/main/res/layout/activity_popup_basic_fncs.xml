@@ -154,12 +154,12 @@
 						android:textColor="@color/white" />
 
 					<Button
-						android:id="@+id/btnXpowX"
+						android:id="@+id/btnBy10Pow"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="x^x"
+						android:text="x*(10^y)"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 				</TableRow>
@@ -231,7 +231,7 @@
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="y^x"
+						android:text="x^y"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 				</TableRow>
@@ -267,7 +267,7 @@
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="Log-y"
+						android:text="Log-b"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 				</TableRow>
@@ -412,6 +412,42 @@
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
 						android:text="ArcTanh"
+						android:textAllCaps="false"
+						android:textColor="@color/white" />
+				</TableRow>
+
+				<TableRow
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:paddingBottom="2sp">
+
+					<Button
+						android:id="@+id/btnHypot"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:background="@drawable/gradient_button_blue"
+						android:text="Hypot"
+						android:textAllCaps="false"
+						android:textColor="@color/white" />
+
+					<Button
+						android:id="@+id/btnAtan2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:background="@drawable/gradient_button_blue"
+						android:text="x atan2 y"
+						android:textAllCaps="false"
+						android:textColor="@color/white" />
+
+					<Button
+						android:id="@+id/btnXpowX"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:background="@drawable/gradient_button_blue"
+						android:text="x^x"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 				</TableRow>

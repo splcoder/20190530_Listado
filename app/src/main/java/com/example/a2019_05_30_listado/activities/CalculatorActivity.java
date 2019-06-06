@@ -1,11 +1,14 @@
 package com.example.a2019_05_30_listado.activities;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a2019_05_30_listado.R;
 import com.example.a2019_05_30_listado.activities.PopupFncActivity;
@@ -14,6 +17,8 @@ import com.example.a2019_05_30_listado.data.MemVar;
 import com.example.a2019_05_30_listado.helpers.Cache;
 
 import java.util.ArrayList;
+
+import es.dmoral.toasty.Toasty;
 
 // TODO use MS and MR for saving/retrieving constants (as a list) <<< with long click
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
@@ -65,6 +70,18 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				Intent intent = new Intent( getApplicationContext(), PopupFncActivity.class );
 				Cache.set( "calculatorActivity", that );
 				startActivity( intent );
+				//return false;		// <<< onClick will be executed too
+				return true;		// <<< Only onLongClick will be executed
+			}
+		});
+
+		txtValue.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				ClipboardManager clipboard = (ClipboardManager) getSystemService( CLIPBOARD_SERVICE );
+				ClipData clip = ClipData.newPlainText("label", txtValue.getText() );
+				clipboard.setPrimaryClip( clip );
+				Toasty.info( getApplicationContext(), "Copied to clipboard.", Toast.LENGTH_SHORT, true ).show();
 				//return false;		// <<< onClick will be executed too
 				return true;		// <<< Only onLongClick will be executed
 			}
@@ -125,9 +142,12 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				break;
 			}
 			case '/': {
-				rValue /= arg2;
-				// 0/0
-				if( Double.isNaN( rValue ) )	rValue = 1;
+				if( Double.isNaN( rValue ) || Double.isNaN( arg2 ) )	rValue = Double.NaN;
+				else{
+					rValue /= arg2;
+					// Check 0/0
+					if( Double.isNaN( rValue ) )	rValue = 1;
+				}
 				bOperationExecuted = true;
 				break;
 			}
