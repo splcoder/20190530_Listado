@@ -18,6 +18,7 @@
 				android:id="@+id/btnMem"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_margin="2dp"
 				android:layout_weight="1"
 				android:background="@drawable/gradient_button_orange"
 				android:text="Mem"
@@ -28,6 +29,7 @@
 				android:id="@+id/btnConstants"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_margin="2dp"
 				android:layout_weight="1"
 				android:background="@drawable/gradient_button_purple"
 				android:text="Constants"
@@ -38,6 +40,7 @@
 				android:id="@+id/btnUserConstants"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_margin="2dp"
 				android:layout_weight="1"
 				android:background="@drawable/gradient_button_green"
 				android:text="Users'"
@@ -51,7 +54,8 @@
 
 			<ListView
 				android:layout_width="match_parent"
-				android:layout_height="match_parent" />
+				android:layout_height="match_parent"
+				android:layout_weight="1"/>
 		</TableRow>
 
 	</TableLayout>
