@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
 	Button btnPM, btnComa, btnEqual;
 
+	ScrollView scrollData;
+
 	private final char cComa = '.';
 	private final String sComa = ".";
 	private double rValue	= 0;
@@ -57,6 +60,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator);
+
+		scrollData = findViewById( R.id.scrollData );
 
 		txtValue	= findViewById( R.id.txtValue );	txtOperation	= findViewById( R.id.txtOperation );
 		btnMR		= findViewById( R.id.btnMR );		btnMS			= findViewById( R.id.btnMS );			btnC				= findViewById( R.id.btnC );				btnBack		= findViewById( R.id.btnBack );
@@ -299,5 +304,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				break;
 			}
 		}
+		//scrollData.pageScroll( View.FOCUS_DOWN );
+		scrollData.fullScroll( View.FOCUS_DOWN );
 	}
 }
