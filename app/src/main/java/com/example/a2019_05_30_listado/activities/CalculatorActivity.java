@@ -44,7 +44,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	private char cOperation = '?';	// <<< No operation
 	private boolean bOperationExecuted = false;
 	private MathFunction mathFunction = MathFunction.SIN;
-	//
+
+	public ArrayList<MemVar> getMemory(){ return aMemory; }
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +106,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			public boolean onLongClick(View v) {
 				Intent intent = new Intent( getApplicationContext(), PopupMemSaveActivity.class );
 				Cache.set( "calculatorActivity", that );
+				Cache.set( "value", txtValue.getText().toString() );
 				startActivity( intent );
 				//return false;		// <<< onClick will be executed too
 				return true;		// <<< Only onLongClick will be executed
@@ -219,10 +221,13 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		}
 	}
 
+	public void setValue( String value ){ txtValue.setText( value ); }
+	public void setValue( double value ){ txtValue.setText( String.valueOf( value ) ); }
+
 	@Override
 	public void onClick(View v) {
 		switch( v.getId() ){
-			case R.id.btnMR:	txtValue.setText( String.valueOf( rMemory ) );					break;
+			case R.id.btnMR:	setValue( rMemory );											break;
 			case R.id.btnMS:	rMemory = Double.parseDouble( txtValue.getText().toString() );	break;
 			case R.id.btnC:		resetOperationsTo(0 );									break;
 			case R.id.btnBack: {

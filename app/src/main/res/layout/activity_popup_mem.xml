@@ -16,46 +16,51 @@
 
 			<Button
 				android:id="@+id/btnMem"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_margin="2dp"
 				android:layout_weight="1"
 				android:background="@drawable/gradient_button_orange"
+				android:enabled="false"
 				android:text="Mem"
 				android:textAllCaps="false"
-				android:textColor="@color/white" />
+				android:textColor="#FF0000"
+				android:textSize="24sp" />
 
 			<Button
 				android:id="@+id/btnConstants"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_margin="2dp"
 				android:layout_weight="1"
 				android:background="@drawable/gradient_button_purple"
-				android:text="Constants"
+				android:text="Consts"
 				android:textAllCaps="false"
-				android:textColor="@color/white" />
+				android:textColor="@color/white"
+				android:textSize="24sp" />
 
 			<Button
 				android:id="@+id/btnUserConstants"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_margin="2dp"
 				android:layout_weight="1"
 				android:background="@drawable/gradient_button_green"
 				android:text="Users'"
 				android:textAllCaps="false"
-				android:textColor="@color/white" />
+				android:textColor="@color/white"
+				android:textSize="24sp" />
 		</TableRow>
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" >
+			android:layout_height="wrap_content" >
 
 			<ListView
+				android:id="@+id/listValues"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_weight="1"/>
+				android:layout_height="wrap_content"
+				android:layout_weight="1" />
 		</TableRow>
 
 	</TableLayout>
