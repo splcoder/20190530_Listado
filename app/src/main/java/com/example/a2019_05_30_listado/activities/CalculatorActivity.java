@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
@@ -304,6 +305,10 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				break;
 			}
 		}
+		// How the text is shown
+		if( txtValue.getLineCount() > 1 )
+				txtValue.setGravity( Gravity.LEFT );
+		else	txtValue.setGravity( Gravity.RIGHT );
 		//scrollData.pageScroll( View.FOCUS_DOWN );
 		scrollData.fullScroll( View.FOCUS_DOWN );
 	}
