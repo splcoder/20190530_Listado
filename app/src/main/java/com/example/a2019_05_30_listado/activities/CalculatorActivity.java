@@ -41,11 +41,15 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	private double rValue	= 0;
 	private double rMemory	= 0;							// <<< Fast Mem (accessed by a click)
 	private ArrayList<MemVar> aMemory = new ArrayList<>();	// <<< accessed by a "long click"
+	private ArrayList<MemVar> aUserConstants = new ArrayList<>();
 	private char cOperation = '?';	// <<< No operation
 	private boolean bOperationExecuted = false;
 	private MathFunction mathFunction = MathFunction.SIN;
 
 	public ArrayList<MemVar> getMemory(){ return aMemory; }
+	public ArrayList<MemVar> getUserConstants(){ return aUserConstants; }
+
+	// TODO the user's constants must be loaded/saved from/to file
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

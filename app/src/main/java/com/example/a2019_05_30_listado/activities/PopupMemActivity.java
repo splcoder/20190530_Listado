@@ -61,24 +61,34 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 	public void onClick(View v) {
 		switch( v.getId() ){
 			case R.id.btnMem: {
-				btnUserConstants.setTextColor( getResources().getColor( R.color.white ) );
-				btnUserConstants.setEnabled( true );
 				btnMem.setTextColor( getResources().getColor( R.color.red ) );
 				btnMem.setEnabled( false );
+				btnConstants.setTextColor( getResources().getColor( R.color.white ) );
+				btnConstants.setEnabled( true );
+				btnUserConstants.setTextColor( getResources().getColor( R.color.white ) );
+				btnUserConstants.setEnabled( true );
 
 				listValues.setAdapter( aMemAdapter );
+				break;
+			}
+			case R.id.btnConstants: {
+				btnMem.setTextColor( getResources().getColor( R.color.white ) );
+				btnMem.setEnabled( true );
+				btnConstants.setTextColor( getResources().getColor( R.color.red ) );
+				btnConstants.setEnabled( false );
+				btnUserConstants.setTextColor( getResources().getColor( R.color.white ) );
+				btnUserConstants.setEnabled( true );
+				// TODO
 				break;
 			}
 			case R.id.btnUserConstants: {
 				btnMem.setTextColor( getResources().getColor( R.color.white ) );
 				btnMem.setEnabled( true );
+				btnConstants.setTextColor( getResources().getColor( R.color.white ) );
+				btnConstants.setEnabled( true );
 				btnUserConstants.setTextColor( getResources().getColor( R.color.red ) );
 				btnUserConstants.setEnabled( false );
 
-				// TODO
-				break;
-			}
-			case R.id.btnConstants: {
 				// TODO
 				break;
 			}

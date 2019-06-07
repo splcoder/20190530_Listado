@@ -25,6 +25,9 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 	ArrayList<MemVar> aMemory;
 	ArrayAdapter<MemVar> aMemAdapter;
 
+	ArrayList<MemVar> aUserConstants;
+	ArrayAdapter<MemVar> aUserConstantsAdapter;	// <<< TODO use better another adapter for showing the name of the cte.
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
