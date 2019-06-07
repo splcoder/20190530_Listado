@@ -25,6 +25,8 @@ import es.dmoral.toasty.Toasty;
 // TODO paste from clickboard (with MR...)
 
 // TODO for () and user's functions >>> use ArrayList: operator-number-function
+
+// TODO onchange show last row of the TextView txtValue
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	CalculatorActivity that = this;
