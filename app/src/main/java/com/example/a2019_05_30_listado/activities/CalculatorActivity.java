@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.a2019_05_30_listado.R;
 import com.example.a2019_05_30_listado.activities.PopupFncActivity;
+import com.example.a2019_05_30_listado.data.Constants;
 import com.example.a2019_05_30_listado.data.MathFunction;
 import com.example.a2019_05_30_listado.data.MemVar;
 import com.example.a2019_05_30_listado.helpers.Cache;
@@ -48,15 +49,34 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	private double rValue	= 0;
 	private double rMemory	= 0;							// <<< Fast Mem (accessed by a click)
 	private ArrayList<MemVar> aMemory = new ArrayList<>();	// <<< accessed by a "long click"
+	private ArrayList<MemVar> aConstants = new ArrayList<>();
 	private ArrayList<MemVar> aUserConstants = new ArrayList<>();
 	private char cOperation = '?';	// <<< No operation
 	private boolean bOperationExecuted = false;
 	private MathFunction mathFunction = MathFunction.SIN;
 
 	public ArrayList<MemVar> getMemory(){ return aMemory; }
+	public ArrayList<MemVar> getConstants(){ return aConstants; }
 	public ArrayList<MemVar> getUserConstants(){ return aUserConstants; }
 
-	// TODO the user's constants must be loaded/saved from/to file
+	private void fillConstantsArray() {
+		aConstants.add( new MemVar( Constants.R_PI, "Pi" ) );
+		aConstants.add( new MemVar( Constants.R_E, "e" ) );
+		aConstants.add( new MemVar( Constants.R_LN2, "Ln(2)" ) );
+		aConstants.add( new MemVar( Constants.R_LN10, "Ln(10)" ) );
+		aConstants.add( new MemVar( Constants.R_LOG2E, "Log2(e)" ) );
+		aConstants.add( new MemVar( Constants.R_LOG10E, "Log10(e)" ) );
+		aConstants.add( new MemVar( Constants.R_E_M, "E-M" ) );
+		aConstants.add( new MemVar( Constants.R_2PI, "2*Pi" ) );
+		aConstants.add( new MemVar( Constants.R_PI_2, "Pi/2" ) );
+		aConstants.add( new MemVar( Constants.R_1_PI, "1/Pi" ) );
+		aConstants.add( new MemVar( Constants.R_2PI_360, "DegToRad" ) );
+		aConstants.add( new MemVar( Constants.R_360_2PI, "RadToDeg" ) );
+		aConstants.add( new MemVar( Constants.R_SQRT2, "&#8730;2" ) );
+	}
+	private void fillUserConstantsArray(){
+		// TODO the user's constants must be loaded/saved from/to file
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +165,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				scrollData.fullScroll( View.FOCUS_DOWN );
 			}
 		});
+
+		fillConstantsArray();
+		fillUserConstantsArray();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////

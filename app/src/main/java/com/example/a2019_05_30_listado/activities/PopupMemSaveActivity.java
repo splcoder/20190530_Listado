@@ -46,7 +46,6 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 		aMemory = calculatorActivity.getMemory();
 		aMemAdapter = new ArrayAdapter<MemVar>( this, android.R.layout.simple_list_item_1, aMemory );
 		listValues.setAdapter( aMemAdapter );
-
 		listValues.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -56,6 +55,8 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 				return true;	// <<< Only the longClick is executed
 			}
 		});
+
+		aUserConstants = calculatorActivity.getUserConstants();
 	}
 
 	@Override
