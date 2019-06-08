@@ -125,7 +125,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			}
 		});
 
-		/*txtValue.addTextChangedListener(new TextWatcher() {
+		txtValue.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 				//
@@ -143,7 +143,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				//scrollData.pageScroll( View.FOCUS_DOWN );
 				scrollData.fullScroll( View.FOCUS_DOWN );
 			}
-		});*/
+		});
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
@@ -325,11 +325,5 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				break;
 			}
 		}
-		// How the text is shown
-		if( txtValue.getLineCount() > 1 )
-				txtValue.setGravity( Gravity.LEFT );
-		else	txtValue.setGravity( Gravity.RIGHT );
-		//scrollData.pageScroll( View.FOCUS_DOWN );
-		scrollData.fullScroll( View.FOCUS_DOWN );
 	}
 }
