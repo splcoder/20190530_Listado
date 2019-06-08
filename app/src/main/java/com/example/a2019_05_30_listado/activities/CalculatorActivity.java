@@ -29,6 +29,7 @@ import es.dmoral.toasty.Toasty;
 // TODO paste from clickboard (with MR...)
 
 // TODO for () and user's functions >>> use ArrayList: operator-number-function
+// TODO bExecuteEqualOnBasicOperation	+ - * /
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	CalculatorActivity that = this;
