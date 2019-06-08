@@ -21,7 +21,7 @@ public enum MathFunction {
 	, BY10POW, HYPOT, ATAN2
 	;
 
-	// TODO add Math remainder functions (3)
+	// TODO add Math remainder functions, and: Sum, Product, Integral
 
 	// = MathFunction.values()
 	public static final List<MathFunction> listFunctions = new ArrayList<MathFunction>(

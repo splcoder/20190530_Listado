@@ -5,6 +5,8 @@ import android.content.ClipboardManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -27,8 +29,6 @@ import es.dmoral.toasty.Toasty;
 // TODO paste from clickboard (with MR...)
 
 // TODO for () and user's functions >>> use ArrayList: operator-number-function
-
-// TODO onchange show last row of the TextView txtValue
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	CalculatorActivity that = this;
@@ -124,6 +124,26 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				return true;		// <<< Only onLongClick will be executed
 			}
 		});
+
+		/*txtValue.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+				//
+			}
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				//
+			}
+			@Override
+			public void afterTextChanged(Editable s) {
+				// How the text is shown
+				if( txtValue.getLineCount() > 1 )
+					txtValue.setGravity( Gravity.LEFT );
+				else	txtValue.setGravity( Gravity.RIGHT );
+				//scrollData.pageScroll( View.FOCUS_DOWN );
+				scrollData.fullScroll( View.FOCUS_DOWN );
+			}
+		});*/
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
