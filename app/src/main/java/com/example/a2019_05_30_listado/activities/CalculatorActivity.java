@@ -1,7 +1,5 @@
 package com.example.a2019_05_30_listado.activities;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a2019_05_30_listado.R;
-import com.example.a2019_05_30_listado.activities.PopupFncActivity;
 import com.example.a2019_05_30_listado.data.Constants;
 import com.example.a2019_05_30_listado.data.MathFunction;
 import com.example.a2019_05_30_listado.data.MemVar;
@@ -60,19 +57,36 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	public ArrayList<MemVar> getUserConstants(){ return aUserConstants; }
 
 	private void fillConstantsArray() {
-		aConstants.add( new MemVar( Constants.R_PI, "Pi" ) );
-		aConstants.add( new MemVar( Constants.R_E, "e" ) );
-		aConstants.add( new MemVar( Constants.R_LN2, "Ln(2)" ) );
-		aConstants.add( new MemVar( Constants.R_LN10, "Ln(10)" ) );
-		aConstants.add( new MemVar( Constants.R_LOG2E, "Log2(e)" ) );
-		aConstants.add( new MemVar( Constants.R_LOG10E, "Log10(e)" ) );
-		aConstants.add( new MemVar( Constants.R_E_M, "E-M" ) );
-		aConstants.add( new MemVar( Constants.R_2PI, "2*Pi" ) );
-		aConstants.add( new MemVar( Constants.R_PI_2, "Pi/2" ) );
-		aConstants.add( new MemVar( Constants.R_1_PI, "1/Pi" ) );
-		aConstants.add( new MemVar( Constants.R_2PI_360, "DegToRad" ) );
-		aConstants.add( new MemVar( Constants.R_360_2PI, "RadToDeg" ) );
-		aConstants.add( new MemVar( Constants.R_SQRT2, "&#8730;2" ) );
+		aConstants.add( new MemVar( Constants.M_PI, "Pi" ) );
+		aConstants.add( new MemVar( Constants.M_E, "e" ) );
+		aConstants.add( new MemVar( Constants.M_LN2, "Ln(2)" ) );
+		aConstants.add( new MemVar( Constants.M_LN10, "Ln(10)" ) );
+		aConstants.add( new MemVar( Constants.M_LOG2E, "Log2(e)" ) );
+		aConstants.add( new MemVar( Constants.M_LOG10E, "Log10(e)" ) );
+		aConstants.add( new MemVar( Constants.M_E_M, "E-M" ) );
+		aConstants.add( new MemVar( Constants.M_2PI, "2*Pi" ) );
+		aConstants.add( new MemVar( Constants.M_PI_2, "Pi/2" ) );
+		aConstants.add( new MemVar( Constants.M_1_PI, "1/Pi" ) );
+		aConstants.add( new MemVar( Constants.M_2PI_360, "DegToRad" ) );
+		aConstants.add( new MemVar( Constants.M_360_2PI, "RadToDeg" ) );
+		aConstants.add( new MemVar( Constants.M_SQRT2, "SquareRoot(2)" ) );
+		aConstants.add( new MemVar( Constants.M_GOLDEN_RATIO, "Golden Ratio" ) );
+
+		aConstants.add( new MemVar( Constants.F_EARTH_GRAVITY, "Earth Gravity: m / s^2" ) );
+		aConstants.add( new MemVar( Constants.F_GRAVITATIONAL, "Gravitational: N * m^2 / kg^2" ) );
+		aConstants.add( new MemVar( Constants.F_SPEED_OF_LIGHT_IN_VACUUM, "Speed of light: m / s" ) );
+		aConstants.add( new MemVar( Constants.F_PLANCK, "Planck: J * s" ) );
+		aConstants.add( new MemVar( Constants.F_DIRAC, "Dirac: J * s" ) );
+		aConstants.add( new MemVar( Constants.F_ELEMENTARY_CHARGE, "Elementary Charge: C" ) );
+		aConstants.add( new MemVar( Constants.F_VACUUM_IMPEDANCE, "Vacuum Impedance: Ohms" ) );
+		aConstants.add( new MemVar( Constants.F_VACUUM_PERMITIVITY, "Vacuum Permitivity: \nC^2 / (N * m^2)" ) );
+		aConstants.add( new MemVar( Constants.F_VACUUM_PERMEABILITY, "Vacuum Permeability: \nT * m / A = N * A = 4*Pi*(10^-7)" ) );
+		aConstants.add( new MemVar( Constants.F_AVOGADRO, "NA, Avogadro: 1/mol" ) );
+		aConstants.add( new MemVar( Constants.F_BOLTZMANN, "k, Boltzmann: J / K" ) );
+		aConstants.add( new MemVar( Constants.F_GAS, "NA*k, Gas: J / (mol * K)" ) );
+		aConstants.add( new MemVar( Constants.F_ELECTRON_MASS, "Electron Mass: Kg" ) );
+		aConstants.add( new MemVar( Constants.F_PROTON_MASS, "Proton Mass: Kg" ) );
+		aConstants.add( new MemVar( Constants.F_ATMOSPHERE, "Atmosphere: Pa" ) );
 	}
 	private void fillUserConstantsArray(){
 		// TODO the user's constants must be loaded/saved from/to file

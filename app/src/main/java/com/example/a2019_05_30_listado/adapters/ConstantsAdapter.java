@@ -1,6 +1,7 @@
 package com.example.a2019_05_30_listado.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,10 @@ public class ConstantsAdapter extends ArrayAdapter<MemVar> {
 		// Populate the data into the template view using the data object
 		txtName.setText( memVar.getName() );
 		txtValue.setText( String.valueOf( memVar.getValue() ) );
+		// Color
+		// TODO
+		//if( (position & 1) == 1 )	convertView.setBackgroundColor( Color.GREEN );
+		//else						convertView.setBackgroundColor( Color.MAGENTA );
 		// Return the completed view to render on screen
 		return convertView;
 	}
