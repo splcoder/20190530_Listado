@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import es.dmoral.toasty.Toasty;
 
 public class PopupMemActivity extends AppCompatActivity implements View.OnClickListener {
-	final int MEM_ADAPTER				= 0;
-	final int CONSTANTS_ADAPTER			= 1;
-	final int USER_CONSTANTS_ADAPTER	= 2;
+	public static final int MEM_ADAPTER				= 0;
+	public static final int CONSTANTS_ADAPTER		= 1;
+	public static final int USER_CONSTANTS_ADAPTER	= 2;
 
 	Button btnMem;
 	Button btnConstants;
@@ -30,13 +30,12 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 
 	CalculatorActivity calculatorActivity;
 	ArrayList<MemVar> aMemory;
-	ArrayAdapter<MemVar> aMemAdapter;
+	//ArrayAdapter<MemVar> aMemAdapter;
 
 	ArrayList<MemVar> aConstants;
 	ArrayList<MemVar> aUserConstants;
-	ConstantsAdapter constantsAdapter;	// <<< For aConstants and aUserConstants <<< for showing the "name and value" of the constants
+	ConstantsAdapter constantsAdapter;	// <<< for showing the "name and value" of the constants
 
-	// TODO improve ConstantsAdapter colors...
 	private void setAdapterType( int type ){
 		switch( type ){
 			case MEM_ADAPTER: {

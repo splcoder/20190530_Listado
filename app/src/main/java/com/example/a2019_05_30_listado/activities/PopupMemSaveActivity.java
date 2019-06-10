@@ -9,10 +9,15 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.a2019_05_30_listado.R;
+import com.example.a2019_05_30_listado.adapters.ConstantsAdapter;
 import com.example.a2019_05_30_listado.data.MemVar;
 import com.example.a2019_05_30_listado.helpers.Cache;
 
 import java.util.ArrayList;
+
+import static com.example.a2019_05_30_listado.activities.PopupMemActivity.CONSTANTS_ADAPTER;
+import static com.example.a2019_05_30_listado.activities.PopupMemActivity.MEM_ADAPTER;
+import static com.example.a2019_05_30_listado.activities.PopupMemActivity.USER_CONSTANTS_ADAPTER;
 
 public class PopupMemSaveActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,6 +32,60 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 
 	ArrayList<MemVar> aUserConstants;
 	ArrayAdapter<MemVar> aUserConstantsAdapter;	// <<< TODO use better another adapter for showing the name of the cte.
+
+	ConstantsAdapter constantsAdapter;	// <<< for showing the "name and value" of the constants
+
+	private void setAdapterType( int type ){
+		switch( type ){
+			case MEM_ADAPTER: {
+				/*aMemAdapter = new ArrayAdapter<MemVar>( this, android.R.layout.simple_list_item_1, aMemory );
+				listValues.setAdapter( aMemAdapter );*/
+				constantsAdapter = new ConstantsAdapter( this, R.layout.activity_popup_mem_save, aMemory, ConstantsAdapter.MEM_ARRAY );
+				listValues.setAdapter( constantsAdapter );
+				listValues.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+						// The selected button is the NOT enabled
+						if( ! btnMem.isEnabled() )				calculatorActivity.setValue( aMemory.get( position ).getValue() );
+						finish();
+					}
+				});
+				listValues.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+					@Override
+					public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+						aMemory.remove( position );
+						constantsAdapter.notifyDataSetChanged();
+						//return false;	// <<< The click event is executed
+						return true;	// <<< Only the longClick is executed
+					}
+				});
+				break;
+			}
+			case USER_CONSTANTS_ADAPTER: {
+				constantsAdapter = new ConstantsAdapter( this, R.layout.activity_popup_mem_save, aUserConstants, ConstantsAdapter.USER_CONSTANTS_ARRAY );
+				listValues.setAdapter( constantsAdapter );
+				listValues.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+						// The selected button is the NOT enabled
+						if( ! btnUserConstants.isEnabled() )	calculatorActivity.setValue( aUserConstants.get( position ).getValue() );
+						finish();
+					}
+				});
+				listValues.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+					@Override
+					public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+						// TODO confirm
+						aUserConstants.remove( position );
+						constantsAdapter.notifyDataSetChanged();
+						//return false;	// <<< The click event is executed
+						return true;	// <<< Only the longClick is executed
+					}
+				});
+				break;
+			}
+		}
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +103,7 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 
 		calculatorActivity = (CalculatorActivity)Cache.get( "calculatorActivity" );
 		aMemory = calculatorActivity.getMemory();
-		aMemAdapter = new ArrayAdapter<MemVar>( this, android.R.layout.simple_list_item_1, aMemory );
+		/*aMemAdapter = new ArrayAdapter<MemVar>( this, android.R.layout.simple_list_item_1, aMemory );
 		listValues.setAdapter( aMemAdapter );
 		listValues.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			@Override
@@ -54,7 +113,8 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 				//return false;	// <<< The click event is executed
 				return true;	// <<< Only the longClick is executed
 			}
-		});
+		});*/
+		setAdapterType( MEM_ADAPTER );
 
 		aUserConstants = calculatorActivity.getUserConstants();
 	}
@@ -63,12 +123,13 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 	public void onClick(View v) {
 		switch( v.getId() ){
 			case R.id.btnMem: {
-				btnUserConstants.setTextColor( getResources().getColor( R.color.white ) );
-				btnUserConstants.setEnabled( true );
 				btnMem.setTextColor( getResources().getColor( R.color.red ) );
 				btnMem.setEnabled( false );
+				btnUserConstants.setTextColor( getResources().getColor( R.color.white ) );
+				btnUserConstants.setEnabled( true );
 
-				listValues.setAdapter( aMemAdapter );
+				//listValues.setAdapter( aMemAdapter );
+				setAdapterType( MEM_ADAPTER );
 				break;
 			}
 			case R.id.btnUserConstants: {
@@ -77,17 +138,22 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 				btnUserConstants.setTextColor( getResources().getColor( R.color.red ) );
 				btnUserConstants.setEnabled( false );
 
-				// TODO
+				setAdapterType( USER_CONSTANTS_ADAPTER );
 				break;
 			}
 			case R.id.btnAdd: {
 				if( ! btnMem.isEnabled() ){
 					aMemory.add( new MemVar( Double.parseDouble( (String)Cache.get( "value" ) ), "" ) );
-					aMemAdapter.notifyDataSetChanged();
+					//aMemAdapter.notifyDataSetChanged();
+					constantsAdapter.notifyDataSetChanged();
 					finish();
 				}
 				else{
-					// TODO
+					// TODO window to set a name too
+					aUserConstants.add( new MemVar( Double.parseDouble( (String)Cache.get( "value" ) ), "" ) );
+					//aMemAdapter.notifyDataSetChanged();
+					constantsAdapter.notifyDataSetChanged();
+					finish();
 				}
 				break;
 			}

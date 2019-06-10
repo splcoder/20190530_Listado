@@ -58,6 +58,8 @@ public class ConstantsAdapter extends ArrayAdapter<MemVar> {
 		// Populate the data into the template view using the data object
 		txtName.setText( memVar.getName() );
 		txtValue.setText( String.valueOf( memVar.getValue() ) );
+		txtName.setTextColor( context.getResources().getColor( R.color.black ) );
+		txtValue.setTextColor( context.getResources().getColor( R.color.white ) );
 		// Color
 		switch( arrayType ){
 			case MEM_ARRAY: {

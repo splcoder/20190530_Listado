@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -63,7 +64,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		aConstants.add( new MemVar( Constants.M_LN10, "Ln(10)" ) );
 		aConstants.add( new MemVar( Constants.M_LOG2E, "Log2(e)" ) );
 		aConstants.add( new MemVar( Constants.M_LOG10E, "Log10(e)" ) );
-		aConstants.add( new MemVar( Constants.M_E_M, "E-M" ) );
+		aConstants.add( new MemVar( Constants.M_E_M, "Euler-Mascheroni" ) );
 		aConstants.add( new MemVar( Constants.M_2PI, "2*Pi" ) );
 		aConstants.add( new MemVar( Constants.M_PI_2, "Pi/2" ) );
 		aConstants.add( new MemVar( Constants.M_1_PI, "1/Pi" ) );
@@ -193,6 +194,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		bOperationExecuted = false;
 	}
 	private void clickedNumeric( int number ) {
+		Log.e( "txtValue", txtValue.getText().toString() );		// TODO error al mostrarse el '0' a la izquierda (ejemplo: al multiplicar)
 		if( bOperationExecuted ) {
 			resetOperationsTo( number );
 			//bOperationExecuted = false;	<<< DONE
