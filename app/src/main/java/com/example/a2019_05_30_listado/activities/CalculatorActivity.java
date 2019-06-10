@@ -244,7 +244,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				else{
 					rValue /= arg2;
 					// Check 0/0
-					if( Double.isNaN( rValue ) )	rValue = 1;
+					//if( Double.isNaN( rValue ) )	rValue = 1;
 				}
 				bOperationExecuted = true;
 				break;
