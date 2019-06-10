@@ -201,19 +201,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			//bOperationExecuted = false;	<<< DONE
 		}
 		else {
-			/*if( number == 0 ) {
-				Log.e( "numberPress", "presionado el 0" );
-				if( ! txtValue.getText().equals( "0" ) )
-					txtValue.setText( txtValue.getText() + "0" );
-			}
-			else {
-				if( txtValue.getText().equals( "0" ) )
-						txtValue.setText( "" + number );
-				else	txtValue.setText( txtValue.getText().toString() + number );
-			}*/
 			String sValue = txtValue.getText().toString();
 			if( number == 0 ) {
-				Log.e( "numberPress", "presionado el 0" );
 				if( ! sValue.equals( "0" ) )
 					txtValue.setText( sValue + "0" );
 			}
