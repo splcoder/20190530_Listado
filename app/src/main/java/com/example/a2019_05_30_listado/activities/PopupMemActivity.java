@@ -40,8 +40,10 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 	private void setAdapterType( int type ){
 		switch( type ){
 			case MEM_ADAPTER: {
-				aMemAdapter = new ArrayAdapter<MemVar>( this, android.R.layout.simple_list_item_1, aMemory );
-				listValues.setAdapter( aMemAdapter );
+				/*aMemAdapter = new ArrayAdapter<MemVar>( this, android.R.layout.simple_list_item_1, aMemory );
+				listValues.setAdapter( aMemAdapter );*/
+				constantsAdapter = new ConstantsAdapter( this, R.layout.activity_popup_mem, aMemory, ConstantsAdapter.MEM_ARRAY );
+				listValues.setAdapter( constantsAdapter );
 				listValues.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -53,7 +55,7 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 				break;
 			}
 			case CONSTANTS_ADAPTER: {
-				constantsAdapter = new ConstantsAdapter( this, R.layout.activity_popup_mem, aConstants );
+				constantsAdapter = new ConstantsAdapter( this, R.layout.activity_popup_mem, aConstants, ConstantsAdapter.CONSTANTS_ARRAY );
 				listValues.setAdapter( constantsAdapter );
 				listValues.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 					@Override
@@ -66,7 +68,7 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 				break;
 			}
 			case USER_CONSTANTS_ADAPTER: {
-				constantsAdapter = new ConstantsAdapter( this, R.layout.activity_popup_mem, aUserConstants );
+				constantsAdapter = new ConstantsAdapter( this, R.layout.activity_popup_mem, aUserConstants, ConstantsAdapter.USER_CONSTANTS_ARRAY );
 				listValues.setAdapter( constantsAdapter );
 				listValues.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 					@Override

@@ -14,9 +14,14 @@ import com.example.a2019_05_30_listado.data.MemVar;
 import java.util.ArrayList;
 
 public class ConstantsAdapter extends ArrayAdapter<MemVar> {
+	public static final int MEM_ARRAY				= 0;
+	public static final int CONSTANTS_ARRAY			= 1;
+	public static final int USER_CONSTANTS_ARRAY	= 2;
+
 	private ArrayList<MemVar> listMemVar;
 	private Context context;
 	private int lastPosition = -1;
+	private int arrayType = MEM_ARRAY;
 
 	public ConstantsAdapter( Context context, ArrayList<MemVar> listMemVar ){
 		super( context, R.layout.activity_popup_mem, listMemVar );
@@ -29,6 +34,14 @@ public class ConstantsAdapter extends ArrayAdapter<MemVar> {
 		super( context, layoutResource, listMemVar );
 		this.listMemVar = listMemVar;
 		this.context = context;
+	}
+
+	// For R.layout.activity_popup_mem_save
+	public ConstantsAdapter( Context context, int layoutResource, ArrayList<MemVar> listMemVar, int arrayType ){
+		super( context, layoutResource, listMemVar );
+		this.listMemVar = listMemVar;
+		this.context = context;
+		this.arrayType = arrayType;
 	}
 
 	@Override
@@ -46,9 +59,29 @@ public class ConstantsAdapter extends ArrayAdapter<MemVar> {
 		txtName.setText( memVar.getName() );
 		txtValue.setText( String.valueOf( memVar.getValue() ) );
 		// Color
-		// TODO
-		//if( (position & 1) == 1 )	convertView.setBackgroundColor( Color.GREEN );
-		//else						convertView.setBackgroundColor( Color.MAGENTA );
+		switch( arrayType ){
+			case MEM_ARRAY: {
+				convertView.setBackground( context.getResources().getDrawable( R.drawable.gradient_button_orange ) );
+				// TODO
+				//if( (position & 1) == 1 )	convertView.setBackgroundColor( Color.GREEN );
+				//else						convertView.setBackgroundColor( Color.MAGENTA );
+				break;
+			}
+			case CONSTANTS_ARRAY: {
+				convertView.setBackground( context.getResources().getDrawable( R.drawable.gradient_button_purple ) );
+				// TODO
+				//if( (position & 1) == 1 )	convertView.setBackgroundColor( Color.GREEN );
+				//else						convertView.setBackgroundColor( Color.MAGENTA );
+				break;
+			}
+			case USER_CONSTANTS_ARRAY: {
+				convertView.setBackground( context.getResources().getDrawable( R.drawable.gradient_button_green ) );
+				// TODO
+				//if( (position & 1) == 1 )	convertView.setBackgroundColor( Color.GREEN );
+				//else						convertView.setBackgroundColor( Color.MAGENTA );
+				break;
+			}
+		}
 		// Return the completed view to render on screen
 		return convertView;
 	}
