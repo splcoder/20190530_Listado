@@ -195,19 +195,32 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	}
 	private void clickedNumeric( int number ) {
 		Log.e( "txtValue", txtValue.getText().toString() );		// TODO error al mostrarse el '0' a la izquierda (ejemplo: al multiplicar)
+		Log.e( "txtValueLength", String.valueOf( txtValue.getText().toString().length() ) );
 		if( bOperationExecuted ) {
 			resetOperationsTo( number );
 			//bOperationExecuted = false;	<<< DONE
 		}
 		else {
-			if( number == 0 ) {
+			/*if( number == 0 ) {
+				Log.e( "numberPress", "presionado el 0" );
 				if( ! txtValue.getText().equals( "0" ) )
 					txtValue.setText( txtValue.getText() + "0" );
 			}
 			else {
 				if( txtValue.getText().equals( "0" ) )
-					txtValue.setText( "" + number );
+						txtValue.setText( "" + number );
 				else	txtValue.setText( txtValue.getText().toString() + number );
+			}*/
+			String sValue = txtValue.getText().toString();
+			if( number == 0 ) {
+				Log.e( "numberPress", "presionado el 0" );
+				if( ! sValue.equals( "0" ) )
+					txtValue.setText( sValue + "0" );
+			}
+			else {
+				if( sValue.equals( "0" ) )
+						txtValue.setText( "" + number );
+				else	txtValue.setText( sValue + number );
 			}
 		}
 	}
