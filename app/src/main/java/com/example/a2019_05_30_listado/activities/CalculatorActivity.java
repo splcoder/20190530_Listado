@@ -194,8 +194,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		bOperationExecuted = false;
 	}
 	private void clickedNumeric( int number ) {
-		Log.e( "txtValue", txtValue.getText().toString() );		// TODO error al mostrarse el '0' a la izquierda (ejemplo: al multiplicar)
-		Log.e( "txtValueLength", String.valueOf( txtValue.getText().toString().length() ) );
 		if( bOperationExecuted ) {
 			resetOperationsTo( number );
 			//bOperationExecuted = false;	<<< DONE
