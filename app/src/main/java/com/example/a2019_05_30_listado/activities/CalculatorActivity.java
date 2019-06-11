@@ -26,14 +26,14 @@ import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
 
-// TODO paste from clickboard (with MR...)
-
 // TODO for () and user's functions >>> use ArrayList: operator-number-function
 // TODO bExecuteEqualOnBasicOperation	+ - * /
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	CalculatorActivity that = this;
-	ArrayListFileManager<MemVar> arrayListFileManager;// = new ArrayListFileManager<MemVar>( this.getApplicationContext(), "user_constants.data" );
+
+	final String USER_CONSTANTS_FILENAME = "user_constants.data";
+	ArrayListFileManager<MemVar> arrayListFileManager;	// For aUserConstants
 
 	TextView txtValue, txtOperation;
 	Button btnMR, btnMS, btnC, btnBack;
@@ -184,7 +184,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			}
 		});
 
-		arrayListFileManager = new ArrayListFileManager<MemVar>( this.getApplicationContext(), "user_constants.data" );
+		arrayListFileManager = new ArrayListFileManager<>( this.getApplicationContext(), USER_CONSTANTS_FILENAME );
 		fillConstantsArray();
 		fillUserConstantsArray();
 	}

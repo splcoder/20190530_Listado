@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -13,6 +12,7 @@ import com.example.a2019_05_30_listado.R;
 import com.example.a2019_05_30_listado.adapters.ConstantsAdapter;
 import com.example.a2019_05_30_listado.data.MemVar;
 import com.example.a2019_05_30_listado.helpers.Cache;
+import com.example.a2019_05_30_listado.helpers.ClipboardHelper;
 
 import java.util.ArrayList;
 
@@ -23,6 +23,7 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 	public static final int CONSTANTS_ADAPTER		= 1;
 	public static final int USER_CONSTANTS_ADAPTER	= 2;
 
+	Button btnPasteFromClipboard;
 	Button btnMem;
 	Button btnConstants;
 	Button btnUserConstants;
@@ -87,11 +88,13 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_popup_mem);
 
+		btnPasteFromClipboard = findViewById( R.id.btnPasteFromClipboard);
 		btnMem = findViewById( R.id.btnMem );
 		btnConstants = findViewById( R.id.btnConstants );
 		btnUserConstants = findViewById( R.id.btnUserConstants );
 		listValues = findViewById( R.id.listValues );
 
+		btnPasteFromClipboard.setOnClickListener( this );
 		btnMem.setOnClickListener( this );
 		btnConstants.setOnClickListener( this );
 		btnUserConstants.setOnClickListener( this );
@@ -117,6 +120,18 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 	@Override
 	public void onClick(View v) {
 		switch( v.getId() ){
+			case R.id.btnPasteFromClipboard: {
+				double value = 0;
+				String str = ClipboardHelper.getText( getApplicationContext() );
+				try{
+					value = Double.parseDouble( str );
+					calculatorActivity.setValue( value );
+					finish();
+				}catch( Exception e ){
+					Toasty.error( getApplicationContext(), "It is required a number.", Toast.LENGTH_SHORT, true ).show();
+				}
+				break;
+			}
 			case R.id.btnMem: {
 				btnMem.setTextColor( getResources().getColor( R.color.red ) );
 				btnMem.setEnabled( false );
