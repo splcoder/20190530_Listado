@@ -17,14 +17,15 @@ import com.example.a2019_05_30_listado.R;
 import com.example.a2019_05_30_listado.data.Constants;
 import com.example.a2019_05_30_listado.data.MathFunction;
 import com.example.a2019_05_30_listado.data.MemVar;
+import com.example.a2019_05_30_listado.helpers.ArrayListFileManager;
 import com.example.a2019_05_30_listado.helpers.Cache;
 import com.example.a2019_05_30_listado.helpers.ClipboardHelper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
 
-// TODO use MS and MR for saving/retrieving constants (as a list) <<< with long click
 // TODO paste from clickboard (with MR...)
 
 // TODO for () and user's functions >>> use ArrayList: operator-number-function
@@ -32,6 +33,7 @@ import es.dmoral.toasty.Toasty;
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	CalculatorActivity that = this;
+	ArrayListFileManager<MemVar> arrayListFileManager;// = new ArrayListFileManager<MemVar>( this.getApplicationContext(), "user_constants.data" );
 
 	TextView txtValue, txtOperation;
 	Button btnMR, btnMS, btnC, btnBack;
@@ -89,8 +91,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		aConstants.add( new MemVar( Constants.F_PROTON_MASS, "Proton Mass: Kg" ) );
 		aConstants.add( new MemVar( Constants.F_ATMOSPHERE, "Atmosphere: Pa" ) );
 	}
+
 	private void fillUserConstantsArray(){
-		// TODO the user's constants must be loaded/saved from/to file
+		aUserConstants = arrayListFileManager.readAll();
 	}
 
 	@Override
@@ -181,6 +184,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			}
 		});
 
+		arrayListFileManager = new ArrayListFileManager<MemVar>( this.getApplicationContext(), "user_constants.data" );
 		fillConstantsArray();
 		fillUserConstantsArray();
 	}
@@ -240,12 +244,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				break;
 			}
 			case '/': {
-				if( Double.isNaN( rValue ) || Double.isNaN( arg2 ) )	rValue = Double.NaN;
-				else{
-					rValue /= arg2;
-					// Check 0/0
-					//if( Double.isNaN( rValue ) )	rValue = 1;
-				}
+				rValue /= arg2;
 				bOperationExecuted = true;
 				break;
 			}
@@ -258,7 +257,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		}
 	}
 	public void exeFunction( MathFunction mf ){
-		// TODO check if ok
 		if( MathFunction.isOneArgumentFunction( mf ) ){
 			// --- As btnEqual ---
 			if( bOperationExecuted ){
@@ -365,5 +363,11 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				break;
 			}
 		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		arrayListFileManager.writeAll( aUserConstants );
 	}
 }

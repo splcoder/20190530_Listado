@@ -1,6 +1,8 @@
 package com.example.a2019_05_30_listado.data;
 
-public class MemVar {
+import java.io.Serializable;
+
+public class MemVar implements Serializable {
 	private double value = 0;
 	private String name = "";
 	public MemVar(){}
@@ -29,5 +31,12 @@ public class MemVar {
 	@Override
 	public String toString() {
 		return "" + value;
+	}
+
+	public String toStringAll() {
+		return "MemVar{" +
+				"value=" + value +
+				", name='" + name + '\'' +
+				'}';
 	}
 }

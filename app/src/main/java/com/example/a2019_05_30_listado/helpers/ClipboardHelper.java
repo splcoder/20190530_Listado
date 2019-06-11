@@ -13,6 +13,7 @@ public class ClipboardHelper {
 		ClipData clip = ClipData.newPlainText("label", txt );
 		clipboard.setPrimaryClip( clip );
 	}
+
 	public static String getText( Context context ){
 		ClipboardManager clipboard = (ClipboardManager)context.getSystemService( Context.CLIPBOARD_SERVICE );
 		String pasteData = "";
