@@ -3,8 +3,6 @@ package com.example.a2019_05_30_listado.helpers;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.a2019_05_30_listado.helpers.Console;
-
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,6 +14,7 @@ import java.util.ArrayList;
 
 public class ArrayListFileManager<T> {
 	private String fileName = "";
+	private ArrayList<T> aValues = new ArrayList<>();
 
 	// Reader
 	private FileInputStream fis;
@@ -32,6 +31,8 @@ public class ArrayListFileManager<T> {
 		this.fileName = fileName;
 	}
 
+	public ArrayList<T> get(){ return aValues; }
+
 	private T readNext() throws IOException, ClassNotFoundException {
 		try {
 			if( ois != null )	return (T)ois.readObject();
@@ -42,7 +43,8 @@ public class ArrayListFileManager<T> {
 	}
 
 	public ArrayList<T> readAll(){
-		ArrayList<T> aValues = new ArrayList<>();
+		//aValues = new ArrayList<>();
+		aValues.clear();
 		try {
 			//fis = new FileInputStream( fileName );
 			fis = context.openFileInput( fileName );
@@ -70,7 +72,7 @@ public class ArrayListFileManager<T> {
 		return aValues;
 	}
 
-	public void writeAll( ArrayList<T> aValues ){
+	public void writeAll(){
 		try{
 			//fos = new FileOutputStream( fileName, false );
 			// Android

@@ -368,6 +368,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	@Override
 	protected void onPause() {
 		super.onPause();
-		arrayListFileManager.writeAll( aUserConstants );
+		//arrayListFileManager.writeAll( aUserConstants );
+		arrayListFileManager.writeAll();
 	}
 }
