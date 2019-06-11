@@ -64,21 +64,18 @@ public class ConstantsAdapter extends ArrayAdapter<MemVar> {
 		switch( arrayType ){
 			case MEM_ARRAY: {
 				convertView.setBackground( context.getResources().getDrawable( R.drawable.gradient_button_orange ) );
-				// TODO
 				//if( (position & 1) == 1 )	convertView.setBackgroundColor( Color.GREEN );
 				//else						convertView.setBackgroundColor( Color.MAGENTA );
 				break;
 			}
 			case CONSTANTS_ARRAY: {
 				convertView.setBackground( context.getResources().getDrawable( R.drawable.gradient_button_purple ) );
-				// TODO
 				//if( (position & 1) == 1 )	convertView.setBackgroundColor( Color.GREEN );
 				//else						convertView.setBackgroundColor( Color.MAGENTA );
 				break;
 			}
 			case USER_CONSTANTS_ARRAY: {
 				convertView.setBackground( context.getResources().getDrawable( R.drawable.gradient_button_green ) );
-				// TODO
 				//if( (position & 1) == 1 )	convertView.setBackgroundColor( Color.GREEN );
 				//else						convertView.setBackgroundColor( Color.MAGENTA );
 				break;
