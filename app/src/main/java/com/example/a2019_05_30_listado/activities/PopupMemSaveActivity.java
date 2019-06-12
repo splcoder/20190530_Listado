@@ -1,5 +1,7 @@
 package com.example.a2019_05_30_listado.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,7 @@ import static com.example.a2019_05_30_listado.activities.PopupMemActivity.MEM_AD
 import static com.example.a2019_05_30_listado.activities.PopupMemActivity.USER_CONSTANTS_ADAPTER;
 
 public class PopupMemSaveActivity extends AppCompatActivity implements View.OnClickListener {
+	PopupMemSaveActivity that = this;
 
 	Button btnMem;
 	Button btnAdd;
@@ -74,10 +77,24 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 				});
 				listValues.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 					@Override
-					public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-						// TODO confirm
-						aUserConstants.remove( position );
-						constantsAdapter.notifyDataSetChanged();
+					public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+						//aUserConstants.remove( position );
+						//constantsAdapter.notifyDataSetChanged();
+						new AlertDialog.Builder( that )
+								.setIcon( android.R.drawable.ic_dialog_alert )
+								.setTitle( "Delete" )
+								.setMessage( "Are you sure ?" )
+								.setPositiveButton( "Yes", new DialogInterface.OnClickListener() {
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										aUserConstants.remove( position );
+										constantsAdapter.notifyDataSetChanged();
+									}
+
+								})
+								.setNegativeButton( "No", null)
+								.show();
+
 						//return false;	// <<< The click event is executed
 						return true;	// <<< Only the longClick is executed
 					}
