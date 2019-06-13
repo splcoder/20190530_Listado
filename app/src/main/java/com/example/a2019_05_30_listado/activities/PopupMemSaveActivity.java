@@ -9,11 +9,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.a2019_05_30_listado.R;
 import com.example.a2019_05_30_listado.adapters.ConstantsAdapter;
 import com.example.a2019_05_30_listado.data.MemVar;
 import com.example.a2019_05_30_listado.helpers.Cache;
+import com.example.a2019_05_30_listado.helpers.DialogConfirm;
 
 import java.util.ArrayList;
 
@@ -80,7 +82,7 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 					public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 						//aUserConstants.remove( position );
 						//constantsAdapter.notifyDataSetChanged();
-						new AlertDialog.Builder( that )
+						/*new AlertDialog.Builder( that )
 								.setIcon( android.R.drawable.ic_dialog_alert )
 								.setTitle( "Delete" )
 								.setMessage( "Are you sure ?" )
@@ -93,7 +95,18 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 
 								})
 								.setNegativeButton( "No", null)
-								.show();
+								.show();*/
+						DialogConfirm dialogConfirm = new DialogConfirm( that, "Delete", "Are you sure ?", "Yes", "No" );
+						dialogConfirm.setOnButtonClicked( new DialogConfirm.OnButtonClicked(){
+							@Override
+							public void exe( boolean confirmed ) {
+								if( confirmed ){
+									aUserConstants.remove( position );
+									constantsAdapter.notifyDataSetChanged();
+								}
+							}
+ 						});
+ 						dialogConfirm.show();
 
 						//return false;	// <<< The click event is executed
 						return true;	// <<< Only the longClick is executed
