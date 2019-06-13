@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -21,13 +20,13 @@ import com.example.a2019_05_30_listado.helpers.ArrayListFileManager;
 import com.example.a2019_05_30_listado.helpers.Cache;
 import com.example.a2019_05_30_listado.helpers.ClipboardHelper;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
 
 // TODO for () and user's functions >>> use ArrayList: operator-number-function
 // TODO bExecuteEqualOnBasicOperation	+ - * /
+// TODO create class CacheKeys
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	CalculatorActivity that = this;
@@ -58,6 +57,10 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	public ArrayList<MemVar> getMemory(){ return aMemory; }
 	public ArrayList<MemVar> getConstants(){ return aConstants; }
 	public ArrayList<MemVar> getUserConstants(){ return aUserConstants; }
+	public void copyTextValueIntoClipboard(){
+		ClipboardHelper.setText( txtValue.getText().toString(), getApplicationContext() );
+		Toasty.info( getApplicationContext(), "Copied to clipboard.", Toast.LENGTH_SHORT, true ).show();
+	}
 
 	private void fillConstantsArray() {
 		aConstants.add( new MemVar( Constants.M_PI, "Pi" ) );
@@ -135,8 +138,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		txtValue.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
 			public boolean onLongClick(View v) {
-				ClipboardHelper.setText( txtValue.getText().toString(), getApplicationContext() );
-				Toasty.info( getApplicationContext(), "Copied to clipboard.", Toast.LENGTH_SHORT, true ).show();
+				//ClipboardHelper.setText( txtValue.getText().toString(), getApplicationContext() );
+				//Toasty.info( getApplicationContext(), "Copied to clipboard.", Toast.LENGTH_SHORT, true ).show();
+				copyTextValueIntoClipboard();
 				//return false;		// <<< onClick will be executed too
 				return true;		// <<< Only onLongClick will be executed
 			}

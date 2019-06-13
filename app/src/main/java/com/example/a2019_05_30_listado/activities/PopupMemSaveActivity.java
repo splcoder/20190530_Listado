@@ -1,16 +1,12 @@
 package com.example.a2019_05_30_listado.activities;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.a2019_05_30_listado.R;
 import com.example.a2019_05_30_listado.adapters.ConstantsAdapter;
@@ -20,13 +16,13 @@ import com.example.a2019_05_30_listado.helpers.DialogConfirm;
 
 import java.util.ArrayList;
 
-import static com.example.a2019_05_30_listado.activities.PopupMemActivity.CONSTANTS_ADAPTER;
 import static com.example.a2019_05_30_listado.activities.PopupMemActivity.MEM_ADAPTER;
 import static com.example.a2019_05_30_listado.activities.PopupMemActivity.USER_CONSTANTS_ADAPTER;
 
 public class PopupMemSaveActivity extends AppCompatActivity implements View.OnClickListener {
 	PopupMemSaveActivity that = this;
 
+	Button btnCopyIntoClipboard;
 	Button btnMem;
 	Button btnAdd;
 	Button btnUserConstants;
@@ -122,11 +118,13 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_popup_mem_save);
 
+		btnCopyIntoClipboard = findViewById( R.id.btnCopyIntoClipboard);
 		btnMem = findViewById( R.id.btnMem );
 		btnAdd = findViewById( R.id.btnAdd );
 		btnUserConstants = findViewById( R.id.btnUserConstants );
 		listValues = findViewById( R.id.listValues );
 
+		btnCopyIntoClipboard.setOnClickListener( this );
 		btnMem.setOnClickListener( this );
 		btnAdd.setOnClickListener( this );
 		btnUserConstants.setOnClickListener( this );
@@ -152,6 +150,10 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 	@Override
 	public void onClick(View v) {
 		switch( v.getId() ){
+			case R.id.btnCopyIntoClipboard: {
+				calculatorActivity.copyTextValueIntoClipboard();
+				break;
+			}
 			case R.id.btnMem: {
 				btnMem.setTextColor( getResources().getColor( R.color.red ) );
 				btnMem.setEnabled( false );
