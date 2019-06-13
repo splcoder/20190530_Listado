@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	tools:context=".activities.SetUserConstNameActivity">
+
+	<EditText
+		android:id="@+id/txtName"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="8dp"
+		android:ems="10"
+		android:hint="Constant name"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/txtValue"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="8dp"
+		android:ems="10"
+		android:text="TextView"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="@+id/txtName"
+		app:layout_constraintStart_toStartOf="@+id/txtName"
+		app:layout_constraintTop_toBottomOf="@+id/txtName" />
+
+	<Button
+		android:id="@+id/btnCreate"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="60dp"
+		android:layout_marginTop="52dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginBottom="8dp"
+		android:background="@drawable/gradient_button_blue"
+		android:text="Create"
+		android:textAllCaps="false"
+		android:textColor="@color/white"
+		android:textSize="24sp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@+id/btnCancel"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/txtValue" />
+
+	<Button
+		android:id="@+id/btnCancel"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="60dp"
+		android:background="@drawable/gradient_button_red"
+		android:text="Cancel"
+		android:textAllCaps="false"
+		android:textColor="@color/white"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="@+id/btnCreate" />
+
+</android.support.constraint.ConstraintLayout>

@@ -9,17 +9,23 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".activities.PopupMemSaveActivity"
-			android:theme="@style/AppTheme.NoActionBar.Dialog"></activity>
+		<activity
+			android:name=".activities.SetUserConstNameActivity"
+			android:theme="@style/AppTheme.NoActionBar.Dialog" />
+		<activity
+			android:name=".activities.PopupMemSaveActivity"
+			android:theme="@style/AppTheme.NoActionBar.Dialog" />
 		<activity
 			android:name=".activities.PopupMemActivity"
 			android:theme="@style/AppTheme.NoActionBar.Dialog" />
 		<activity
 			android:name=".activities.InformationActivity"
 			android:theme="@style/AppTheme.NoActionBar.Dialog" />
-		<!--activity
+		<!--
+activity
 			android:name=".activities.PopupBasicFncsActivity"
-			android:theme="@style/AppTheme.PopupTheme" /-->
+			android:theme="@style/AppTheme.PopupTheme" /
+        -->
 		<activity
 			android:name=".activities.PopupBasicFncsActivity"
 			android:theme="@style/AppTheme.NoActionBar.Dialog" />
