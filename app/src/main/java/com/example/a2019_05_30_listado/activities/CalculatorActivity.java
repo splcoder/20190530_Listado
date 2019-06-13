@@ -37,7 +37,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
 	TextView txtValue, txtOperation;
 	Button btnMR, btnMS, btnC, btnBack;
-	Button btnFnc;
+	Button btnFnc, btnOP, btnCP;
 	Button btnSum, btnSubstract, btnMultiplication, btnDivision;
 	Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
 	Button btnPM, btnComa, btnEqual;
@@ -105,14 +105,14 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
 		txtValue	= findViewById( R.id.txtValue );	txtOperation	= findViewById( R.id.txtOperation );
 		btnMR		= findViewById( R.id.btnMR );		btnMS			= findViewById( R.id.btnMS );			btnC				= findViewById( R.id.btnC );				btnBack		= findViewById( R.id.btnBack );
-		btnFnc		= findViewById( R.id.btnFnc );
+		btnFnc		= findViewById( R.id.btnFnc );		btnOP			= findViewById( R.id.btnOP );			btnCP				= findViewById( R.id.btnCP );
 		btnSum		= findViewById( R.id.btnSum );		btnSubstract	= findViewById( R.id.btnSubstract );	btnMultiplication	= findViewById( R.id.btnMultiplication );	btnDivision	= findViewById( R.id.btnDivision );
 		btn0 = findViewById( R.id.btn0 ); btn1 = findViewById( R.id.btn1 ); btn2 = findViewById( R.id.btn2 ); btn3 = findViewById( R.id.btn3 ); btn4 = findViewById( R.id.btn4 );
 		btn5 = findViewById( R.id.btn5 ); btn6 = findViewById( R.id.btn6 ); btn7 = findViewById( R.id.btn7 ); btn8 = findViewById( R.id.btn8 ); btn9 = findViewById( R.id.btn9 );
 		btnPM = findViewById( R.id.btnPM );		btnComa = findViewById( R.id.btnComa );		btnEqual = findViewById( R.id.btnEqual );
 
 		btnMR.setOnClickListener( this );				btnMS.setOnClickListener( this );						btnC.setOnClickListener( this );								btnBack.setOnClickListener( this );
-		btnFnc.setOnClickListener( this );
+		btnFnc.setOnClickListener( this );				btnOP.setOnClickListener( this );						btnCP.setOnClickListener( this );
 		btnSum.setOnClickListener( this );				btnSubstract.setOnClickListener( this );				btnMultiplication.setOnClickListener( this );					btnDivision.setOnClickListener( this );
 		btn0.setOnClickListener( this ); btn1.setOnClickListener( this ); btn2.setOnClickListener( this ); btn3.setOnClickListener( this ); btn4.setOnClickListener( this );
 		btn5.setOnClickListener( this ); btn6.setOnClickListener( this ); btn7.setOnClickListener( this ); btn8.setOnClickListener( this ); btn9.setOnClickListener( this );
@@ -122,6 +122,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		btnFnc.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
 			public boolean onLongClick(View v) {
+				// TODO create functions...
 				//Intent intent = new Intent( getApplicationContext(), PopupBasicFncsActivity.class );
 				Intent intent = new Intent( getApplicationContext(), PopupFncActivity.class );
 				Cache.set( "calculatorActivity", that );
@@ -317,6 +318,16 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				Intent intent = new Intent( getApplicationContext(), PopupBasicFncsActivity.class );
 				Cache.set( "calculatorActivity", that );
 				startActivity( intent );
+				break;
+			}
+			case R.id.btnOP: {
+				// TODO
+				Toasty.info( getApplicationContext(), "To be done...", Toast.LENGTH_SHORT, true ).show();
+				break;
+			}
+			case R.id.btnCP: {
+				// TODO
+				Toasty.info( getApplicationContext(), "To be done...", Toast.LENGTH_SHORT, true ).show();
 				break;
 			}
 			case R.id.btnDivision:			clickedOperation( '/' );							break;
