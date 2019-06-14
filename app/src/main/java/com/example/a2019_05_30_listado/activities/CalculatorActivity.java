@@ -24,9 +24,7 @@ import java.util.ArrayList;
 
 import es.dmoral.toasty.Toasty;
 
-// TODO for () and user's functions >>> use ArrayList: operator-number-function
 // TODO bExecuteEqualOnBasicOperation	+ - * /
-// TODO create class CacheKeys
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	CalculatorActivity that = this;
@@ -59,7 +57,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	public ArrayList<MemVar> getUserConstants(){ return aUserConstants; }
 	public void copyTextValueIntoClipboard(){
 		ClipboardHelper.setText( txtValue.getText().toString(), getApplicationContext() );
-		Toasty.info( getApplicationContext(), "Copied to clipboard.", Toast.LENGTH_SHORT, true ).show();
+		Toasty.info( getApplicationContext(), "Copied into clipboard.", Toast.LENGTH_SHORT, true ).show();
 	}
 
 	private void fillConstantsArray() {
