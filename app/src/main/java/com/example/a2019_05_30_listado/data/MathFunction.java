@@ -19,9 +19,12 @@ public enum MathFunction {
 	, SINH, COSH, TANH, ARCSINH, ARCCOSH, ARCTANH
 	, LAMBERTW, LAMBERTW_1
 	, BY10POW, HYPOT, ATAN2
+	, SIGN
+	, RAND_MAX, RAND_INTERVAL
 	;
 
-	// TODO add Math remainder functions, and: Sum, Product, Integral
+	// TODO add more functions: Fibonacci (with inverse), ...
+	//  , and: Sum, Product, Integral
 
 	// = MathFunction.values()
 	public static final List<MathFunction> listFunctions = new ArrayList<MathFunction>(
@@ -34,6 +37,8 @@ public enum MathFunction {
 			, SINH, COSH, TANH, ARCSINH, ARCCOSH, ARCTANH
 			, LAMBERTW, LAMBERTW_1
 			, BY10POW, HYPOT, ATAN2
+			, SIGN
+			, RAND_MAX, RAND_INTERVAL
 		)
 	);
 
@@ -46,6 +51,7 @@ public enum MathFunction {
 			case BY10POW:
 			case HYPOT:
 			case ATAN2:
+			case RAND_INTERVAL:
 				return false;
 			default:;
 		}
@@ -54,45 +60,48 @@ public enum MathFunction {
 
 	public static String toString( MathFunction mf ){
 		switch( mf ){
-			case ABS:		return "abs";
-			case MOD:		return "mod";
-			case INV:		return "inv";
-			case RAD:		return "rad";
-			case DEG:		return "deg";
-			case FACTORIAL:	return "factorial";
-			case FLOOR:		return "floor";
-			case ROUND:		return "round";
-			case CEIL:		return "ceil";
-			case POW2:		return "pow2";
-			case POW3:		return "pow3";
-			case POW:		return "pow";
-			case ROOT2:		return "root2";
-			case ROOT3:		return "root3";
-			case ROOT:		return "root";
-			case XPOWX:		return "xPowX";
-			case INV_XPOWX:	return "invXpowX";
-			case EXP:		return "exp";
-			case LN:		return "ln";
-			case EXP10:		return "exp10";
-			case LOG10:		return "log10";
-			case LOG:		return "log";
-			case SIN:		return "sin";
-			case COS:		return "cos";
-			case TAN:		return "tan";
-			case ARCSIN:	return "arcsin";
-			case ARCCOS:	return "arccos";
-			case ARCTAN:	return "arctan";
-			case SINH:		return "sinh";
-			case COSH:		return "cosh";
-			case TANH:		return "tanh";
-			case ARCSINH:	return "arcsinh";
-			case ARCCOSH:	return "arccosh";
-			case ARCTANH:	return "arctanh";
-			case LAMBERTW:	return "lambertW";
-			case LAMBERTW_1:return "lambertW_1";
-			case BY10POW:	return "E";
-			case HYPOT:		return "hypot";
-			case ATAN2:		return "atan2";
+			case ABS:				return "abs";
+			case MOD:				return "mod";
+			case INV:				return "inv";
+			case RAD:				return "rad";
+			case DEG:				return "deg";
+			case FACTORIAL:			return "factorial";
+			case FLOOR:				return "floor";
+			case ROUND:				return "round";
+			case CEIL:				return "ceil";
+			case POW2:				return "pow2";
+			case POW3:				return "pow3";
+			case POW:				return "pow";
+			case ROOT2:				return "root2";
+			case ROOT3:				return "root3";
+			case ROOT:				return "root";
+			case XPOWX:				return "xPowX";
+			case INV_XPOWX:			return "invXpowX";
+			case EXP:				return "exp";
+			case LN:				return "ln";
+			case EXP10:				return "exp10";
+			case LOG10:				return "log10";
+			case LOG:				return "log";
+			case SIN:				return "sin";
+			case COS:				return "cos";
+			case TAN:				return "tan";
+			case ARCSIN:			return "arcsin";
+			case ARCCOS:			return "arccos";
+			case ARCTAN:			return "arctan";
+			case SINH:				return "sinh";
+			case COSH:				return "cosh";
+			case TANH:				return "tanh";
+			case ARCSINH:			return "arcsinh";
+			case ARCCOSH:			return "arccosh";
+			case ARCTANH:			return "arctanh";
+			case LAMBERTW:			return "lambertW";
+			case LAMBERTW_1:		return "lambertW_1";
+			case BY10POW:			return "E";
+			case HYPOT:				return "hypot";
+			case ATAN2:				return "atan2";
+			case SIGN:				return "sign";
+			case RAND_MAX:			return "rand";
+			case RAND_INTERVAL:		return "rand";
 		}
 		return "";
 	}
@@ -138,6 +147,16 @@ public enum MathFunction {
 			case BY10POW:	return arg1 * Math.pow( 10, arg2 );
 			case HYPOT:		return Math.hypot( arg1, arg2 );
 			case ATAN2:		return Math.atan2( arg2, arg1 );
+			case SIGN:		return Math.signum( arg1 );
+			case RAND_MAX:	return Math.random()*arg1;
+			case RAND_INTERVAL: {
+				double min = arg1, max = arg2;
+				if( max < min ){
+					min = arg2;
+					max = arg1;
+				}
+				return min + Math.random()*(max - min);
+			}
 		}
 		return 0;
 	}

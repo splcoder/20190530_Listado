@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a2019_05_30_listado.R;
+import com.example.a2019_05_30_listado.data.CacheKeys;
 import com.example.a2019_05_30_listado.data.Constants;
 import com.example.a2019_05_30_listado.data.MathFunction;
 import com.example.a2019_05_30_listado.data.MemVar;
@@ -103,6 +104,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator);
 
+		Cache.set( CacheKeys.CALCULATOR_ACTIVITY, that );
+
 		scrollData = findViewById( R.id.scrollData );
 
 		txtValue	= findViewById( R.id.txtValue );	txtOperation	= findViewById( R.id.txtOperation );
@@ -126,7 +129,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			public boolean onLongClick(View v) {
 				// TODO create functions...
 				Intent intent = new Intent( getApplicationContext(), PopupFncActivity.class );
-				Cache.set( "calculatorActivity", that );
 				startActivity( intent );
 				//return false;		// <<< onClick will be executed too
 				return true;		// <<< Only onLongClick will be executed
@@ -148,7 +150,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			@Override
 			public boolean onLongClick(View v) {
 				Intent intent = new Intent( getApplicationContext(), PopupMemActivity.class );
-				Cache.set( "calculatorActivity", that );
 				startActivity( intent );
 				//return false;		// <<< onClick will be executed too
 				return true;		// <<< Only onLongClick will be executed
@@ -159,8 +160,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			@Override
 			public boolean onLongClick(View v) {
 				Intent intent = new Intent( getApplicationContext(), PopupMemSaveActivity.class );
-				Cache.set( "calculatorActivity", that );
-				Cache.set( "value", txtValue.getText().toString() );
+				Cache.set( CacheKeys.VALUE, txtValue.getText().toString() );
 				startActivity( intent );
 				//return false;		// <<< onClick will be executed too
 				return true;		// <<< Only onLongClick will be executed
@@ -346,9 +346,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 				break;
 			}
 			case R.id.btnFnc: {
-				//Intent intent = new Intent( getApplicationContext(), PopupFncActivity.class );
 				Intent intent = new Intent( getApplicationContext(), PopupBasicFncsActivity.class );
-				Cache.set( "calculatorActivity", that );
 				startActivity( intent );
 				break;
 			}

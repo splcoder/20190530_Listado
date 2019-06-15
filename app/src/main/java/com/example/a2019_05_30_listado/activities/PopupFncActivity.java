@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.a2019_05_30_listado.R;
+import com.example.a2019_05_30_listado.data.CacheKeys;
 import com.example.a2019_05_30_listado.data.MathFunction;
 import com.example.a2019_05_30_listado.helpers.Cache;
 
@@ -70,7 +71,7 @@ public class PopupFncActivity extends Activity implements AdapterView.OnItemClic
 
 	@Override
 	public void onItemClick( AdapterView<?> parent, View view, int position, long id ){
-		((CalculatorActivity)Cache.get( "calculatorActivity" )).exeFunction( MathFunction.listFunctions.get( position ) );
+		((CalculatorActivity)Cache.get( CacheKeys.CALCULATOR_ACTIVITY )).exeFunction( MathFunction.listFunctions.get( position ) );
 		Toasty.info( getApplicationContext(), "Fnc selected: " + arrayFncs.get( position ), Toast.LENGTH_SHORT, true ).show();
 		// Close this window
 		this.finish();

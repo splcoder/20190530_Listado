@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.a2019_05_30_listado.R;
 import com.example.a2019_05_30_listado.adapters.ConstantsAdapter;
+import com.example.a2019_05_30_listado.data.CacheKeys;
 import com.example.a2019_05_30_listado.data.MemVar;
 import com.example.a2019_05_30_listado.helpers.Cache;
 import com.example.a2019_05_30_listado.helpers.ClipboardHelper;
@@ -99,7 +100,7 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 		btnConstants.setOnClickListener( this );
 		btnUserConstants.setOnClickListener( this );
 
-		calculatorActivity = (CalculatorActivity) Cache.get( "calculatorActivity" );
+		calculatorActivity = (CalculatorActivity) Cache.get( CacheKeys.CALCULATOR_ACTIVITY );
 		aMemory = calculatorActivity.getMemory();
 		/*aMemAdapter = new ArrayAdapter<MemVar>( this, android.R.layout.simple_list_item_1, aMemory );
 		listValues.setAdapter( aMemAdapter );

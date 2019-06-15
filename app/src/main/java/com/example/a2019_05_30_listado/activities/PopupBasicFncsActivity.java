@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.a2019_05_30_listado.R;
+import com.example.a2019_05_30_listado.data.CacheKeys;
 import com.example.a2019_05_30_listado.data.MathFunction;
 import com.example.a2019_05_30_listado.helpers.Cache;
 
@@ -36,6 +37,7 @@ public class PopupBasicFncsActivity extends AppCompatActivity implements View.On
 	Button btnArcSinh, btnArcCosh, btnArcTanh;
 	Button btnHypot, btnAtan2, btnXpowX;
 	Button btnLambertW_1, btnLambertW, btnInvXpowX;
+	Button btnSign, btnRand, btnRandInterval;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class PopupBasicFncsActivity extends AppCompatActivity implements View.On
 		btnArcSinh = findViewById( R.id.btnArcSinh );			btnArcCosh = findViewById( R.id.btnArcCosh );		btnArcTanh = findViewById( R.id.btnArcTanh );
 		btnHypot = findViewById( R.id.btnHypot );				btnAtan2 = findViewById( R.id.btnAtan2 );			btnXpowX = findViewById( R.id.btnXpowX );
 		btnLambertW_1 = findViewById( R.id.btnLambertW_1 );		btnLambertW = findViewById( R.id.btnLambertW );		btnInvXpowX = findViewById( R.id.btnInvXpowX );
+		btnSign = findViewById( R.id.btnSign );					btnRand = findViewById( R.id.btnRand );				btnRandInterval = findViewById( R.id.btnRandInterval );
 
 		btnAbs.setOnClickListener( this );						btnMod.setOnClickListener( this );					btnInverse.setOnClickListener( this );
 		btnRad.setOnClickListener( this );						btnDeg.setOnClickListener( this );					btnFactorial.setOnClickListener( this );
@@ -79,57 +82,61 @@ public class PopupBasicFncsActivity extends AppCompatActivity implements View.On
 		btnArcSinh.setOnClickListener( this );					btnArcCosh.setOnClickListener( this );				btnArcTanh.setOnClickListener( this );
 		btnHypot.setOnClickListener( this );					btnAtan2.setOnClickListener( this );				btnXpowX.setOnClickListener( this );
 		btnLambertW_1.setOnClickListener( this );				btnLambertW.setOnClickListener( this );				btnInvXpowX.setOnClickListener( this );
+		btnSign.setOnClickListener( this );						btnRand.setOnClickListener( this );					btnRandInterval.setOnClickListener( this );
 	}
 
 	@Override
 	public void onClick(View v) {
 		/*
-		((CalculatorActivity)Cache.get( "calculatorActivity" )).exeFunction( MathFunction.listFunctions.get( position ) );
+		((CalculatorActivity)Cache.get( CacheKeys.CALCULATOR_ACTIVITY )).exeFunction( MathFunction.listFunctions.get( position ) );
 		Toasty.info( getApplicationContext(), "Fnc selected: " + arrayFncs.get( position ), Toast.LENGTH_SHORT, true ).show();
 		// Close this window
 		this.finish();
 		*/
-		CalculatorActivity calc = (CalculatorActivity)Cache.get( "calculatorActivity" );
+		CalculatorActivity calc = (CalculatorActivity)Cache.get( CacheKeys.CALCULATOR_ACTIVITY );
 		switch( v.getId() ){
-			case R.id.btnAbs:		calc.exeFunction( MathFunction.ABS );				break;
-			case R.id.btnMod:		calc.exeFunction( MathFunction.MOD );				break;
-			case R.id.btnInverse:	calc.exeFunction( MathFunction.INV );				break;
-			case R.id.btnRad:		calc.exeFunction( MathFunction.RAD );				break;
-			case R.id.btnDeg:		calc.exeFunction( MathFunction.DEG );				break;
-			case R.id.btnFactorial:	calc.exeFunction( MathFunction.FACTORIAL );			break;
-			case R.id.btnFloor:		calc.exeFunction( MathFunction.FLOOR );				break;
-			case R.id.btnRound:		calc.exeFunction( MathFunction.ROUND );				break;
-			case R.id.btnCeil:		calc.exeFunction( MathFunction.CEIL );				break;
-			case R.id.btnPow2:		calc.exeFunction( MathFunction.POW2 );				break;
-			case R.id.btnPow3:		calc.exeFunction( MathFunction.POW3 );				break;
-			case R.id.btnBy10Pow:	calc.exeFunction( MathFunction.BY10POW );			break;
-			case R.id.btnRoot2:		calc.exeFunction( MathFunction.ROOT2 );				break;
-			case R.id.btnRoot3:		calc.exeFunction( MathFunction.ROOT3 );				break;
-			case R.id.btnRoot:		calc.exeFunction( MathFunction.ROOT );				break;
-			case R.id.btnExp:		calc.exeFunction( MathFunction.EXP );				break;
-			case R.id.btnExp10:		calc.exeFunction( MathFunction.EXP10 );				break;
-			case R.id.btnPow:		calc.exeFunction( MathFunction.POW );				break;
-			case R.id.btnLn:		calc.exeFunction( MathFunction.LN );				break;
-			case R.id.btnLog10:		calc.exeFunction( MathFunction.LOG10 );				break;
-			case R.id.btnLog:		calc.exeFunction( MathFunction.LOG );				break;
-			case R.id.btnSin:		calc.exeFunction( MathFunction.SIN );				break;
-			case R.id.btnCos:		calc.exeFunction( MathFunction.COS );				break;
-			case R.id.btnTan:		calc.exeFunction( MathFunction.TAN );				break;
-			case R.id.btnArcSin:	calc.exeFunction( MathFunction.ARCSIN );			break;
-			case R.id.btnArcCos:	calc.exeFunction( MathFunction.ARCCOS );			break;
-			case R.id.btnArcTan:	calc.exeFunction( MathFunction.ARCTAN );			break;
-			case R.id.btnSinh:		calc.exeFunction( MathFunction.SINH );				break;
-			case R.id.btnCosh:		calc.exeFunction( MathFunction.COSH );				break;
-			case R.id.btnTanh:		calc.exeFunction( MathFunction.TANH );				break;
-			case R.id.btnArcSinh:	calc.exeFunction( MathFunction.ARCSINH );			break;
-			case R.id.btnArcCosh:	calc.exeFunction( MathFunction.ARCCOSH );			break;
-			case R.id.btnArcTanh:	calc.exeFunction( MathFunction.ARCTANH );			break;
-			case R.id.btnHypot:		calc.exeFunction( MathFunction.HYPOT );				break;
-			case R.id.btnAtan2:		calc.exeFunction( MathFunction.ATAN2 );				break;
-			case R.id.btnXpowX:		calc.exeFunction( MathFunction.XPOWX );				break;
-			case R.id.btnLambertW_1:calc.exeFunction( MathFunction.LAMBERTW_1 );		break;
-			case R.id.btnLambertW:	calc.exeFunction( MathFunction.LAMBERTW );			break;
-			case R.id.btnInvXpowX:	calc.exeFunction( MathFunction.INV_XPOWX );			break;
+			case R.id.btnAbs:			calc.exeFunction( MathFunction.ABS );				break;
+			case R.id.btnMod:			calc.exeFunction( MathFunction.MOD );				break;
+			case R.id.btnInverse:		calc.exeFunction( MathFunction.INV );				break;
+			case R.id.btnRad:			calc.exeFunction( MathFunction.RAD );				break;
+			case R.id.btnDeg:			calc.exeFunction( MathFunction.DEG );				break;
+			case R.id.btnFactorial:		calc.exeFunction( MathFunction.FACTORIAL );			break;
+			case R.id.btnFloor:			calc.exeFunction( MathFunction.FLOOR );				break;
+			case R.id.btnRound:			calc.exeFunction( MathFunction.ROUND );				break;
+			case R.id.btnCeil:			calc.exeFunction( MathFunction.CEIL );				break;
+			case R.id.btnPow2:			calc.exeFunction( MathFunction.POW2 );				break;
+			case R.id.btnPow3:			calc.exeFunction( MathFunction.POW3 );				break;
+			case R.id.btnBy10Pow:		calc.exeFunction( MathFunction.BY10POW );			break;
+			case R.id.btnRoot2:			calc.exeFunction( MathFunction.ROOT2 );				break;
+			case R.id.btnRoot3:			calc.exeFunction( MathFunction.ROOT3 );				break;
+			case R.id.btnRoot:			calc.exeFunction( MathFunction.ROOT );				break;
+			case R.id.btnExp:			calc.exeFunction( MathFunction.EXP );				break;
+			case R.id.btnExp10:			calc.exeFunction( MathFunction.EXP10 );				break;
+			case R.id.btnPow:			calc.exeFunction( MathFunction.POW );				break;
+			case R.id.btnLn:			calc.exeFunction( MathFunction.LN );				break;
+			case R.id.btnLog10:			calc.exeFunction( MathFunction.LOG10 );				break;
+			case R.id.btnLog:			calc.exeFunction( MathFunction.LOG );				break;
+			case R.id.btnSin:			calc.exeFunction( MathFunction.SIN );				break;
+			case R.id.btnCos:			calc.exeFunction( MathFunction.COS );				break;
+			case R.id.btnTan:			calc.exeFunction( MathFunction.TAN );				break;
+			case R.id.btnArcSin:		calc.exeFunction( MathFunction.ARCSIN );			break;
+			case R.id.btnArcCos:		calc.exeFunction( MathFunction.ARCCOS );			break;
+			case R.id.btnArcTan:		calc.exeFunction( MathFunction.ARCTAN );			break;
+			case R.id.btnSinh:			calc.exeFunction( MathFunction.SINH );				break;
+			case R.id.btnCosh:			calc.exeFunction( MathFunction.COSH );				break;
+			case R.id.btnTanh:			calc.exeFunction( MathFunction.TANH );				break;
+			case R.id.btnArcSinh:		calc.exeFunction( MathFunction.ARCSINH );			break;
+			case R.id.btnArcCosh:		calc.exeFunction( MathFunction.ARCCOSH );			break;
+			case R.id.btnArcTanh:		calc.exeFunction( MathFunction.ARCTANH );			break;
+			case R.id.btnHypot:			calc.exeFunction( MathFunction.HYPOT );				break;
+			case R.id.btnAtan2:			calc.exeFunction( MathFunction.ATAN2 );				break;
+			case R.id.btnXpowX:			calc.exeFunction( MathFunction.XPOWX );				break;
+			case R.id.btnLambertW_1:	calc.exeFunction( MathFunction.LAMBERTW_1 );		break;
+			case R.id.btnLambertW:		calc.exeFunction( MathFunction.LAMBERTW );			break;
+			case R.id.btnInvXpowX:		calc.exeFunction( MathFunction.INV_XPOWX );			break;
+			case R.id.btnSign:			calc.exeFunction( MathFunction.SIGN );				break;
+			case R.id.btnRand:			calc.exeFunction( MathFunction.RAND_MAX );			break;
+			case R.id.btnRandInterval:	calc.exeFunction( MathFunction.RAND_INTERVAL );		break;
 		}
 		// Close this window
 		this.finish();

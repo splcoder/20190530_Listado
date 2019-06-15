@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.a2019_05_30_listado.R;
+import com.example.a2019_05_30_listado.data.CacheKeys;
 import com.example.a2019_05_30_listado.data.MemVar;
 import com.example.a2019_05_30_listado.helpers.Cache;
 
@@ -49,8 +50,8 @@ public class SetUserConstNameActivity extends AppCompatActivity {
 			}
 		});
 
-		popupMemSaveActivity = (PopupMemSaveActivity)Cache.get( "PopupMemSaveActivity" );
-		value = (String)Cache.get( "value" );
+		popupMemSaveActivity = (PopupMemSaveActivity)Cache.get( CacheKeys.POPUP_MEM_SAVE_ACTIVITY );
+		value = (String)Cache.get( CacheKeys.VALUE );
 		txtValue.setText( value );
 	}
 }

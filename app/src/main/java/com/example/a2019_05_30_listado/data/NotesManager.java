@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO improve this code
+// NOTE: see this code improved in "helpers"
 public class NotesManager {
 	public static final String FILE_NAME_FOR_ID	= "notes_manager_id.txt";
 	public static final String FILE_NAME		= "notes_manager.txt";

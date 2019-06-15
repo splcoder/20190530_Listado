@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.a2019_05_30_listado.R;
 import com.example.a2019_05_30_listado.adapters.ConstantsAdapter;
+import com.example.a2019_05_30_listado.data.CacheKeys;
 import com.example.a2019_05_30_listado.data.MemVar;
 import com.example.a2019_05_30_listado.helpers.Cache;
 import com.example.a2019_05_30_listado.helpers.DialogConfirm;
@@ -118,6 +119,8 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_popup_mem_save);
 
+		Cache.set( CacheKeys.POPUP_MEM_SAVE_ACTIVITY, that );
+
 		btnCopyIntoClipboard = findViewById( R.id.btnCopyIntoClipboard);
 		btnMem = findViewById( R.id.btnMem );
 		btnAdd = findViewById( R.id.btnAdd );
@@ -129,7 +132,7 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 		btnAdd.setOnClickListener( this );
 		btnUserConstants.setOnClickListener( this );
 
-		calculatorActivity = (CalculatorActivity)Cache.get( "calculatorActivity" );
+		calculatorActivity = (CalculatorActivity)Cache.get( CacheKeys.CALCULATOR_ACTIVITY );
 		aMemory = calculatorActivity.getMemory();
 		/*aMemAdapter = new ArrayAdapter<MemVar>( this, android.R.layout.simple_list_item_1, aMemory );
 		listValues.setAdapter( aMemAdapter );
@@ -175,19 +178,19 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 			}
 			case R.id.btnAdd: {
 				if( ! btnMem.isEnabled() ){
-					aMemory.add( new MemVar( Double.parseDouble( (String)Cache.get( "value" ) ), "" ) );
+					aMemory.add( new MemVar( Double.parseDouble( (String)Cache.get( CacheKeys.VALUE ) ), "" ) );
 					//aMemAdapter.notifyDataSetChanged();
 					constantsAdapter.notifyDataSetChanged();
 					finish();
 				}
 				else{
-					/*aUserConstants.add( new MemVar( Double.parseDouble( (String)Cache.get( "value" ) ), "" ) );
+					/*aUserConstants.add( new MemVar( Double.parseDouble( (String)Cache.get( CacheKeys.VALUE ) ), "" ) );
 					//aMemAdapter.notifyDataSetChanged();
 					constantsAdapter.notifyDataSetChanged();
 					finish();*/
 
 					// For setting a name
-					Cache.set( "PopupMemSaveActivity", that );
+					//Cache.set( CacheKeys.POPUP_MEM_SAVE_ACTIVITY, that );
 					Intent intent = new Intent( PopupMemSaveActivity.this, SetUserConstNameActivity.class );
 					startActivity( intent );
 				}
