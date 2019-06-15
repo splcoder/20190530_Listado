@@ -121,18 +121,17 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		btnPM.setOnClickListener( this );		btnComa.setOnClickListener( this );			btnEqual.setOnClickListener( this );
 
 		// Long Click
-		btnFnc.setOnLongClickListener(new View.OnLongClickListener() {
+		/*btnFnc.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
 			public boolean onLongClick(View v) {
 				// TODO create functions...
-				//Intent intent = new Intent( getApplicationContext(), PopupBasicFncsActivity.class );
 				Intent intent = new Intent( getApplicationContext(), PopupFncActivity.class );
 				Cache.set( "calculatorActivity", that );
 				startActivity( intent );
 				//return false;		// <<< onClick will be executed too
 				return true;		// <<< Only onLongClick will be executed
 			}
-		});
+		});*/
 
 		txtValue.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
