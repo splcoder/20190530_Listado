@@ -28,9 +28,13 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="16dp"
-				android:gravity="right"
-				android:paddingRight="1sp"
-				android:textSize="48sp" />
+				android:gravity="left"
+				android:paddingLeft="4sp"
+				android:paddingTop="4sp"
+				android:paddingRight="4sp"
+				android:textColor="@color/infoColor"
+				android:textSize="36sp"
+				android:textStyle="bold" />
 
 			<TextView
 				android:id="@+id/txtValue"
@@ -38,6 +42,7 @@
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="17dp"
 				android:gravity="right"
+				android:paddingLeft="1sp"
 				android:paddingRight="1sp"
 				android:text="0"
 				android:textSize="48sp" />

@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +33,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	final String USER_CONSTANTS_FILENAME = "user_constants.data";
 	ArrayListFileManager<MemVar> arrayListFileManager;	// For aUserConstants
 
-	TextView txtValue, txtOperation;
+	TextView txtOperation;
+	TextView txtValue;
 	Button btnMR, btnMS, btnC, btnBack;
 	Button btnFnc, btnOP, btnCP;
 	Button btnSum, btnSubstract, btnMultiplication, btnDivision;
@@ -167,6 +169,27 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			}
 		});
 
+		txtOperation.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+				//
+			}
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				//
+			}
+			@Override
+			public void afterTextChanged(Editable s) {
+				// How the text is shown
+				if( txtOperation.getLineCount() > 1 )
+					txtOperation.setGravity( Gravity.LEFT );
+				else	txtOperation.setGravity( Gravity.RIGHT );
+				//scrollData.pageScroll( View.FOCUS_DOWN );
+				scrollData.fullScroll( View.FOCUS_DOWN );
+				//Toasty.warning( getApplicationContext(), "Lines: " + txtOperation.getLineCount(), Toast.LENGTH_SHORT, true).show();
+			}
+		});
+
 		txtValue.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -297,10 +320,19 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	public void setValue( String value ){ txtValue.setText( value ); }
 	public void setValue( double value ){ txtValue.setText( String.valueOf( value ) ); }
 
+	public void setValue( String value, boolean checkOperation ){
+		if( cOperation == '?' )	rValue = 0;
+		txtValue.setText( value );
+	}
+	public void setValue( double value, boolean checkOperation ){
+		if( cOperation == '?' )	rValue = 0;
+		txtValue.setText( String.valueOf( value ) );
+	}
+
 	@Override
 	public void onClick(View v) {
 		switch( v.getId() ){
-			case R.id.btnMR:	setValue( rMemory );											break;
+			case R.id.btnMR:	setValue( rMemory, true );						break;
 			case R.id.btnMS:	rMemory = Double.parseDouble( txtValue.getText().toString() );	break;
 			case R.id.btnC:		resetOperationsTo(0 );									break;
 			case R.id.btnBack: {

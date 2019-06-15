@@ -14,9 +14,31 @@ public class ParenthesisManager {
 	private static int totalParenthesisOpened = 0;
 	public static boolean areParenthesisOpened(){ return totalParenthesisOpened > 0; }
 
+	private double rResult = 0;	// The result of aOperations (i.e. of this Parenthesis)
+	private boolean bCalculated = false;
 	// TODO use ArrayList: operator-number-function
-	private ArrayList<MemberOperation> operations = new ArrayList<>();
+	private ArrayList<MemberOperation> aOperations = new ArrayList<>();
 
 	public ParenthesisManager(){
+	}
+
+	public double getResult(){
+		if( bCalculated )	return rResult;
+		return calculate();
+	}
+
+	private double calculate(){
+		rResult = 0;
+		bCalculated = false;
+		// TODO
+		bCalculated = true;
+		return rResult;
+	}
+
+	@Override
+	public String toString() {
+		return "ParenthesisManager{" +
+				"rResult=" + rResult +
+				'}';
 	}
 }

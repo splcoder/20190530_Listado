@@ -48,7 +48,7 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 						// The selected button is the NOT enabled
-						if( ! btnMem.isEnabled() )				calculatorActivity.setValue( aMemory.get( position ).getValue() );
+						if( ! btnMem.isEnabled() )				calculatorActivity.setValue( aMemory.get( position ).getValue(), true );
 						finish();
 					}
 				});
@@ -61,7 +61,7 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 						// The selected button is the NOT enabled
-						if( ! btnConstants.isEnabled() )		calculatorActivity.setValue( aConstants.get( position ).getValue() );
+						if( ! btnConstants.isEnabled() )		calculatorActivity.setValue( aConstants.get( position ).getValue(), true );
 						finish();
 					}
 				});
@@ -74,7 +74,7 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 					@Override
 					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 						// The selected button is the NOT enabled
-						if( ! btnUserConstants.isEnabled() )	calculatorActivity.setValue( aUserConstants.get( position ).getValue() );
+						if( ! btnUserConstants.isEnabled() )	calculatorActivity.setValue( aUserConstants.get( position ).getValue(), true );
 						finish();
 					}
 				});
@@ -107,7 +107,7 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// The selected button is the NOT enabled
-				if( ! btnMem.isEnabled() )				calculatorActivity.setValue( aMemory.get( position ).getValue() );
+				if( ! btnMem.isEnabled() )				calculatorActivity.setValue( aMemory.get( position ).getValue(), true );
 				finish();
 			}
 		});*/
@@ -125,7 +125,7 @@ public class PopupMemActivity extends AppCompatActivity implements View.OnClickL
 				String str = ClipboardHelper.getText( getApplicationContext() );
 				try{
 					value = Double.parseDouble( str );
-					calculatorActivity.setValue( value );
+					calculatorActivity.setValue( value, true );
 					finish();
 				}catch( Exception e ){
 					Toasty.error( getApplicationContext(), "It is required a number.", Toast.LENGTH_SHORT, true ).show();

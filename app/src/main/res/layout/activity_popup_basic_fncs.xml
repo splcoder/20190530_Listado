@@ -43,7 +43,7 @@
 						android:layout_margin="2dp"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="Mod"
+						android:text="x mod y"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 
@@ -171,7 +171,7 @@
 						android:layout_margin="2dp"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="x*(10^y)"
+						android:text="x E y"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 				</TableRow>
@@ -210,7 +210,7 @@
 						android:layout_margin="2dp"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="y-&#8730;x"
+						android:text="x root y"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 				</TableRow>
@@ -249,7 +249,7 @@
 						android:layout_margin="2dp"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="x^y"
+						android:text="x pow y"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 				</TableRow>
@@ -288,7 +288,7 @@
 						android:layout_margin="2dp"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="Log-b"
+						android:text="x log b"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 				</TableRow>
@@ -500,7 +500,7 @@
 						android:layout_margin="2dp"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="LambertW-1"
+						android:text="LambW-1"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 
@@ -511,7 +511,7 @@
 						android:layout_margin="2dp"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="LambertW"
+						android:text="LambW"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 
