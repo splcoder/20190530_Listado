@@ -461,7 +461,7 @@
 						android:layout_margin="2dp"
 						android:layout_weight="1"
 						android:background="@drawable/gradient_button_blue"
-						android:text="Hypot"
+						android:text="x hypot y"
 						android:textAllCaps="false"
 						android:textColor="@color/white" />
 
