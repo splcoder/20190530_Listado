@@ -33,8 +33,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 	final String USER_CONSTANTS_FILENAME = "user_constants.data";
 	ArrayListFileManager<MemVar> arrayListFileManager;	// For aUserConstants
 
-	TextView txtOperation;
-	TextView txtValue;
+	TextView txtOperation, txtValue;
 	Button btnMR, btnMS, btnC, btnBack;
 	Button btnFnc, btnOP, btnCP;
 	Button btnSum, btnSubstract, btnMultiplication, btnDivision;
