@@ -13,14 +13,16 @@ public class ParenthesisManager {
 
 	private static int totalParenthesisOpened = 0;
 	public static boolean areParenthesisOpened(){ return totalParenthesisOpened > 0; }
+	//private static ArrayList<ParenthesisManager> aParenthesis = new ArrayList<>();
 
 	private double rResult = 0;	// The result of aOperations (i.e. of this Parenthesis)
 	private boolean bCalculated = false;
-	// TODO use ArrayList: operator-number-function
 	private ArrayList<MemberOperation> aOperations = new ArrayList<>();
 
 	public ParenthesisManager(){
 	}
+
+	public boolean isEmpty(){ return aOperations.isEmpty(); }
 
 	public double getResult(){
 		if( bCalculated )	return rResult;
@@ -30,15 +32,31 @@ public class ParenthesisManager {
 	private double calculate(){
 		rResult = 0;
 		bCalculated = false;
-		// TODO
+		for( MemberOperation m : aOperations ){
+			// TODO
+		}
 		bCalculated = true;
 		return rResult;
 	}
 
 	@Override
 	public String toString() {
-		return "ParenthesisManager{" +
-				"rResult=" + rResult +
-				'}';
+		if( aOperations.isEmpty() )	return "";
+		String sRes = "( ";
+		for( MemberOperation m : aOperations ){
+			// TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+			switch( m.getType() ){
+				case MEMBER_NUMBER:			sRes += "" + (double)m.getMember();								break;
+				case MEMBER_OPERATOR:		sRes += (char)m.getMember();									break;
+				case MEMBER_FUNCTION:		sRes += MathFunction.toString( (MathFunction)m.getMember() );	break;	// <<< Each function followed by a Parenthesis
+				case MEMBER_PARENTHESIS:	sRes += ((ParenthesisManager)m.getMember()).toString();			break;
+				case MEMBER_COMA:			sRes += ",";													break;
+			}
+		}
+		return sRes + " )";
 	}
+	// TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	// TODO		CREAR NUEVA APP, PERO CON TODO FUNCIONES: add( T x, T y ), substract( T x, T y ), multiply( T x, T y ), divide( T x, T y ), ...
+	// TODO				cada función tendrá un array de argumentos...
+	// TODO <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 }

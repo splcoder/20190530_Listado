@@ -23,8 +23,11 @@ public enum MathFunction {
 	, RAND_MAX, RAND_INTERVAL
 	;
 
-	// TODO add more functions: Fibonacci (with inverse), ...
-	//  , and: Sum, Product, Integral
+	// TODO put 3 pestañas: Basic, Specials, User's
+	// TODO Pestaña: "Specials": Fibonacci (with inverse), ...
+	//  						, and: Sum, Product, Integral
+	//							, and: <=, =?, >=, <, !=, >, If( != 0 ), for, while, doWhile <<< create type LOOP -> init, end, step, action
+	// TODO Pestaña "User's": las creadas por el usuario
 
 	// = MathFunction.values()
 	public static final List<MathFunction> listFunctions = new ArrayList<MathFunction>(

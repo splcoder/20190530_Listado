@@ -2,6 +2,27 @@ package com.example.a2019_05_30_listado.data;
 
 public class MemberOperation {
 
-	int type;		// TODO <<< CREATE enum: operator - number - function - Parenthesis - coma ?
-	Object member;
+	private Object		member;
+	private MemberType	type;
+
+	public MemberOperation( Object member, MemberType type ) {
+		this.member = member;
+		this.type = type;
+	}
+
+	public Object getMember() {
+		return member;
+	}
+
+	public void setMember(Object member) {
+		this.member = member;
+	}
+
+	public MemberType getType() {
+		return type;
+	}
+
+	public void setType(MemberType type) {
+		this.type = type;
+	}
 }
