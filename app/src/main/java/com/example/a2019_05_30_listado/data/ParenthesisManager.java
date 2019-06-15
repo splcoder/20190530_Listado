@@ -42,15 +42,15 @@ public class ParenthesisManager {
 	@Override
 	public String toString() {
 		if( aOperations.isEmpty() )	return "";
-		String sRes = "( ";
+		String sRes = "(";
 		for( MemberOperation m : aOperations ){
 			// TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 			switch( m.getType() ){
-				case MEMBER_NUMBER:			sRes += "" + (double)m.getMember();								break;
-				case MEMBER_OPERATOR:		sRes += (char)m.getMember();									break;
-				case MEMBER_FUNCTION:		sRes += MathFunction.toString( (MathFunction)m.getMember() );	break;	// <<< Each function followed by a Parenthesis
-				case MEMBER_PARENTHESIS:	sRes += ((ParenthesisManager)m.getMember()).toString();			break;
-				case MEMBER_COMA:			sRes += ",";													break;
+				case MEMBER_NUMBER:			sRes += " " + (double)m.getMember();								break;
+				case MEMBER_OPERATOR:		sRes += " " + (char)m.getMember();									break;
+				case MEMBER_FUNCTION:		sRes += " " + MathFunction.toString( (MathFunction)m.getMember() );	break;	// <<< Each function followed by an array size of N_OF_ARGS Parenthesis
+				case MEMBER_PARENTHESIS:	sRes += ((ParenthesisManager)m.getMember()).toString();				break;
+				case MEMBER_COMA:			sRes += ", ";														break;
 			}
 		}
 		return sRes + " )";
