@@ -184,7 +184,7 @@ public class PopupMemSaveActivity extends AppCompatActivity implements View.OnCl
 					finish();
 				}
 				else{
-					/*aUserConstants.add( new MemVar( Double.parseDouble( (String)Cache.get( CacheKeys.VALUE ) ), "" ) );
+					/*aUserConstants.Add( new MemVar( Double.parseDouble( (String)Cache.get( CacheKeys.VALUE ) ), "" ) );
 					//aMemAdapter.notifyDataSetChanged();
 					constantsAdapter.notifyDataSetChanged();
 					finish();*/

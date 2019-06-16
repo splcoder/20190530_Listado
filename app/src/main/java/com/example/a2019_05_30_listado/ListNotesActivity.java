@@ -68,14 +68,14 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 		listView = findViewById( R.id.listNotes );
 
 		/*arrayListNotes = new ArrayList<>();
-		arrayListNotes.add( new Note( "Dar un paseo", Priority.NORMAL ) );
-		arrayListNotes.add( new Note( "Ir de tapas", Priority.IMPORTANT ) );
-		arrayListNotes.add( new Note( "Partida de mus", Priority.URGENT ) );
-		arrayListNotes.add( new Note( "Tomar el sol", Priority.NORMAL ) );
-		arrayListNotes.add( new Note( "Dar un baño", Priority.NORMAL ) );
-		arrayListNotes.add( new Note( "Comer un helado", Priority.URGENT ) );
-		arrayListNotes.add( new Note( "Comer patatas fritas", Priority.IMPORTANT ) );
-		arrayListNotes.add( new Note( "Comprar cafeina", Priority.URGENT ) );*/
+		arrayListNotes.Add( new Note( "Dar un paseo", Priority.NORMAL ) );
+		arrayListNotes.Add( new Note( "Ir de tapas", Priority.IMPORTANT ) );
+		arrayListNotes.Add( new Note( "Partida de mus", Priority.URGENT ) );
+		arrayListNotes.Add( new Note( "Tomar el sol", Priority.NORMAL ) );
+		arrayListNotes.Add( new Note( "Dar un baño", Priority.NORMAL ) );
+		arrayListNotes.Add( new Note( "Comer un helado", Priority.URGENT ) );
+		arrayListNotes.Add( new Note( "Comer patatas fritas", Priority.IMPORTANT ) );
+		arrayListNotes.Add( new Note( "Comprar cafeina", Priority.URGENT ) );*/
 		fillArray();
 
 		//Collections.sort( arrayListnNotes );
@@ -85,7 +85,7 @@ public class ListNotesActivity extends AppCompatActivity implements AdapterView.
 		listView.setAdapter( notesAdapter );
 		listView.setOnItemClickListener( this );	// <<< See below: onItemClick
 
-		// Floating button "add"
+		// Floating button "Add"
 		btnFloatingAdd = findViewById( R.id.btnFloatingAdd );
 		btnFloatingAdd.setOnClickListener(new View.OnClickListener() {
 			@Override

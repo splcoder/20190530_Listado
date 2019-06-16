@@ -11,7 +11,8 @@ import java.util.List;
  *		http://keithbriggs.info/software/LambertW.c		and		http://keithbriggs.info/software/LambertW1.c
  */
 public enum MathFunction {
-	ABS, MOD, INV /* 1/x */, RAD /* to rad */, DEG /* to degrees*/, FACTORIAL
+	ADD, SUBSTRACT, MULTIPLY, DIVIDE
+	, ABS, MOD, INV /* 1/x */, RAD /* to rad */, DEG /* to degrees*/, FACTORIAL
 	, FLOOR, ROUND, CEIL
 	, POW2, POW3, POW, ROOT2, ROOT3, ROOT, XPOWX, INV_XPOWX
 	, EXP, LN, EXP10, LOG10, LOG
@@ -32,7 +33,8 @@ public enum MathFunction {
 	// = MathFunction.values()
 	public static final List<MathFunction> listFunctions = new ArrayList<MathFunction>(
 		Arrays.asList(
-			ABS, MOD, INV /* 1/x */, RAD /* to rad */, DEG /* to degrees*/, FACTORIAL
+			ADD, SUBSTRACT, MULTIPLY, DIVIDE
+			, ABS, MOD, INV /* 1/x */, RAD /* to rad */, DEG /* to degrees*/, FACTORIAL
 			, FLOOR, ROUND, CEIL
 			, POW2, POW3, POW, ROOT2, ROOT3, ROOT, XPOWX, INV_XPOWX
 			, EXP, LN, EXP10, LOG10, LOG
@@ -47,6 +49,10 @@ public enum MathFunction {
 
 	public static boolean isOneArgumentFunction( MathFunction mf ){
 		switch( mf ){
+			case ADD:
+			case SUBSTRACT:
+			case MULTIPLY:
+			case DIVIDE:
 			case MOD:
 			case POW:
 			case ROOT:
@@ -63,6 +69,10 @@ public enum MathFunction {
 
 	public static String toString( MathFunction mf ){
 		switch( mf ){
+			case ADD:				return "+";
+			case SUBSTRACT:			return "-";
+			case MULTIPLY:			return "*";
+			case DIVIDE:			return "/";
 			case ABS:				return "abs";
 			case MOD:				return "mod";
 			case INV:				return "inv";
@@ -111,6 +121,10 @@ public enum MathFunction {
 
 	public static double exeFunction( MathFunction mf, double arg1, double arg2 ){
 		switch( mf ){
+			case ADD:		return arg1 + arg2;
+			case SUBSTRACT:	return arg1 - arg2;
+			case MULTIPLY:	return arg1 * arg2;
+			case DIVIDE:	return arg1 / arg2;
 			case ABS:		return Math.abs( arg1 );
 			case MOD:		return arg1 % arg2;
 			case INV:		return 1./arg1;
