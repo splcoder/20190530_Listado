@@ -2,11 +2,11 @@ package com.example.a2019_05_30_listado.data.functions;
 
 import com.example.a2019_05_30_listado.data.MathFunction;
 
-public class Add extends Function {
+public class Multiply extends Function {
 
-	public Add(){
+	public Multiply(){
 		aArguments = new FunctionArgument[ 2 ];
-		mathFunction = MathFunction.ADD;
+		mathFunction = MathFunction.MULTIPLY;
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class Add extends Function {
 	public double output() {
 		switch( getTotalArgumentsFilled() ){
 			case 1:	return aArguments[ 0 ].output();
-			case 2: return aArguments[ 0 ].output() + aArguments[ 1 ].output();
+			case 2: return aArguments[ 0 ].output() * aArguments[ 1 ].output();
 		}
 		return 0;
 	}
@@ -31,8 +31,8 @@ public class Add extends Function {
 	@Override
 	public String toString() {
 		switch( getTotalArgumentsFilled() ){
-			case 1:	return aArguments[ 0 ].toString() + " + ";
-			case 2: return aArguments[ 0 ].toString() + " + " + aArguments[ 1 ].toString();
+			case 1:	return aArguments[ 0 ].toString() + " * ";
+			case 2: return aArguments[ 0 ].toString() + " * " + aArguments[ 1 ].toString();
 		}
 		return "";	// 0
 	}
