@@ -7,29 +7,36 @@ import static com.example.a2019_05_30_listado.data.functions.Constant.NO_CONSTAN
  */
 public class FunctionArgument {
 
-	private Function fnc = null;				// If this is null, then this argument is a constant
+	private Function parent = null;				// The function where this argument is
 
+	private Function fnc = null;				// If this is null, then this argument is a constant
 	private double value = 0;
 	private String sValue = "0";
 	private Constant constant = NO_CONSTANT;	// For showing: Pi, e, ..., instead of its value
 
-	public FunctionArgument( Function fnc ){
+	public FunctionArgument( Function parent, Function fnc ){
+		this.parent = parent;
 		this.fnc = fnc;
 	}
 
-	public FunctionArgument( double value ){
+	public FunctionArgument( Function parent, double value ){
+		this.parent = parent;
 		this.value = value;
 		this.sValue = String.valueOf( value );
 	}
-	public FunctionArgument( String number ){
+	public FunctionArgument( Function parent, String number ){
+		this.parent = parent;
 		this.value = Double.parseDouble( number );
 		this.sValue = number;
 	}
-	public FunctionArgument( Constant constant ){
+	public FunctionArgument( Function parent, Constant constant ){
+		this.parent = parent;
 		this.constant = constant;
 		this.value = Constant.get( constant );
 		this.sValue = Constant.toString( constant );
 	}
+
+	public Function getParent(){ return parent; }
 
 	public boolean isFunction(){ return fnc != null; }
 	public boolean isValue(){ return fnc == null; }

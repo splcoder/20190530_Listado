@@ -380,9 +380,12 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 					txtValue.setText( "" + rValue );
 				}
 				else{
-					double rAux = Double.parseDouble( txtValue.getText().toString() );
+					/*double rAux = Double.parseDouble( txtValue.getText().toString() );
 					rAux = -rAux;
-					txtValue.setText( "" + rAux );
+					txtValue.setText( "" + rAux );*/
+					String sVal = txtValue.getText().toString();
+					if( sVal.charAt( 0 ) == '-' )	txtValue.setText( sVal.substring( 1 ) );
+					else							txtValue.setText( "-" + sVal );
 				}
 				break;
 			}
