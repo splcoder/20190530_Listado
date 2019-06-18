@@ -39,7 +39,8 @@ activity
 			android:theme="@style/AppTheme.PopupTheme" />
 		<activity
 			android:name=".activities.CalculatorActivity"
-			android:theme="@style/AppTheme.NoActionBar" />
+			android:theme="@style/AppTheme.NoActionBar"
+			android:screenOrientation="portrait"/>
 		<activity android:name=".ListActivity" />
 		<activity android:name=".ListNotesActivity" />
 		<activity android:name=".NotificationsActivity" />

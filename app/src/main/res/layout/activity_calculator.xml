@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".activities.CalculatorActivity"
-	android:orientation="vertical">
+	android:background="@color/black"
+	android:backgroundTint="@color/black"
+	android:orientation="vertical"
+	tools:context=".activities.CalculatorActivity">
 
 	<ScrollView
 		android:id="@+id/scrollData"
 		android:layout_width="match_parent"
 		android:layout_height="380dp"
 		android:layout_marginBottom="8dp"
+		android:backgroundTint="@color/black"
 		app:layout_constraintBottom_toTopOf="@+id/tblCalc"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +34,7 @@
 				android:paddingLeft="4sp"
 				android:paddingTop="4sp"
 				android:paddingRight="4sp"
-				android:textColor="@color/infoColor"
+				android:textColor="@color/blue"
 				android:textSize="36sp"
 				android:textStyle="bold" />
 
@@ -45,6 +47,7 @@
 				android:paddingLeft="1sp"
 				android:paddingRight="1sp"
 				android:text="0"
+				android:textColor="@color/white"
 				android:textSize="48sp" />
 		</LinearLayout>
 	</ScrollView>

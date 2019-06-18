@@ -8,7 +8,7 @@
 	<color name="colorPrimaryDark">#070707</color>
 	<color name="colorAccent">#D81B60</color-->
 	<color name="black">#000000</color>
-	<color name="blue">#2f5fed</color>
+	<color name="blue">#2F5FED</color>
 	<color name="blueClear">#9ACDF4</color>
 	<color name="gray">#525253</color>
 	<color name="green">#00ff00</color>
@@ -17,5 +17,5 @@
 	<color name="red">#FF0000</color>
 	<color name="redSmooth">#7CF70404</color>
 	<color name="yellow">#FFEB3B</color>
-	<color name="white">#ffffff</color>
+	<color name="white">#FFFFFF</color>
 </resources>
