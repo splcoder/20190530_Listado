@@ -248,7 +248,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			txtValue.setText( "0" );
 		}
 		cOperation = operation;
-		txtOperation.setText( "" + rValue + " " + operation );
+		//txtOperation.setText( "" + rValue + " " + operation );	// <<< With the space ' ' prints bad
+		txtOperation.setText( "(" + rValue + ")" + operation );
 	}
 	private void exeOperation( char operation, double arg2 ){
 		switch( cOperation ) {
@@ -311,7 +312,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			}
 			cOperation = 'f';
 			mathFunction = mf;
-			txtOperation.setText( "" + rValue + " " + MathFunction.toString( mf ) );
+			//txtOperation.setText( "" + rValue + " " + MathFunction.toString( mf ) );			// <<< With the space ' ' prints bad
+			txtOperation.setText( "(" + rValue + ")" + MathFunction.toString( mf ) );
 		}
 	}
 
