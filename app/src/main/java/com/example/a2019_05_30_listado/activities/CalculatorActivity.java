@@ -43,6 +43,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
 	ScrollView scrollData;
 
+	private final String sSpace = "\u00A0";		// NO-BREAK SPACE		// See:	http://jkorpela.fi/chars/spaces.html
+	private final char cSpace = sSpace.charAt( 0 );
+
 	private final char cComa = '.';
 	private final String sComa = ".";
 	private double rValue	= 0;
@@ -249,7 +252,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		}
 		cOperation = operation;
 		//txtOperation.setText( "" + rValue + " " + operation );	// <<< With the space ' ' prints bad
-		txtOperation.setText( "(" + rValue + ")" + operation );
+		//txtOperation.setText( "(" + rValue + ")" + operation );
+		txtOperation.setText( "(" + rValue + ")" + cSpace + operation );
 	}
 	private void exeOperation( char operation, double arg2 ){
 		switch( cOperation ) {
@@ -313,7 +317,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 			cOperation = 'f';
 			mathFunction = mf;
 			//txtOperation.setText( "" + rValue + " " + MathFunction.toString( mf ) );			// <<< With the space ' ' prints bad
-			txtOperation.setText( "(" + rValue + ")" + MathFunction.toString( mf ) );
+			//txtOperation.setText( "(" + rValue + ")" + MathFunction.toString( mf ) );
+			txtOperation.setText( "(" + rValue + ")" + cSpace + MathFunction.toString( mf ) );
 		}
 	}
 
