@@ -5,12 +5,12 @@ import java.util.ArrayList;
 /**
  * This class will control all the calculation
  */
-public class Controler extends Function {
+public class OperationsControler extends Function {
 
 	private ArrayList<FunctionArgument> aOperations = new ArrayList<>();
 	private Function currentFunction = this;
 
-	public Controler(){}
+	public OperationsControler(){}
 
 	public void add( Function arg ){
 		// TODO
