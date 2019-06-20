@@ -25,7 +25,7 @@ public enum MathFunction {
 	;
 
 	// TODO put 3 pestañas: Basic, Specials, User's
-	// TODO Pestaña: "Specials": Fibonacci (with inverse), ...
+	// TODO Pestaña: "Specials": Fibonacci (with inverse), ..., gcd, lcm
 	//  						, and: Sum, Product, Integral
 	//							, and: <=, =?, >=, <, !=, >, If( != 0 ), for, while, doWhile <<< create type LOOP -> init, end, step, action
 	// TODO Pestaña "User's": las creadas por el usuario
