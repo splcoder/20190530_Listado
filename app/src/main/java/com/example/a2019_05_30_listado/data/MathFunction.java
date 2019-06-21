@@ -184,7 +184,7 @@ public enum MathFunction {
 	////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////
 
 	private static final double[] FACTORIAL_LUSCHNY_CF4_CONSTANTS = { 1./24, 3./80, 18029./45360, 6272051./14869008 };
-	private static double factorial( double arg ){
+	public static double factorial( double arg ){
 		//return Math.pow( arg, arg )*Math.exp( -arg )*Math.sqrt( arg*2*Math.PI + 1 );
 		// Another approximation:	luschnyCF4
 		double N = arg + 0.5;
@@ -194,14 +194,14 @@ public enum MathFunction {
 		if( arg < 17 && Math.round( arg ) == arg )	return Math.round( Math.exp( logF ) );
 		return Math.exp( logF );
 	}
-	private static double reflectionFactorial( double arg ){
+	public static double reflectionFactorial( double arg ){
 		// arg < 0
 		arg = -arg;
 		double byPi = Math.PI * arg;
 		return byPi/(Math.sin( byPi ) * factorial( arg ));
 	}
 
-	private static double lambertW( double z ){
+	public static double lambertW( double z ){
 		int i;
 		final double eps = 4.0e-16, em1 = 0.3678794411714423215955237701614608;
 		double p, e, t, w;
@@ -241,7 +241,7 @@ public enum MathFunction {
 		return w;
 	}
 
-	private static double lambertW1( double z ){
+	public static double lambertW1( double z ){
 		int i;
 		final double eps = 4.0e-16, em1 = 0.3678794411714423215955237701614608;
 		double p = 1.0, e, t, w, l1, l2;
@@ -271,7 +271,7 @@ public enum MathFunction {
 		return w;
 	}
 
-	private static double inverseXPowX( double arg ){
+	public static double inverseXPowX( double arg ){
 		//return Math.exp( lambertW( Math.log( arg ) ) );
 		double log = Math.log( arg );
 		return log/lambertW( log );

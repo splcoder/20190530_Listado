@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * This class will control all the calculation
  */
-public class OperationsControler extends Function {
+public class OperationsControler extends Function {		// TODO create similar class Parenthesis ???
 
 	private ArrayList<FunctionArgument> aOperations = new ArrayList<>();
 	private Function currentFunction = this;
