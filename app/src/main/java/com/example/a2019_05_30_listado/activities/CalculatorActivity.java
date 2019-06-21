@@ -1,6 +1,9 @@
 package com.example.a2019_05_30_listado.activities;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -30,6 +33,7 @@ import es.dmoral.toasty.Toasty;
 public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
 
 	CalculatorActivity that = this;
+	protected PowerManager.WakeLock wakelock;	// For turning off the sleep option
 
 	final String USER_CONSTANTS_FILENAME = "user_constants.data";
 	ArrayListFileManager<MemVar> arrayListFileManager;	// For aUserConstants
@@ -102,12 +106,19 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		aUserConstants = arrayListFileManager.readAll();
 	}
 
+	@SuppressLint("InvalidWakeLockTag")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator);
 
 		Cache.set( CacheKeys.CALCULATOR_ACTIVITY, that );
+
+		// For turning off the sleep option
+		final PowerManager pm=(PowerManager)getSystemService(Context.POWER_SERVICE);
+		//this.wakelock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta");
+		this.wakelock = (PowerManager.WakeLock) pm.newWakeLock( PowerManager.SCREEN_DIM_WAKE_LOCK, "etiqueta" );
+		wakelock.acquire();
 
 		scrollData = findViewById( R.id.scrollData );
 
@@ -421,5 +432,27 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 		super.onPause();
 		//arrayListFileManager.writeAll( aUserConstants );
 		arrayListFileManager.writeAll();
+	}
+
+	protected void onDestroy(){
+		super.onDestroy();
+
+		// Turn on the sleep option
+		this.wakelock.release();
+	}
+
+	// It is recommended the use of onResume and onSaveInstanceState too
+	// for minimizing the app to let the window turning off itself normally
+	// because on the contrary, it will not turn off itself
+
+	protected void onResume(){
+		super.onResume();
+
+		wakelock.acquire();
+	}
+	public void onSaveInstanceState(Bundle icicle) {
+		super.onSaveInstanceState(icicle);
+
+		this.wakelock.release();
 	}
 }
