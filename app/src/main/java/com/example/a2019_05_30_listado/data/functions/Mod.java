@@ -1,6 +1,7 @@
 package com.example.a2019_05_30_listado.data.functions;
 
 import com.example.a2019_05_30_listado.data.MathFunction;
+import com.example.a2019_05_30_listado.helpers.Chars;
 
 public class Mod extends Function {
 
@@ -31,8 +32,8 @@ public class Mod extends Function {
 	@Override
 	public String toString() {
 		switch( getTotalArgumentsFilled() ){
-			case 1:	return aArguments[ 0 ].toString() + " mod ";
-			case 2: return aArguments[ 0 ].toString() + " mod " + aArguments[ 1 ].toString();
+			case 1:	return aArguments[ 0 ].toString() + Chars.NBSPACE + "mod" + Chars.NBSPACE;
+			case 2: return aArguments[ 0 ].toString() + Chars.NBSPACE + "mod" + Chars.NBSPACE + aArguments[ 1 ].toString();
 		}
 		return "";	// 0
 	}
