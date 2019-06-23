@@ -29,12 +29,11 @@
 				android:id="@+id/txtOperation"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="16dp"
+				android:layout_marginTop="8dp"
 				android:gravity="left"
 				android:paddingLeft="4sp"
-				android:paddingTop="4sp"
 				android:paddingRight="4sp"
-				android:textColor="@color/blue"
+				android:textColor="@color/blueClear"
 				android:textSize="36sp"
 				android:textStyle="bold" />
 
@@ -44,8 +43,8 @@
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="17dp"
 				android:gravity="right"
-				android:paddingLeft="1sp"
-				android:paddingRight="1sp"
+				android:paddingLeft="2sp"
+				android:paddingRight="2sp"
 				android:text="0"
 				android:textColor="@color/white"
 				android:textSize="48sp" />

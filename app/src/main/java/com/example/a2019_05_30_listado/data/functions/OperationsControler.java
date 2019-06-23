@@ -5,6 +5,8 @@ import java.util.ArrayList;
 /**
  * This class will control all the calculation
  */
+// TODO for () and user's functions
+// TODO on () change '=' to ','
 public class OperationsControler extends Function {		// TODO create similar class Parenthesis extends Function ???
 
 	private ArrayList<FunctionArgument> aOperations = new ArrayList<>();

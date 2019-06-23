@@ -55,8 +55,4 @@ public class ParenthesisManager {
 		}
 		return sRes + " )";
 	}
-	// TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	// TODO		CREAR NUEVA APP, PERO CON TODO FUNCIONES: Add( T x, T y ), substract( T x, T y ), multiply( T x, T y ), divide( T x, T y ), ...
-	// TODO				cada función tendrá un array de argumentos...
-	// TODO <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 }
