@@ -7,10 +7,6 @@ import com.example.a2019_05_30_listado.data.MathFunction;
  */
 abstract public class Function extends FncBase {
 
-	public void setParent( FncBase parent ){
-		this.parent = parent;
-	}
-
 	protected FncBase[] aArguments;
 	protected int totalArgumentsFilled = 0;	// = comas set
 

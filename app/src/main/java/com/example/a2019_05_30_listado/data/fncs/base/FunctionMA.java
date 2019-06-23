@@ -9,10 +9,6 @@ import java.util.ArrayList;
  */
 abstract public class FunctionMA extends FncBase {
 
-	public void setParent( FncBase parent ){
-		this.parent = parent;
-	}
-
 	protected FncBase[] aArguments;		// TODO <<< DELETE THIS ARRAY
 	//protected ArrayList<FncBase> aArguments = new ArrayList<>();
 	protected int totalArgumentsFilled = 0;

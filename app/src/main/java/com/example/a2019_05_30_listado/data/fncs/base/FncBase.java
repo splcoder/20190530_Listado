@@ -10,6 +10,9 @@ abstract public class FncBase {
 	public static final int PARENTHESIS			= 4;
 
 	protected FncBase parent = null;
+	public void setParent( FncBase parent ){
+		this.parent = parent;
+	}
 	public FncBase getParent(){ return parent; }
 
 	protected int type = NULL;
