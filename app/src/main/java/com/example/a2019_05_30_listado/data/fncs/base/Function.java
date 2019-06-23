@@ -12,7 +12,7 @@ abstract public class Function extends FncBase {
 	}
 
 	protected FncBase[] aArguments;
-	protected int totalArgumentsFilled = 0;
+	protected int totalArgumentsFilled = 0;	// = comas set
 
 	protected MathFunction mathFunction;	// Function Type
 
