@@ -8,6 +8,8 @@ import java.util.ArrayList;
 // TODO for () and user's functions
 // TODO on () change '=' to ','
 	// TODO if there is a composition of functions-functionMAs-Parenthesis, the last will be a Value (at least)
+
+// TODO MEJOR: que Controle sea un Parenthesis <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 public class Controler extends FncBase {	// <<< Really it is not required to extends from FncBase
 
 	private ArrayList<FncBase> aOperations = new ArrayList<>();
