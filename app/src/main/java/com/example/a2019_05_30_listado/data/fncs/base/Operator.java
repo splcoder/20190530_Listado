@@ -7,7 +7,14 @@ abstract public class Operator extends FncBase {
 	protected MathFunction mathFunction;	// Function Type
 	public MathFunction getFunctionType(){ return mathFunction; }
 
+	public static final int LEFT_ONLY	= -1;
+	public static final int BOTH		= 0;
+	public static final int RIGHT_ONLY	= 1;
+
 	protected FncBase left = null, right = null;
+	protected int argumentsRequired = BOTH;
+	public void setArgumentsRequired( int req ){ this.argumentsRequired = req; }
+	public int getArgumentsRequired(){ return argumentsRequired; }
 
 	protected Operator( FncBase parent ){
 		this.parent = parent;

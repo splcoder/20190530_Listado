@@ -6,38 +6,40 @@ import java.util.ArrayList;
 
 /**
  * Multi size arguments
+ *
+ * For statistic functions (for example)
  */
 abstract public class FunctionMA extends FncBase {
 
-	protected FncBase[] aArguments;		// TODO <<< DELETE THIS ARRAY
-	//protected ArrayList<FncBase> aArguments = new ArrayList<>();
-	protected int totalArgumentsFilled = 0;
+	protected ArrayList<FncBase> aArguments = new ArrayList<>();
 
 	protected MathFunction mathFunction;	// Function Type
 
-	protected FunctionMA(FncBase parent ){
+	protected FunctionMA( FncBase parent ){
 		this.parent = parent;
 		this.type = FncBase.FUNCTION_MA;
 	}
 
-	public abstract int totalArguments();
+	public int totalArguments(){ return aArguments.size(); }	// = totalArgumentsFilled
 
 	public abstract double output();
 	public abstract String toString();
 
 	// Set argument to this function
+	public void add( FncBase arg ){ aArguments.add( arg ); }
 	public void set( FncBase arg, int position ){
 		if( position < 0 || position >= totalArguments() )	throw new IllegalArgumentException( "Set argument in bad position: " + position );
-		aArguments[ position ] = arg;
+		aArguments.set( position, arg );
+	}
+	public FncBase get( int position ){
+		if( position < 0 || position >= totalArguments() )	throw new IllegalArgumentException( "Get argument in bad position: " + position );
+		return aArguments.get( position );
 	}
 
-	// TODO ... delLast ...
-
-	public int getTotalArgumentsFilled(){ return totalArgumentsFilled; }
-	public int getAndIncrementTotalArgumentsFilled(){ return totalArgumentsFilled++; }
+	public int getTotalArgumentsFilled(){ return aArguments.size(); }
 	public boolean delLastArgument(){
-		if( totalArgumentsFilled == 0 )	return false;
-		aArguments[ --totalArgumentsFilled ] = null;
+		if( aArguments.size() == 0 )	return false;
+		aArguments.remove( aArguments.size() - 1 );
 		return true;
 	}
 }

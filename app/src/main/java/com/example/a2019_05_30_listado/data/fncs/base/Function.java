@@ -27,11 +27,14 @@ abstract public class Function extends FncBase {
 		if( position < 0 || position >= totalArguments() )	throw new IllegalArgumentException( "Set argument in bad position: " + position );
 		aArguments[ position ] = arg;
 	}
-
-	// TODO ... delLast ...
+	public FncBase get( int position ){
+		if( position < 0 || position >= totalArguments() )	throw new IllegalArgumentException( "Get argument in bad position: " + position );
+		return aArguments[ position ];
+	}
 
 	public int getTotalArgumentsFilled(){ return totalArgumentsFilled; }
 	public int getAndIncrementTotalArgumentsFilled(){ return totalArgumentsFilled++; }
+	public void incrementTotalArgumentsFilled(){ totalArgumentsFilled++; }
 	public boolean delLastArgument(){
 		if( totalArgumentsFilled == 0 )	return false;
 		aArguments[ --totalArgumentsFilled ] = null;

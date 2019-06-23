@@ -12,6 +12,7 @@ public class Inv extends Operator {
 	public Inv( FncBase parent ){
 		super( parent );
 		this.mathFunction = MathFunction.INV;
+		setArgumentsRequired( Operator.LEFT_ONLY );
 	}
 
 	@Override
