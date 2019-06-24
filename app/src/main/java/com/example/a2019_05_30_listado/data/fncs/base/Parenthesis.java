@@ -4,6 +4,15 @@ import java.util.ArrayList;
 
 public class Parenthesis extends FncBase {
 
+	public static final char BRACKETS_ROUND_OPEN	= '(';
+	public static final char BRACKETS_ROUND_CLOSE	= ')';
+	public static final char BRACKETS_BOX_OPEN		= '[';
+	public static final char BRACKETS_BOX_CLOSE		= ']';
+	public static final char BRACKETS_CURLY_OPEN	= '{';
+	public static final char BRACKETS_CURLY_CLOSE	= '}';
+
+	private boolean showParenthesis = true;
+
 	private ArrayList<FncBase> aOperations = new ArrayList<>();
 	private FncBase currentFunction = null;
 	public FncBase getCurrentFunction(){ return currentFunction; }
@@ -11,6 +20,12 @@ public class Parenthesis extends FncBase {
 	public Parenthesis( FncBase parent ){
 		this.parent = parent;
 		this.type = FncBase.PARENTHESIS;
+	}
+
+	public Parenthesis( FncBase parent, boolean showParenthesis ){
+		this.parent = parent;
+		this.type = FncBase.PARENTHESIS;
+		this.showParenthesis = showParenthesis;
 	}
 
 	public void add( FncBase valOpeFnc ){
