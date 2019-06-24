@@ -19,6 +19,7 @@ abstract public class Operator extends FncBase {
 	protected Operator( FncBase parent ){
 		this.parent = parent;
 		this.type = FncBase.OPERATOR;
+		setNoArgument();
 	}
 
 	public void set( FncBase arg, boolean left ){

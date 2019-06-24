@@ -22,7 +22,11 @@ abstract public class Function extends FncBase {
 	public abstract double output();
 	public abstract String toString();
 
-	// Set argument to this function
+	public boolean thereIsSpaceForMoreArguments(){ return totalArgumentsFilled < totalArguments(); }
+	public void add( FncBase arg ){
+		if( totalArgumentsFilled >= totalArguments() )	throw new IllegalArgumentException( "Add argument: no more arguments can be added" );
+		aArguments[ totalArgumentsFilled++ ] = arg;
+	}
 	public void set( FncBase arg, int position ){
 		if( position < 0 || position >= totalArguments() )	throw new IllegalArgumentException( "Set argument in bad position: " + position );
 		aArguments[ position ] = arg;

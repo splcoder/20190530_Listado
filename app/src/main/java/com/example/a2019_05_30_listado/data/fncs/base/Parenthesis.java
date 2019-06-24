@@ -6,6 +6,7 @@ public class Parenthesis extends FncBase {
 
 	private ArrayList<FncBase> aOperations = new ArrayList<>();
 	private FncBase currentFunction = null;
+	public FncBase getCurrentFunction(){ return currentFunction; }
 
 	public Parenthesis( FncBase parent ){
 		this.parent = parent;
@@ -14,7 +15,41 @@ public class Parenthesis extends FncBase {
 
 	public void add( FncBase valOpeFnc ){
 		// TODO checks...
-		aOperations.add( valOpeFnc );
+		switch( valOpeFnc.getType() ){
+			case FncBase.VALUE: {
+				if( aOperations.size() == 0 )	aOperations.add( valOpeFnc );
+				else{
+					if( currentFunction != null ){
+						if( currentFunction.hasArguments() ){
+							//
+						}
+						else{
+							//
+						}
+					}
+					else{
+						// Get last for checking if it is an operator...
+					}
+				}
+				break;
+			}
+			case FncBase.OPERATOR: {
+				break;
+			}
+			case FncBase.FUNCTION: {
+				break;
+			}
+			case FncBase.FUNCTION_MA: {
+				break;
+			}
+			case FncBase.PARENTHESIS: {
+				break;
+			}
+		}
+	}
+
+	public void delLast(){
+		// TODO
 	}
 	// TODO
 
@@ -27,6 +62,6 @@ public class Parenthesis extends FncBase {
 	@Override
 	public String toString() {
 		// TODO
-		return "";
+		return "()";
 	}
 }

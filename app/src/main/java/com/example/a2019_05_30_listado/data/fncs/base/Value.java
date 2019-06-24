@@ -11,6 +11,7 @@ public class Value extends FncBase {
 	private Value( FncBase parent ){
 		this.parent = parent;
 		this.type = FncBase.VALUE;
+		setNoArgument();
 	}
 
 	public Value( FncBase parent, double value ){

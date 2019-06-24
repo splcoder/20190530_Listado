@@ -18,6 +18,10 @@ abstract public class FncBase {
 	protected int type = NULL;
 	public int getType(){ return type; }
 
+	private boolean _hasArguments = true;
+	public void setNoArgument(){ _hasArguments = false; }
+	public boolean hasArguments(){ return _hasArguments; }
+
 	public abstract double output();
 	public abstract String toString();
 }
